@@ -1,0 +1,593 @@
+<!DOCTYPE html>
+<html lang="th">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>วิเคราะห์รายการค้า | Accounting Practice Lab</title>
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/css/bootstrap.min.css"
+          rel="stylesheet">
+
+    <link rel="stylesheet"
+          href="../css/style.css">
+
+</head>
+
+<body>
+
+<!-- เมนู -->
+
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+
+    <div class="container">
+
+        <a class="navbar-brand fw-bold"
+           href="../index.html">
+
+            Accounting Practice Lab
+
+        </a>
+
+        <button class="navbar-toggler"
+                type="button"
+                data-bs-toggle="collapse"
+                data-bs-target="#menu">
+
+            <span class="navbar-toggler-icon"></span>
+
+        </button>
+
+        <div class="collapse navbar-collapse"
+             id="menu">
+
+            <ul class="navbar-nav ms-auto">
+
+                <li class="nav-item">
+
+                    <a class="nav-link"
+                       href="../index.html">
+
+                        หน้าแรก
+
+                    </a>
+
+                </li>
+
+                <li class="nav-item">
+
+                    <a class="nav-link"
+                       href="lesson.html">
+
+                        ห้องฝึกปฏิบัติ
+
+                    </a>
+
+                </li>
+
+            </ul>
+
+        </div>
+
+    </div>
+
+</nav>
+
+
+<!-- หัวข้อ -->
+
+<header class="bg-primary text-white text-center py-5">
+
+    <div class="container">
+
+        <h1>
+
+            📘 วิเคราะห์รายการค้า
+
+        </h1>
+
+        <p class="lead">
+
+            แบบฝึกปฏิบัติการวิเคราะห์รายการค้า
+
+        </p>
+
+    </div>
+
+</header>
+
+
+<!-- เนื้อหา -->
+
+<main class="container my-5">
+
+    <!-- คะแนน -->
+
+    <div class="alert alert-warning text-center mb-4">
+
+        <h4>
+
+            🏆 คะแนนของคุณ
+
+        </h4>
+
+        <h2 id="score">
+
+            0 / 10
+
+        </h2>
+
+    </div>
+
+
+    <div class="card shadow">
+
+        <div class="card-body p-4">
+
+            <h2 class="text-primary mb-4">
+
+                📝 แบบฝึกปฏิบัติ 10 รายการค้า
+
+            </h2>
+
+
+            <div class="alert alert-info">
+
+                <strong>คำชี้แจง</strong>
+
+                <br>
+
+                ให้นักศึกษาวิเคราะห์รายการค้า
+                แล้วระบุว่า บัญชีใดเพิ่มขึ้น
+                และบัญชีใดลดลง
+
+                <br><br>
+
+                <strong>ตัวอย่างการตอบ</strong>
+
+                <br>
+
+                บัญชีที่เพิ่มขึ้น: เงินสด
+
+                <br>
+
+                บัญชีที่ลดลง: -
+
+            </div>
+
+
+            <!-- รายการที่ 1 -->
+
+            <div class="border rounded p-4 mb-4">
+
+                <h4>📌 รายการที่ 1</h4>
+
+                <p class="fs-5">
+
+                    เจ้าของกิจการนำเงินสดมาลงทุนในกิจการ
+                    จำนวน 50,000 บาท
+
+                </p>
+
+                <input type="text"
+                       id="q1"
+                       class="form-control"
+                       placeholder="ระบุบัญชีที่เพิ่มขึ้น">
+
+            </div>
+
+
+            <!-- รายการที่ 2 -->
+
+            <div class="border rounded p-4 mb-4">
+
+                <h4>📌 รายการที่ 2</h4>
+
+                <p class="fs-5">
+
+                    กิจการซื้ออุปกรณ์สำนักงานเป็นเงินสด
+                    จำนวน 5,000 บาท
+
+                </p>
+
+                <input type="text"
+                       id="q2"
+                       class="form-control"
+                       placeholder="ระบุบัญชีที่เพิ่มขึ้น">
+
+            </div>
+
+
+            <!-- รายการที่ 3 -->
+
+            <div class="border rounded p-4 mb-4">
+
+                <h4>📌 รายการที่ 3</h4>
+
+                <p class="fs-5">
+
+                    กิจการซื้อสินค้าเป็นเงินเชื่อ
+                    จำนวน 10,000 บาท
+
+                </p>
+
+                <input type="text"
+                       id="q3"
+                       class="form-control"
+                       placeholder="ระบุบัญชีที่เพิ่มขึ้น">
+
+            </div>
+
+
+            <!-- รายการที่ 4 -->
+
+            <div class="border rounded p-4 mb-4">
+
+                <h4>📌 รายการที่ 4</h4>
+
+                <p class="fs-5">
+
+                    กิจการได้รับเงินสดจากการให้บริการ
+                    จำนวน 8,000 บาท
+
+                </p>
+
+                <input type="text"
+                       id="q4"
+                       class="form-control"
+                       placeholder="ระบุบัญชีที่เพิ่มขึ้น">
+
+            </div>
+
+
+            <!-- รายการที่ 5 -->
+
+            <div class="border rounded p-4 mb-4">
+
+                <h4>📌 รายการที่ 5</h4>
+
+                <p class="fs-5">
+
+                    กิจการจ่ายค่าเช่าเป็นเงินสด
+                    จำนวน 3,000 บาท
+
+                </p>
+
+                <input type="text"
+                       id="q5"
+                       class="form-control"
+                       placeholder="ระบุบัญชีที่ลดลง">
+
+            </div>
+
+
+            <!-- รายการที่ 6 -->
+
+            <div class="border rounded p-4 mb-4">
+
+                <h4>📌 รายการที่ 6</h4>
+
+                <p class="fs-5">
+
+                    กิจการกู้เงินจากธนาคาร
+                    จำนวน 100,000 บาท
+
+                </p>
+
+                <input type="text"
+                       id="q6"
+                       class="form-control"
+                       placeholder="ระบุบัญชีที่เพิ่มขึ้น">
+
+            </div>
+
+
+            <!-- รายการที่ 7 -->
+
+            <div class="border rounded p-4 mb-4">
+
+                <h4>📌 รายการที่ 7</h4>
+
+                <p class="fs-5">
+
+                    กิจการชำระหนี้ให้เจ้าหนี้
+                    จำนวน 7,000 บาท
+
+                </p>
+
+                <input type="text"
+                       id="q7"
+                       class="form-control"
+                       placeholder="ระบุบัญชีที่ลดลง">
+
+            </div>
+
+
+            <!-- รายการที่ 8 -->
+
+            <div class="border rounded p-4 mb-4">
+
+                <h4>📌 รายการที่ 8</h4>
+
+                <p class="fs-5">
+
+                    เจ้าของกิจการถอนเงินสดไปใช้ส่วนตัว
+                    จำนวน 2,000 บาท
+
+                </p>
+
+                <input type="text"
+                       id="q8"
+                       class="form-control"
+                       placeholder="ระบุบัญชีที่ลดลง">
+
+            </div>
+
+
+            <!-- รายการที่ 9 -->
+
+            <div class="border rounded p-4 mb-4">
+
+                <h4>📌 รายการที่ 9</h4>
+
+                <p class="fs-5">
+
+                    กิจการได้รับเงินสดจากลูกหนี้
+                    จำนวน 6,000 บาท
+
+                </p>
+
+                <input type="text"
+                       id="q9"
+                       class="form-control"
+                       placeholder="ระบุบัญชีที่เพิ่มขึ้น">
+
+            </div>
+
+
+            <!-- รายการที่ 10 -->
+
+            <div class="border rounded p-4 mb-4">
+
+                <h4>📌 รายการที่ 10</h4>
+
+                <p class="fs-5">
+
+                    กิจการจ่ายเงินเดือนพนักงาน
+                    จำนวน 12,000 บาท
+
+                </p>
+
+                <input type="text"
+                       id="q10"
+                       class="form-control"
+                       placeholder="ระบุบัญชีที่ลดลง">
+
+            </div>
+
+
+            <!-- ปุ่มตรวจคำตอบ -->
+
+            <div class="text-center mt-4">
+
+                <button class="btn btn-primary btn-lg"
+                        onclick="checkAnswers()">
+
+                    ตรวจคำตอบ
+
+                </button>
+
+            </div>
+
+
+            <!-- ผลการตรวจ -->
+
+            <div id="result"
+                 class="mt-4">
+
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <!-- กลับหน้าหลัก -->
+
+    <div class="text-center mt-4">
+
+        <a href="../index.html"
+           class="btn btn-secondary">
+
+            ← กลับหน้าหลัก
+
+        </a>
+
+    </div>
+
+</main>
+
+
+<!-- Footer -->
+
+<footer class="bg-dark text-white text-center py-4">
+
+    <p class="mb-1">
+
+        Accounting Practice Lab
+
+    </p>
+
+    <small>
+
+        ระบบฝึกปฏิบัติการบัญชีเบื้องต้น
+
+    </small>
+
+</footer>
+
+
+<!-- ระบบตรวจคำตอบและนับคะแนน -->
+
+<script>
+
+function checkAnswers() {
+
+
+    let score = 0;
+
+
+    // คำตอบที่นักศึกษาพิมพ์
+
+    let q1 =
+        document.getElementById("q1").value.toLowerCase();
+
+    let q2 =
+        document.getElementById("q2").value.toLowerCase();
+
+    let q3 =
+        document.getElementById("q3").value.toLowerCase();
+
+    let q4 =
+        document.getElementById("q4").value.toLowerCase();
+
+    let q5 =
+        document.getElementById("q5").value.toLowerCase();
+
+    let q6 =
+        document.getElementById("q6").value.toLowerCase();
+
+    let q7 =
+        document.getElementById("q7").value.toLowerCase();
+
+    let q8 =
+        document.getElementById("q8").value.toLowerCase();
+
+    let q9 =
+        document.getElementById("q9").value.toLowerCase();
+
+    let q10 =
+        document.getElementById("q10").value.toLowerCase();
+
+
+    // ตรวจคำตอบ
+
+    if (q1.includes("เงินสด")) {
+
+        score++;
+
+    }
+
+
+    if (q2.includes("อุปกรณ์สำนักงาน")) {
+
+        score++;
+
+    }
+
+
+    if (q3.includes("สินค้า")) {
+
+        score++;
+
+    }
+
+
+    if (q4.includes("เงินสด")) {
+
+        score++;
+
+    }
+
+
+    if (q5.includes("เงินสด")) {
+
+        score++;
+
+    }
+
+
+    if (q6.includes("เงินสด")) {
+
+        score++;
+
+    }
+
+
+    if (q7.includes("เงินสด")) {
+
+        score++;
+
+    }
+
+
+    if (q8.includes("เงินสด")) {
+
+        score++;
+
+    }
+
+
+    if (q9.includes("เงินสด")) {
+
+        score++;
+
+    }
+
+
+    if (q10.includes("เงินสด")) {
+
+        score++;
+
+    }
+
+
+    // แสดงคะแนน
+
+    document.getElementById("score").innerHTML =
+        score + " / 10";
+
+
+    // แสดงผลลัพธ์
+
+    document.getElementById("result").innerHTML =
+
+        "<div class='alert alert-success text-center'>" +
+
+        "<h4>🎉 ตรวจคำตอบเสร็จแล้ว</h4>" +
+
+        "<p class='fs-4'>คุณได้คะแนน " +
+
+        score +
+
+        " / 10 คะแนน</p>" +
+
+        "</div>";
+
+
+    // เลื่อนหน้าจอไปยังผลคะแนน
+
+    window.scrollTo({
+
+        top: 0,
+
+        behavior: "smooth"
+
+    });
+
+}
+
+</script>
+
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/js/bootstrap.bundle.min.js">
+
+</script>
+
+</body>
+
+</html>

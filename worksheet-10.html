@@ -1,0 +1,3721 @@
+<!DOCTYPE html>
+<html lang="th">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>กระดาษทำการ 10 ช่อง | Accounting Practice Lab</title>
+
+    <!-- Bootstrap 5 -->
+    <link
+        href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/css/bootstrap.min.css"
+        rel="stylesheet">
+
+    <style>
+
+        /* ==============================
+           พื้นฐานของเว็บไซต์
+        ============================== */
+
+        body {
+            font-family: Tahoma, "Noto Sans Thai", sans-serif;
+            background-color: #f4f7fb;
+            color: #212529;
+            margin: 0;
+            padding: 0;
+        }
+
+
+        /* ==============================
+           Navbar
+        ============================== */
+
+        .navbar {
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.12);
+        }
+
+        .navbar-brand {
+            font-weight: bold;
+            font-size: 20px;
+        }
+
+
+        /* ==============================
+           Header
+        ============================== */
+
+        .page-header {
+            background: linear-gradient(
+                135deg,
+                #0d6efd,
+                #4dabf7
+            );
+
+            color: white;
+
+            padding: 35px 20px;
+
+            text-align: center;
+
+            box-shadow:
+                0 4px 12px rgba(0, 0, 0, 0.12);
+
+            margin-bottom: 30px;
+        }
+
+        .page-header h1 {
+            font-size: 32px;
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+
+        .page-header p {
+            margin-bottom: 0;
+            font-size: 17px;
+        }
+
+
+        /* ==============================
+           กล่องคำชี้แจง
+        ============================== */
+
+        .instruction-box {
+            background: white;
+
+            border-left: 6px solid #0d6efd;
+
+            border-radius: 12px;
+
+            padding: 20px;
+
+            margin-bottom: 25px;
+
+            box-shadow:
+                0 3px 10px rgba(0, 0, 0, 0.08);
+        }
+
+        .instruction-box h4 {
+            color: #0d6efd;
+            font-weight: bold;
+            margin-bottom: 12px;
+        }
+
+        .instruction-box ul {
+            margin-bottom: 0;
+        }
+
+
+        /* ==============================
+           กล่องคะแนน
+        ============================== */
+
+        .score-box {
+
+            background: white;
+
+            border-radius: 12px;
+
+            padding: 18px;
+
+            margin-bottom: 25px;
+
+            text-align: center;
+
+            box-shadow:
+                0 3px 10px rgba(0, 0, 0, 0.08);
+
+        }
+
+        .score-title {
+            font-size: 18px;
+            color: #6c757d;
+            margin-bottom: 5px;
+        }
+
+        #scoreDisplay {
+
+            font-size: 32px;
+
+            font-weight: bold;
+
+            color: #0d6efd;
+
+        }
+
+
+        /* ==============================
+           กล่องตาราง
+        ============================== */
+
+        .worksheet-container {
+
+            background: white;
+
+            border-radius: 14px;
+
+            padding: 20px;
+
+            box-shadow:
+                0 4px 15px rgba(0, 0, 0, 0.08);
+
+            margin-bottom: 30px;
+
+            overflow-x: auto;
+
+        }
+
+
+        /* ==============================
+           ตารางกระดาษทำการ
+        ============================== */
+
+        .worksheet-table {
+
+            width: 100%;
+
+            min-width: 1500px;
+
+            border-collapse: collapse;
+
+            table-layout: fixed;
+
+        }
+
+
+        .worksheet-table th,
+        .worksheet-table td {
+
+            border: 1px solid #6c757d;
+
+            text-align: center;
+
+            vertical-align: middle;
+
+            padding: 8px;
+
+        }
+
+
+        /* หัวตาราง */
+
+        .worksheet-table thead th {
+
+            background-color: #e9f2ff;
+
+            color: #212529;
+
+            font-weight: bold;
+
+            font-size: 14px;
+
+        }
+
+
+        /* หัวข้อหลักของตาราง */
+
+        .worksheet-table .main-header {
+
+            background-color: #0d6efd;
+
+            color: white;
+
+            font-size: 16px;
+
+        }
+
+
+        /* คอลัมน์ชื่อบัญชี */
+
+        .account-column {
+
+            width: 190px;
+
+            min-width: 190px;
+
+            text-align: left !important;
+
+            padding-left: 12px !important;
+
+            font-weight: 500;
+
+        }
+
+
+        /* ช่องจำนวนเงิน */
+
+        .amount-column {
+
+            width: 120px;
+
+            min-width: 120px;
+
+        }
+
+
+        /* ช่องกรอก */
+
+        .amount-input {
+
+            width: 100%;
+
+            min-width: 95px;
+
+            padding: 8px 5px;
+
+            text-align: right;
+
+            border: 1px solid #ced4da;
+
+            border-radius: 6px;
+
+            font-size: 15px;
+
+            background-color: #fff;
+
+        }
+
+
+        .amount-input:focus {
+
+            outline: none;
+
+            border-color: #0d6efd;
+
+            box-shadow:
+                0 0 0 3px rgba(13, 110, 253, 0.15);
+
+        }
+
+
+        /* ช่องที่ถูกต้อง */
+
+        .correct {
+
+            background-color: #d1e7dd !important;
+
+            border-color: #198754 !important;
+
+        }
+
+
+        /* ช่องที่ผิด */
+
+        .incorrect {
+
+            background-color: #f8d7da !important;
+
+            border-color: #dc3545 !important;
+
+        }
+
+
+        /* แถวรวม */
+
+        .total-row {
+
+            background-color: #f1f3f5;
+
+            font-weight: bold;
+
+        }
+
+
+        .total-row td {
+
+            padding-top: 12px;
+
+            padding-bottom: 12px;
+
+        }
+
+
+        /* ==============================
+           ปุ่ม
+        ============================== */
+
+        .button-area {
+
+            text-align: center;
+
+            margin: 30px 0;
+
+        }
+
+
+        .action-btn {
+
+            border: none;
+
+            border-radius: 8px;
+
+            padding: 12px 25px;
+
+            margin: 5px;
+
+            font-size: 17px;
+
+            font-weight: bold;
+
+            cursor: pointer;
+
+            transition: 0.2s;
+
+        }
+
+
+        .action-btn:hover {
+
+            transform: translateY(-2px);
+
+        }
+
+
+        .check-btn {
+
+            background-color: #198754;
+
+            color: white;
+
+        }
+
+
+        .reset-btn {
+
+            background-color: #6c757d;
+
+            color: white;
+
+        }
+
+
+        .home-btn {
+
+            background-color: #212529;
+
+            color: white;
+
+        }
+
+
+        /* ==============================
+           กล่องผลตรวจ
+        ============================== */
+
+        #resultBox {
+
+            display: none;
+
+            border-radius: 12px;
+
+            padding: 20px;
+
+            margin: 20px 0;
+
+            text-align: center;
+
+            font-size: 20px;
+
+            font-weight: bold;
+
+        }
+
+
+        .result-success {
+
+            display: block !important;
+
+            background-color: #d1e7dd;
+
+            color: #0f5132;
+
+            border: 1px solid #badbcc;
+
+        }
+
+
+        .result-warning {
+
+            display: block !important;
+
+            background-color: #fff3cd;
+
+            color: #664d03;
+
+            border: 1px solid #ffecb5;
+
+        }
+
+
+        /* ==============================
+           หมายเหตุ
+        ============================== */
+
+        .note-box {
+
+            background-color: #fff8e1;
+
+            border-left: 5px solid #ffc107;
+
+            border-radius: 8px;
+
+            padding: 15px;
+
+            margin-top: 20px;
+
+            color: #664d03;
+
+        }
+
+
+        /* ==============================
+           Footer
+        ============================== */
+
+        footer {
+
+            background-color: #212529;
+
+            color: white;
+
+            text-align: center;
+
+            padding: 20px;
+
+            margin-top: 40px;
+
+        }
+
+
+        footer p {
+
+            margin: 0;
+
+        }
+
+
+        /* ==============================
+           Responsive
+        ============================== */
+
+        @media (max-width: 768px) {
+
+            .page-header h1 {
+
+                font-size: 25px;
+
+            }
+
+            .page-header p {
+
+                font-size: 15px;
+
+            }
+
+            .worksheet-container {
+
+                padding: 10px;
+
+            }
+
+            .instruction-box {
+
+                padding: 15px;
+
+            }
+
+        }
+
+    </style>
+
+</head>
+
+
+<body>
+
+
+    <!-- ==============================
+         NAVBAR
+    ============================== -->
+
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+
+        <div class="container">
+
+            <a
+                class="navbar-brand"
+                href="../index.html">
+
+                📚 Accounting Practice Lab
+
+            </a>
+
+
+            <button
+                class="navbar-toggler"
+                type="button"
+                data-bs-toggle="collapse"
+                data-bs-target="#menu">
+
+                <span class="navbar-toggler-icon"></span>
+
+            </button>
+
+
+            <div
+                class="collapse navbar-collapse"
+                id="menu">
+
+                <ul class="navbar-nav ms-auto">
+
+                    <li class="nav-item">
+
+                        <a
+                            class="nav-link"
+                            href="../index.html">
+
+                            หน้าหลัก
+
+                        </a>
+
+                    </li>
+
+
+                    <li class="nav-item">
+
+                        <a
+                            class="nav-link"
+                            href="lesson.html">
+
+                            บทเรียน
+
+                        </a>
+
+                    </li>
+
+
+                    <li class="nav-item">
+
+                        <a
+                            class="nav-link"
+                            href="analyze.html">
+
+                            วิเคราะห์รายการค้า
+
+                        </a>
+
+                    </li>
+
+
+                    <li class="nav-item">
+
+                        <a
+                            class="nav-link"
+                            href="journal.html">
+
+                            สมุดรายวันทั่วไป
+
+                        </a>
+
+                    </li>
+
+
+                    <li class="nav-item">
+
+                        <a
+                            class="nav-link"
+                            href="ledger.html">
+
+                            บัญชีแยกประเภท
+
+                        </a>
+
+                    </li>
+
+
+                    <li class="nav-item">
+
+                        <a
+                            class="nav-link"
+                            href="trial-balance.html">
+
+                            งบทดลอง
+
+                        </a>
+
+                    </li>
+
+
+                    <li class="nav-item">
+
+                        <a
+                            class="nav-link active"
+                            href="worksheet-10.html">
+
+                            กระดาษทำการ 10 ช่อง
+
+                        </a>
+
+                    </li>
+
+                </ul>
+
+            </div>
+
+        </div>
+
+    </nav>
+
+
+
+    <!-- ==============================
+         HEADER
+    ============================== -->
+
+    <header class="page-header">
+
+        <h1>
+            📑 กระดาษทำการ 10 ช่อง
+        </h1>
+
+        <p>
+            ฝึกปฏิบัติการจัดทำกระดาษทำการ 10 ช่อง
+        </p>
+
+    </header>
+
+
+
+    <main class="container">
+
+
+        <!-- ==============================
+             คำชี้แจง
+        ============================== -->
+
+        <div class="instruction-box">
+
+            <h4>
+                📌 คำชี้แจง
+            </h4>
+
+            <ul>
+
+                <li>
+                    ให้นักเรียนกรอกจำนวนเงินลงในช่องที่ถูกต้อง
+                </li>
+
+                <li>
+                    ตรวจสอบการจัดประเภทบัญชีให้ถูกต้อง
+                </li>
+
+                <li>
+                    ตรวจสอบยอดรวมเดบิตและเครดิตให้เท่ากัน
+                </li>
+
+                <li>
+                    เมื่อทำเสร็จแล้วให้กดปุ่ม
+                    <strong>ตรวจคำตอบ</strong>
+                </li>
+
+            </ul>
+
+        </div>
+
+
+
+        <!-- ==============================
+             คะแนน
+        ============================== -->
+
+        <div class="score-box">
+
+            <div class="score-title">
+                คะแนนปัจจุบัน
+            </div>
+
+            <div id="scoreDisplay">
+                0 / 100 คะแนน
+            </div>
+
+        </div>
+
+
+
+        <!-- ==============================
+             ตาราง
+        ============================== -->
+
+        <div class="worksheet-container">
+
+
+            <table
+                class="worksheet-table"
+                id="worksheetTable">
+
+
+                <thead>
+
+
+                    <!-- แถวหัวข้อหลัก -->
+
+                    <tr>
+
+                        <th
+                            rowspan="2"
+                            class="main-header account-column">
+
+                            ชื่อบัญชี
+
+                        </th>
+
+
+                        <th
+                            colspan="2"
+                            class="main-header">
+
+                            งบทดลอง
+
+                        </th>
+
+
+                        <th
+                            colspan="2"
+                            class="main-header">
+
+                            รายการปรับปรุง
+
+                        </th>
+
+
+                        <th
+                            colspan="2"
+                            class="main-header">
+
+                            งบทดลองหลังปรับปรุง
+
+                        </th>
+
+
+                        <th
+                            colspan="2"
+                            class="main-header">
+
+                            งบกำไรขาดทุน
+
+                        </th>
+
+
+                        <th
+                            colspan="2"
+                            class="main-header">
+
+                            งบแสดงฐานะการเงิน
+
+                        </th>
+
+                    </tr>
+
+
+                    <!-- แถวเดบิต / เครดิต -->
+
+                    <tr>
+
+
+                        <th class="amount-column">
+                            เดบิต
+                        </th>
+
+                        <th class="amount-column">
+                            เครดิต
+                        </th>
+
+
+                        <th class="amount-column">
+                            เดบิต
+                        </th>
+
+                        <th class="amount-column">
+                            เครดิต
+                        </th>
+
+
+                        <th class="amount-column">
+                            เดบิต
+                        </th>
+
+                        <th class="amount-column">
+                            เครดิต
+                        </th>
+
+
+                        <th class="amount-column">
+                            เดบิต
+                        </th>
+
+                        <th class="amount-column">
+                            เครดิต
+                        </th>
+
+
+                        <th class="amount-column">
+                            เดบิต
+                        </th>
+
+                        <th class="amount-column">
+                            เครดิต
+                        </th>
+
+
+                    </tr>
+
+                </thead>
+
+
+                <tbody id="worksheetBody">
+
+
+                    <!--
+                        ตอนที่ 2 จะสร้างแถวบัญชี
+                        และช่องกรอกข้อมูลตรงนี้
+                    -->
+
+
+                    <tr>
+
+                        <td
+                            colspan="11"
+                            class="text-center text-muted py-5">
+
+                            กำลังเตรียมข้อมูลกระดาษทำการ...
+
+                        </td>
+
+                    </tr>
+
+
+                </tbody>
+
+
+                <tfoot>
+
+
+                    <tr class="total-row">
+
+
+                        <td>
+                            รวม
+                        </td>
+
+
+                        <td>
+                            <span id="totalTBDr">
+                                0
+                            </span>
+                        </td>
+
+
+                        <td>
+                            <span id="totalTBCr">
+                                0
+                            </span>
+                        </td>
+
+
+                        <td>
+                            <span id="totalAdjDr">
+                                0
+                            </span>
+                        </td>
+
+
+                        <td>
+                            <span id="totalAdjCr">
+                                0
+                            </span>
+                        </td>
+
+
+                        <td>
+                            <span id="totalAfterDr">
+                                0
+                            </span>
+                        </td>
+
+
+                        <td>
+                            <span id="totalAfterCr">
+                                0
+                            </span>
+                        </td>
+
+
+                        <td>
+                            <span id="totalPLDr">
+                                0
+                            </span>
+                        </td>
+
+
+                        <td>
+                            <span id="totalPLCr">
+                                0
+                            </span>
+                        </td>
+
+
+                        <td>
+                            <span id="totalBSDr">
+                                0
+                            </span>
+                        </td>
+
+
+                        <td>
+                            <span id="totalBSCr">
+                                0
+                            </span>
+                        </td>
+
+
+                    </tr>
+
+
+                </tfoot>
+
+
+            </table>
+
+
+        </div>
+
+
+
+        <!-- ==============================
+             หมายเหตุ
+        ============================== -->
+
+        <div class="note-box">
+
+            <strong>💡 หมายเหตุ</strong>
+
+            <br>
+
+            ระบบจะแสดงผลคะแนนหลังจากกดปุ่ม
+            <strong>ตรวจคำตอบ</strong>
+
+        </div>
+
+
+
+        <!-- ==============================
+             ผลการตรวจ
+        ============================== -->
+
+        <div
+            id="resultBox">
+
+        </div>
+
+
+
+        <!-- ==============================
+             ปุ่ม
+        ============================== -->
+
+        <div class="button-area">
+
+
+            <button
+                type="button"
+                class="action-btn check-btn"
+                onclick="checkWorksheet()">
+
+                ✔ ตรวจคำตอบ
+
+            </button>
+
+
+            <button
+                type="button"
+                class="action-btn reset-btn"
+                onclick="resetWorksheet()">
+
+                🔄 ล้างคำตอบ
+
+            </button>
+
+
+            <a
+                href="../index.html"
+                class="action-btn home-btn text-decoration-none">
+
+                🏠 กลับหน้าหลัก
+
+            </a>
+
+
+        </div>
+
+
+    </main>
+
+
+
+    <!-- ==============================
+         FOOTER
+    ============================== -->
+
+    <footer>
+
+        <p>
+            Accounting Practice Lab
+        </p>
+
+        <p class="small mt-1">
+            เว็บไซต์ฝึกปฏิบัติการบัญชีเบื้องต้น
+        </p>
+
+    </footer>
+
+
+
+    <!-- Bootstrap JavaScript -->
+
+    <script
+        src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/js/bootstrap.bundle.min.js">
+    </script>
+
+
+
+    <!--
+    ==========================================================
+    ตอนที่ 2 จะเริ่มต่อจากตรงนี้
+    ==========================================================
+
+    เราจะใส่ JavaScript สำหรับ
+
+    1. รายการบัญชี
+    2. สร้างช่องกรอกข้อมูล
+    3. ดึงข้อมูลจากงบทดลอง
+    4. สร้างรายการปรับปรุง
+    5. คำนวณงบทดลองหลังปรับปรุง
+    6. คำนวณงบกำไรขาดทุน
+    7. คำนวณงบแสดงฐานะการเงิน
+
+    ==========================================================
+    -->
+<script>
+
+/* =========================================================
+   ข้อมูลบัญชีสำหรับกระดาษทำการ
+   ========================================================= */
+
+const accountList = [
+
+    "เงินสด",
+    "เงินฝากธนาคาร",
+    "ลูกหนี้",
+    "วัสดุสำนักงาน",
+    "อุปกรณ์สำนักงาน",
+    "ค่าเช่า",
+    "ค่าโฆษณา",
+    "ค่าใช้จ่าย",
+    "เจ้าหนี้",
+    "ทุน",
+    "ถอนใช้ส่วนตัว",
+    "รายได้",
+    "รายได้ค่าบริการ",
+    "ค่าแรง",
+    "เงินเดือน",
+    "ค่าไฟฟ้า",
+    "ค่าโทรศัพท์"
+
+];
+
+
+/* =========================================================
+   ข้อมูลกระดาษทำการ
+   ========================================================= */
+
+let worksheetData = {};
+
+
+/* =========================================================
+   รายการช่องทั้งหมด 10 ช่อง
+   ========================================================= */
+
+const columnNames = [
+
+    "tbDr",
+    "tbCr",
+
+    "adjDr",
+    "adjCr",
+
+    "afterDr",
+    "afterCr",
+
+    "plDr",
+    "plCr",
+
+    "bsDr",
+    "bsCr"
+
+];
+
+
+/* =========================================================
+   สร้างข้อมูลเริ่มต้น
+   ========================================================= */
+
+function createEmptyData() {
+
+    worksheetData = {};
+
+    accountList.forEach(function(account) {
+
+        worksheetData[account] = {};
+
+        columnNames.forEach(function(column) {
+
+            worksheetData[account][column] = "";
+
+        });
+
+    });
+
+}
+
+
+/* =========================================================
+   สร้างตารางกระดาษทำการ
+   ========================================================= */
+
+function createWorksheetTable() {
+
+    const tbody =
+        document.getElementById("worksheetBody");
+
+
+    tbody.innerHTML = "";
+
+
+    accountList.forEach(function(account, index) {
+
+
+        const tr =
+            document.createElement("tr");
+
+
+        /* -----------------------------------------
+           ชื่อบัญชี
+        ----------------------------------------- */
+
+        const accountCell =
+            document.createElement("td");
+
+
+        accountCell.className =
+            "account-column";
+
+
+        accountCell.textContent =
+            account;
+
+
+        tr.appendChild(accountCell);
+
+
+        /* -----------------------------------------
+           สร้างช่องกรอกทั้ง 10 ช่อง
+        ----------------------------------------- */
+
+        columnNames.forEach(function(column) {
+
+
+            const td =
+                document.createElement("td");
+
+
+            td.className =
+                "amount-column";
+
+
+            const input =
+                document.createElement("input");
+
+
+            input.type =
+                "number";
+
+
+            input.min =
+                "0";
+
+
+            input.step =
+                "0.01";
+
+
+            input.className =
+                "amount-input";
+
+
+            input.id =
+                "input-" +
+                index +
+                "-" +
+                column;
+
+
+            input.dataset.account =
+                account;
+
+
+            input.dataset.column =
+                column;
+
+
+            input.placeholder =
+                "0";
+
+
+            /* -----------------------------------------
+               เมื่อมีการกรอกข้อมูล
+            ----------------------------------------- */
+
+            input.addEventListener(
+                "input",
+                function() {
+
+                    worksheetData[account][column] =
+                        this.value;
+
+                    updateTotals();
+
+                    saveWorksheetData();
+
+                }
+            );
+
+
+            td.appendChild(input);
+
+            tr.appendChild(td);
+
+
+        });
+
+
+        tbody.appendChild(tr);
+
+
+    });
+
+
+    /* -----------------------------------------
+       เพิ่มแถวกำไรสุทธิ / ขาดทุนสุทธิ
+    ----------------------------------------- */
+
+    createProfitLossRows(tbody);
+
+
+    updateTotals();
+
+}
+
+
+/* =========================================================
+   เพิ่มแถวกำไรสุทธิและขาดทุนสุทธิ
+   ========================================================= */
+
+function createProfitLossRows(tbody) {
+
+
+    const profitRow =
+        document.createElement("tr");
+
+
+    profitRow.id =
+        "profitLossRow";
+
+
+    profitRow.className =
+        "total-row";
+
+
+    const titleCell =
+        document.createElement("td");
+
+
+    titleCell.className =
+        "account-column";
+
+
+    titleCell.innerHTML =
+        "<strong>กำไรสุทธิ / ขาดทุนสุทธิ</strong>";
+
+
+    profitRow.appendChild(titleCell);
+
+
+    columnNames.forEach(function(column) {
+
+
+        const td =
+            document.createElement("td");
+
+
+        td.className =
+            "amount-column";
+
+
+        const span =
+            document.createElement("span");
+
+
+        span.id =
+            "profit-" + column;
+
+
+        span.textContent =
+            "0";
+
+
+        td.appendChild(span);
+
+
+        profitRow.appendChild(td);
+
+
+    });
+
+
+    tbody.appendChild(profitRow);
+
+}
+
+
+/* =========================================================
+   แสดงข้อมูลที่บันทึกไว้
+   ========================================================= */
+
+function loadWorksheetData() {
+
+
+    const saved =
+        localStorage.getItem(
+            "worksheet10Data"
+        );
+
+
+    if (!saved) {
+
+        return;
+
+    }
+
+
+    try {
+
+
+        const data =
+            JSON.parse(saved);
+
+
+        if (!data) {
+
+            return;
+
+        }
+
+
+        worksheetData =
+            data;
+
+
+        accountList.forEach(function(account, index) {
+
+
+            if (!worksheetData[account]) {
+
+                worksheetData[account] = {};
+
+            }
+
+
+            columnNames.forEach(function(column) {
+
+
+                if (
+                    worksheetData[account][column]
+                    === undefined
+                ) {
+
+                    worksheetData[account][column] =
+                        "";
+
+                }
+
+
+                const input =
+                    document.getElementById(
+                        "input-" +
+                        index +
+                        "-" +
+                        column
+                    );
+
+
+                if (input) {
+
+                    input.value =
+                        worksheetData[account][column];
+
+                }
+
+            });
+
+        });
+
+
+    }
+
+    catch (error) {
+
+        console.error(
+            "ไม่สามารถโหลดข้อมูลได้",
+            error
+        );
+
+        createEmptyData();
+
+    }
+
+
+}
+
+
+/* =========================================================
+   บันทึกข้อมูลลง localStorage
+   ========================================================= */
+
+function saveWorksheetData() {
+
+
+    localStorage.setItem(
+
+        "worksheet10Data",
+
+        JSON.stringify(
+            worksheetData
+        )
+
+    );
+
+}
+
+
+/* =========================================================
+   แปลงค่าเป็นตัวเลข
+   ========================================================= */
+
+function toNumber(value) {
+
+
+    if (
+        value === undefined ||
+        value === null ||
+        value === ""
+    ) {
+
+        return 0;
+
+    }
+
+
+    const number =
+        parseFloat(value);
+
+
+    if (isNaN(number)) {
+
+        return 0;
+
+    }
+
+
+    return number;
+
+}
+
+
+/* =========================================================
+   รูปแบบตัวเลข
+   ========================================================= */
+
+function formatNumber(number) {
+
+
+    if (
+        number === undefined ||
+        number === null ||
+        isNaN(number)
+    ) {
+
+        return "0";
+
+    }
+
+
+    return Number(number).toLocaleString(
+        "th-TH",
+        {
+            minimumFractionDigits: 0,
+            maximumFractionDigits: 2
+        }
+    );
+
+}
+
+
+/* =========================================================
+   คำนวณยอดรวมแต่ละช่อง
+   ========================================================= */
+
+function calculateColumnTotal(column) {
+
+
+    let total = 0;
+
+
+    accountList.forEach(function(account) {
+
+
+        total +=
+            toNumber(
+                worksheetData[account][column]
+            );
+
+
+    });
+
+
+    return total;
+
+}
+
+
+/* =========================================================
+   อัปเดตยอดรวม
+   ========================================================= */
+
+function updateTotals() {
+
+
+    const totalTBDr =
+        calculateColumnTotal("tbDr");
+
+
+    const totalTBCr =
+        calculateColumnTotal("tbCr");
+
+
+    const totalAdjDr =
+        calculateColumnTotal("adjDr");
+
+
+    const totalAdjCr =
+        calculateColumnTotal("adjCr");
+
+
+    const totalAfterDr =
+        calculateColumnTotal("afterDr");
+
+
+    const totalAfterCr =
+        calculateColumnTotal("afterCr");
+
+
+    const totalPLDr =
+        calculateColumnTotal("plDr");
+
+
+    const totalPLCr =
+        calculateColumnTotal("plCr");
+
+
+    const totalBSDr =
+        calculateColumnTotal("bsDr");
+
+
+    const totalBSCr =
+        calculateColumnTotal("bsCr");
+
+
+    setText(
+        "totalTBDr",
+        formatNumber(totalTBDr)
+    );
+
+
+    setText(
+        "totalTBCr",
+        formatNumber(totalTBCr)
+    );
+
+
+    setText(
+        "totalAdjDr",
+        formatNumber(totalAdjDr)
+    );
+
+
+    setText(
+        "totalAdjCr",
+        formatNumber(totalAdjCr)
+    );
+
+
+    setText(
+        "totalAfterDr",
+        formatNumber(totalAfterDr)
+    );
+
+
+    setText(
+        "totalAfterCr",
+        formatNumber(totalAfterCr)
+    );
+
+
+    setText(
+        "totalPLDr",
+        formatNumber(totalPLDr)
+    );
+
+
+    setText(
+        "totalPLCr",
+        formatNumber(totalPLCr)
+    );
+
+
+    setText(
+        "totalBSDr",
+        formatNumber(totalBSDr)
+    );
+
+
+    setText(
+        "totalBSCr",
+        formatNumber(totalBSCr)
+    );
+
+
+}
+
+
+/* =========================================================
+   กำหนดข้อความให้ element
+   ========================================================= */
+
+function setText(id, text) {
+
+
+    const element =
+        document.getElementById(id);
+
+
+    if (element) {
+
+        element.textContent =
+            text;
+
+    }
+
+}
+
+
+/* =========================================================
+   ตรวจสอบความสมดุลของงบทดลอง
+   ========================================================= */
+
+function isBalanced(debit, credit) {
+
+
+    return Math.abs(
+        debit - credit
+    ) < 0.01;
+
+}
+
+
+/* =========================================================
+   ตรวจสอบข้อมูลพื้นฐาน
+   ========================================================= */
+
+function validateWorksheetData() {
+
+
+    let valid = true;
+
+
+    accountList.forEach(function(account) {
+
+
+        columnNames.forEach(function(column) {
+
+
+            const value =
+                worksheetData[account][column];
+
+
+            if (value !== "") {
+
+
+                const number =
+                    parseFloat(value);
+
+
+                if (
+                    isNaN(number) ||
+                    number < 0
+                ) {
+
+                    valid = false;
+
+                }
+
+            }
+
+        });
+
+    });
+
+
+    return valid;
+
+}
+
+
+/* =========================================================
+   เตรียมระบบเมื่อเปิดหน้า
+   ========================================================= */
+
+document.addEventListener(
+    "DOMContentLoaded",
+    function() {
+
+
+        createEmptyData();
+
+
+        createWorksheetTable();
+
+
+        loadWorksheetData();
+
+
+        updateTotals();
+
+
+    }
+);
+
+</script>
+<script>
+
+/* =========================================================
+   ตอนที่ 3
+   ระบบตรวจคำตอบ + ให้คะแนน
+   ========================================================= */
+
+
+/* =========================================================
+   เฉลยกระดาษทำการ
+   ---------------------------------------------------------
+   รูปแบบ
+
+   "ชื่อบัญชี": {
+       tbDr: จำนวน,
+       tbCr: จำนวน,
+       adjDr: จำนวน,
+       adjCr: จำนวน,
+       afterDr: จำนวน,
+       afterCr: จำนวน,
+       plDr: จำนวน,
+       plCr: จำนวน,
+       bsDr: จำนวน,
+       bsCr: จำนวน
+   }
+
+   ช่องที่ไม่มีจำนวนเงินให้ใส่ 0
+   ========================================================= */
+
+const answerKey = {
+
+    "เงินสด": {
+        tbDr: 50000,
+        tbCr: 0,
+        adjDr: 0,
+        adjCr: 0,
+        afterDr: 50000,
+        afterCr: 0,
+        plDr: 0,
+        plCr: 0,
+        bsDr: 50000,
+        bsCr: 0
+    },
+
+
+    "เงินฝากธนาคาร": {
+        tbDr: 0,
+        tbCr: 0,
+        adjDr: 0,
+        adjCr: 0,
+        afterDr: 0,
+        afterCr: 0,
+        plDr: 0,
+        plCr: 0,
+        bsDr: 0,
+        bsCr: 0
+    },
+
+
+    "ลูกหนี้": {
+        tbDr: 0,
+        tbCr: 0,
+        adjDr: 0,
+        adjCr: 0,
+        afterDr: 0,
+        afterCr: 0,
+        plDr: 0,
+        plCr: 0,
+        bsDr: 0,
+        bsCr: 0
+    },
+
+
+    "วัสดุสำนักงาน": {
+        tbDr: 0,
+        tbCr: 0,
+        adjDr: 0,
+        adjCr: 0,
+        afterDr: 0,
+        afterCr: 0,
+        plDr: 0,
+        plCr: 0,
+        bsDr: 0,
+        bsCr: 0
+    },
+
+
+    "อุปกรณ์สำนักงาน": {
+        tbDr: 0,
+        tbCr: 0,
+        adjDr: 0,
+        adjCr: 0,
+        afterDr: 0,
+        afterCr: 0,
+        plDr: 0,
+        plCr: 0,
+        bsDr: 0,
+        bsCr: 0
+    },
+
+
+    "ค่าเช่า": {
+        tbDr: 0,
+        tbCr: 0,
+        adjDr: 0,
+        adjCr: 0,
+        afterDr: 0,
+        afterCr: 0,
+        plDr: 0,
+        plCr: 0,
+        bsDr: 0,
+        bsCr: 0
+    },
+
+
+    "ค่าโฆษณา": {
+        tbDr: 0,
+        tbCr: 0,
+        adjDr: 0,
+        adjCr: 0,
+        afterDr: 0,
+        afterCr: 0,
+        plDr: 0,
+        plCr: 0,
+        bsDr: 0,
+        bsCr: 0
+    },
+
+
+    "ค่าใช้จ่าย": {
+        tbDr: 0,
+        tbCr: 0,
+        adjDr: 0,
+        adjCr: 0,
+        afterDr: 0,
+        afterCr: 0,
+        plDr: 0,
+        plCr: 0,
+        bsDr: 0,
+        bsCr: 0
+    },
+
+
+    "เจ้าหนี้": {
+        tbDr: 0,
+        tbCr: 0,
+        adjDr: 0,
+        adjCr: 0,
+        afterDr: 0,
+        afterCr: 0,
+        plDr: 0,
+        plCr: 0,
+        bsDr: 0,
+        bsCr: 0
+    },
+
+
+    "ทุน": {
+        tbDr: 0,
+        tbCr: 50000,
+        adjDr: 0,
+        adjCr: 0,
+        afterDr: 0,
+        afterCr: 50000,
+        plDr: 0,
+        plCr: 0,
+        bsDr: 0,
+        bsCr: 50000
+    },
+
+
+    "ถอนใช้ส่วนตัว": {
+        tbDr: 0,
+        tbCr: 0,
+        adjDr: 0,
+        adjCr: 0,
+        afterDr: 0,
+        afterCr: 0,
+        plDr: 0,
+        plCr: 0,
+        bsDr: 0,
+        bsCr: 0
+    },
+
+
+    "รายได้": {
+        tbDr: 0,
+        tbCr: 0,
+        adjDr: 0,
+        adjCr: 0,
+        afterDr: 0,
+        afterCr: 0,
+        plDr: 0,
+        plCr: 0,
+        bsDr: 0,
+        bsCr: 0
+    },
+
+
+    "รายได้ค่าบริการ": {
+        tbDr: 0,
+        tbCr: 0,
+        adjDr: 0,
+        adjCr: 0,
+        afterDr: 0,
+        afterCr: 0,
+        plDr: 0,
+        plCr: 0,
+        bsDr: 0,
+        bsCr: 0
+    },
+
+
+    "ค่าแรง": {
+        tbDr: 0,
+        tbCr: 0,
+        adjDr: 0,
+        adjCr: 0,
+        afterDr: 0,
+        afterCr: 0,
+        plDr: 0,
+        plCr: 0,
+        bsDr: 0,
+        bsCr: 0
+    },
+
+
+    "เงินเดือน": {
+        tbDr: 0,
+        tbCr: 0,
+        adjDr: 0,
+        adjCr: 0,
+        afterDr: 0,
+        afterCr: 0,
+        plDr: 0,
+        plCr: 0,
+        bsDr: 0,
+        bsCr: 0
+    },
+
+
+    "ค่าไฟฟ้า": {
+        tbDr: 0,
+        tbCr: 0,
+        adjDr: 0,
+        adjCr: 0,
+        afterDr: 0,
+        afterCr: 0,
+        plDr: 0,
+        plCr: 0,
+        bsDr: 0,
+        bsCr: 0
+    },
+
+
+    "ค่าโทรศัพท์": {
+        tbDr: 0,
+        tbCr: 0,
+        adjDr: 0,
+        adjCr: 0,
+        afterDr: 0,
+        afterCr: 0,
+        plDr: 0,
+        plCr: 0,
+        bsDr: 0,
+        bsCr: 0
+    }
+
+};
+
+
+/* =========================================================
+   จำนวนช่องที่ต้องตรวจ
+   ========================================================= */
+
+const totalAnswerFields =
+    accountList.length * columnNames.length;
+
+
+/* =========================================================
+   ตรวจคำตอบของแต่ละช่อง
+   ========================================================= */
+
+function checkIndividualField(
+    account,
+    column
+) {
+
+    const studentValue =
+        toNumber(
+            worksheetData[account][column]
+        );
+
+
+    const correctValue =
+        toNumber(
+            answerKey[account][column]
+        );
+
+
+    return (
+        Math.abs(
+            studentValue - correctValue
+        ) < 0.01
+    );
+
+}
+
+
+/* =========================================================
+   ตรวจคำตอบทั้งหมด
+   ========================================================= */
+
+function checkWorksheet() {
+
+
+    /*
+       ตรวจว่าข้อมูลพื้นฐานถูกต้องหรือไม่
+    */
+
+    if (!validateWorksheetData()) {
+
+
+        showResult(
+
+            "⚠️ กรุณาตรวจสอบข้อมูลที่กรอกให้เป็นตัวเลขที่ถูกต้อง",
+
+            "warning"
+
+        );
+
+
+        return;
+
+    }
+
+
+    let correctFields = 0;
+
+    let totalFields = 0;
+
+
+    /*
+       ตรวจทุกบัญชี
+    */
+
+    accountList.forEach(function(account, accountIndex) {
+
+
+        /*
+           ตรวจทั้ง 10 ช่อง
+        */
+
+        columnNames.forEach(function(column) {
+
+
+            totalFields++;
+
+
+            const correct =
+                checkIndividualField(
+                    account,
+                    column
+                );
+
+
+            /*
+               ค้นหา input
+            */
+
+            const input =
+                document.getElementById(
+
+                    "input-" +
+                    accountIndex +
+                    "-" +
+                    column
+
+                );
+
+
+            if (input) {
+
+
+                /*
+                   ลบสีเดิมก่อน
+                */
+
+                input.classList.remove(
+                    "correct"
+                );
+
+                input.classList.remove(
+                    "incorrect"
+                );
+
+
+                /*
+                   ใส่สีตามผลตรวจ
+                */
+
+                if (correct) {
+
+                    input.classList.add(
+                        "correct"
+                    );
+
+                    correctFields++;
+
+                }
+
+                else {
+
+                    input.classList.add(
+                        "incorrect"
+                    );
+
+                }
+
+            }
+
+
+        });
+
+    });
+
+
+    /*
+       คำนวณคะแนน
+    */
+
+    const score =
+        Math.round(
+
+            (
+                correctFields /
+                totalFields
+            ) * 100
+
+        );
+
+
+    /*
+       แสดงคะแนน
+    */
+
+    document.getElementById(
+        "scoreDisplay"
+    ).textContent =
+
+        score +
+        " / 100 คะแนน";
+
+
+    /*
+       บันทึกคะแนน
+    */
+
+    localStorage.setItem(
+        "worksheet10Score",
+        score
+    );
+
+
+    /*
+       แสดงข้อความผลตรวจ
+    */
+
+    if (score === 100) {
+
+
+        showResult(
+
+            "🎉 ยอดเยี่ยมมาก! คำตอบถูกต้องทั้งหมด ได้ 100 / 100 คะแนน",
+
+            "success"
+
+        );
+
+    }
+
+    else if (score >= 80) {
+
+
+        showResult(
+
+            "👏 ทำได้ดีมาก! ได้ " +
+            score +
+            " / 100 คะแนน",
+
+            "success"
+
+        );
+
+    }
+
+    else if (score >= 50) {
+
+
+        showResult(
+
+            "💪 พยายามอีกนิดนะคะ ได้ " +
+            score +
+            " / 100 คะแนน",
+
+            "warning"
+
+        );
+
+    }
+
+    else {
+
+
+        showResult(
+
+            "📚 ลองตรวจสอบคำตอบอีกครั้งนะคะ ได้ " +
+            score +
+            " / 100 คะแนน",
+
+            "warning"
+
+        );
+
+    }
+
+
+    /*
+       บันทึกผลการตรวจ
+    */
+
+    localStorage.setItem(
+
+        "worksheet10Checked",
+
+        "true"
+
+    );
+
+
+}
+
+
+/* =========================================================
+   แสดงผลการตรวจ
+   ========================================================= */
+
+function showResult(
+    message,
+    type
+) {
+
+
+    const resultBox =
+        document.getElementById(
+            "resultBox"
+        );
+
+
+    resultBox.classList.remove(
+        "result-success"
+    );
+
+
+    resultBox.classList.remove(
+        "result-warning"
+    );
+
+
+    resultBox.classList.add(
+
+        type === "success"
+            ? "result-success"
+            : "result-warning"
+
+    );
+
+
+    resultBox.innerHTML =
+        message;
+
+
+    resultBox.style.display =
+        "block";
+
+
+    /*
+       เลื่อนหน้าจอไปยังผลคะแนน
+    */
+
+    resultBox.scrollIntoView({
+
+        behavior: "smooth",
+
+        block: "center"
+
+    });
+
+}
+
+
+/* =========================================================
+   โหลดคะแนนเดิม
+   ========================================================= */
+
+function loadPreviousScore() {
+
+
+    const savedScore =
+        localStorage.getItem(
+            "worksheet10Score"
+        );
+
+
+    if (
+        savedScore !== null &&
+        savedScore !== ""
+    ) {
+
+
+        document.getElementById(
+            "scoreDisplay"
+        ).textContent =
+
+            savedScore +
+            " / 100 คะแนน";
+
+
+    }
+
+}
+
+
+/* =========================================================
+   ตรวจว่าตารางงบทดลองสมดุลหรือไม่
+   ========================================================= */
+
+function checkTrialBalanceBalance() {
+
+
+    const debit =
+        calculateColumnTotal(
+            "tbDr"
+        );
+
+
+    const credit =
+        calculateColumnTotal(
+            "tbCr"
+        );
+
+
+    return isBalanced(
+        debit,
+        credit
+    );
+
+}
+
+
+/* =========================================================
+   ตรวจว่ารายการปรับปรุงสมดุลหรือไม่
+   ========================================================= */
+
+function checkAdjustmentBalance() {
+
+
+    const debit =
+        calculateColumnTotal(
+            "adjDr"
+        );
+
+
+    const credit =
+        calculateColumnTotal(
+            "adjCr"
+        );
+
+
+    return isBalanced(
+        debit,
+        credit
+    );
+
+}
+
+
+/* =========================================================
+   ตรวจว่างบทดลองหลังปรับปรุงสมดุลหรือไม่
+   ========================================================= */
+
+function checkAdjustedTrialBalance() {
+
+
+    const debit =
+        calculateColumnTotal(
+            "afterDr"
+        );
+
+
+    const credit =
+        calculateColumnTotal(
+            "afterCr"
+        );
+
+
+    return isBalanced(
+        debit,
+        credit
+    );
+
+}
+
+
+/* =========================================================
+   ตรวจว่างบกำไรขาดทุนสมดุลหรือไม่
+   ========================================================= */
+
+function checkProfitLossBalance() {
+
+
+    const debit =
+        calculateColumnTotal(
+            "plDr"
+        );
+
+
+    const credit =
+        calculateColumnTotal(
+            "plCr"
+        );
+
+
+    return isBalanced(
+        debit,
+        credit
+    );
+
+}
+
+
+/* =========================================================
+   ตรวจว่างบแสดงฐานะการเงินสมดุลหรือไม่
+   ========================================================= */
+
+function checkBalanceSheetBalance() {
+
+
+    const debit =
+        calculateColumnTotal(
+            "bsDr"
+        );
+
+
+    const credit =
+        calculateColumnTotal(
+            "bsCr"
+        );
+
+
+    return isBalanced(
+        debit,
+        credit
+    );
+
+}
+
+
+/* =========================================================
+   ตรวจสอบความสมดุลทั้งหมด
+   ========================================================= */
+
+function checkAllBalances() {
+
+
+    const result = {
+
+
+        trialBalance:
+            checkTrialBalanceBalance(),
+
+
+        adjustment:
+            checkAdjustmentBalance(),
+
+
+        adjustedTrialBalance:
+            checkAdjustedTrialBalance(),
+
+
+        profitLoss:
+            checkProfitLossBalance(),
+
+
+        balanceSheet:
+            checkBalanceSheetBalance()
+
+
+    };
+
+
+    return result;
+
+}
+
+
+/* =========================================================
+   แสดงสถานะความสมดุล
+   ========================================================= */
+
+function getBalanceMessage() {
+
+
+    const result =
+        checkAllBalances();
+
+
+    let message = "";
+
+
+    if (result.trialBalance) {
+
+        message +=
+            "✓ งบทดลองสมดุล<br>";
+
+    }
+
+    else {
+
+        message +=
+            "✗ งบทดลองยังไม่สมดุล<br>";
+
+    }
+
+
+    if (result.adjustment) {
+
+        message +=
+            "✓ รายการปรับปรุงสมดุล<br>";
+
+    }
+
+    else {
+
+        message +=
+            "✗ รายการปรับปรุงยังไม่สมดุล<br>";
+
+    }
+
+
+    if (result.adjustedTrialBalance) {
+
+        message +=
+            "✓ งบทดลองหลังปรับปรุงสมดุล<br>";
+
+    }
+
+    else {
+
+        message +=
+            "✗ งบทดลองหลังปรับปรุงยังไม่สมดุล<br>";
+
+    }
+
+
+    if (result.profitLoss) {
+
+        message +=
+            "✓ งบกำไรขาดทุนสมดุล<br>";
+
+    }
+
+    else {
+
+        message +=
+            "✗ งบกำไรขาดทุนยังไม่สมดุล<br>";
+
+    }
+
+
+    if (result.balanceSheet) {
+
+        message +=
+            "✓ งบแสดงฐานะการเงินสมดุล";
+
+    }
+
+    else {
+
+        message +=
+            "✗ งบแสดงฐานะการเงินยังไม่สมดุล";
+
+    }
+
+
+    return message;
+
+}
+
+
+/* =========================================================
+   เมื่อกรอกข้อมูล ให้ลบสีแดง/เขียว
+   ========================================================= */
+
+function clearInputStatus(input) {
+
+
+    if (!input) {
+
+        return;
+
+    }
+
+
+    input.classList.remove(
+        "correct"
+    );
+
+
+    input.classList.remove(
+        "incorrect"
+    );
+
+}
+
+
+/* =========================================================
+   เพิ่ม event ให้ช่องกรอกทั้งหมด
+   ========================================================= */
+
+function attachInputEvents() {
+
+
+    const inputs =
+        document.querySelectorAll(
+            ".amount-input"
+        );
+
+
+    inputs.forEach(function(input) {
+
+
+        input.addEventListener(
+            "focus",
+            function() {
+
+                clearInputStatus(
+                    this
+                );
+
+            }
+        );
+
+
+        input.addEventListener(
+            "input",
+            function() {
+
+                clearInputStatus(
+                    this
+                );
+
+            }
+        );
+
+
+    });
+
+}
+
+
+/* =========================================================
+   เรียกใช้เมื่อโหลดหน้า
+   ========================================================= */
+
+document.addEventListener(
+    "DOMContentLoaded",
+    function() {
+
+
+        setTimeout(
+            function() {
+
+                loadPreviousScore();
+
+                attachInputEvents();
+
+            },
+            100
+        );
+
+
+    }
+);
+
+</script>
+<script>
+
+/* =========================================================
+   ตอนที่ 4
+   ปุ่มล้างคำตอบ + โหลดข้อมูล + ฟังก์ชันเสริม
+   ========================================================= */
+
+
+/* =========================================================
+   ล้างคำตอบทั้งหมด
+   ========================================================= */
+
+function resetWorksheet() {
+
+    const confirmReset =
+        confirm(
+            "ต้องการล้างคำตอบทั้งหมดใช่หรือไม่?\n\n" +
+            "ข้อมูลที่กรอกไว้จะถูกลบทั้งหมด"
+        );
+
+
+    if (!confirmReset) {
+
+        return;
+
+    }
+
+
+    /*
+       สร้างข้อมูลใหม่เป็นค่าว่าง
+    */
+
+    createEmptyData();
+
+
+    /*
+       ลบข้อมูลที่บันทึกไว้
+    */
+
+    localStorage.removeItem(
+        "worksheet10Data"
+    );
+
+
+    localStorage.removeItem(
+        "worksheet10Score"
+    );
+
+
+    localStorage.removeItem(
+        "worksheet10Checked"
+    );
+
+
+    /*
+       ล้างค่าทุกช่อง
+    */
+
+    const inputs =
+        document.querySelectorAll(
+            ".amount-input"
+        );
+
+
+    inputs.forEach(function(input) {
+
+
+        input.value = "";
+
+
+        input.classList.remove(
+            "correct"
+        );
+
+
+        input.classList.remove(
+            "incorrect"
+        );
+
+
+    });
+
+
+    /*
+       รีเซ็ตคะแนน
+    */
+
+    document.getElementById(
+        "scoreDisplay"
+    ).textContent =
+        "0 / 100 คะแนน";
+
+
+    /*
+       ล้างข้อความผลตรวจ
+    */
+
+    const resultBox =
+        document.getElementById(
+            "resultBox"
+        );
+
+
+    resultBox.innerHTML = "";
+
+
+    resultBox.style.display =
+        "none";
+
+
+    resultBox.classList.remove(
+        "result-success"
+    );
+
+
+    resultBox.classList.remove(
+        "result-warning"
+    );
+
+
+    /*
+       รีเซ็ตยอดรวม
+    */
+
+    updateTotals();
+
+
+    /*
+       แจ้งผู้ใช้
+    */
+
+    alert(
+        "ล้างคำตอบเรียบร้อยแล้วค่ะ"
+    );
+
+}
+
+
+/* =========================================================
+   โหลดข้อมูลจาก localStorage
+   ========================================================= */
+
+function restoreWorksheet() {
+
+
+    const savedData =
+        localStorage.getItem(
+            "worksheet10Data"
+        );
+
+
+    if (!savedData) {
+
+        return;
+
+    }
+
+
+    try {
+
+
+        const data =
+            JSON.parse(
+                savedData
+            );
+
+
+        if (!data) {
+
+            return;
+
+        }
+
+
+        /*
+           นำข้อมูลกลับมา
+        */
+
+        worksheetData =
+            data;
+
+
+        /*
+           ใส่ข้อมูลกลับเข้า input
+        */
+
+        accountList.forEach(
+            function(account, index) {
+
+
+                if (
+                    !worksheetData[account]
+                ) {
+
+                    worksheetData[account] =
+                        {};
+
+                }
+
+
+                columnNames.forEach(
+                    function(column) {
+
+
+                        if (
+                            worksheetData[account][column]
+                            === undefined
+                        ) {
+
+                            worksheetData[account][column] =
+                                "";
+
+                        }
+
+
+                        const input =
+                            document.getElementById(
+
+                                "input-" +
+                                index +
+                                "-" +
+                                column
+
+                            );
+
+
+                        if (input) {
+
+                            input.value =
+                                worksheetData[account][column];
+
+                        }
+
+
+                    }
+                );
+
+
+            }
+        );
+
+
+        /*
+           คำนวณยอดรวมใหม่
+        */
+
+        updateTotals();
+
+
+    }
+
+    catch (error) {
+
+
+        console.error(
+            "เกิดข้อผิดพลาดในการโหลดข้อมูล",
+            error
+        );
+
+
+        createEmptyData();
+
+
+    }
+
+}
+
+
+/* =========================================================
+   ตรวจว่ามีข้อมูลที่กรอกหรือไม่
+   ========================================================= */
+
+function hasStudentInput() {
+
+
+    let hasInput =
+        false;
+
+
+    accountList.forEach(
+        function(account) {
+
+
+            columnNames.forEach(
+                function(column) {
+
+
+                    const value =
+                        worksheetData[account][column];
+
+
+                    if (
+                        value !== "" &&
+                        value !== null &&
+                        value !== undefined
+                    ) {
+
+                        hasInput = true;
+
+                    }
+
+
+                }
+            );
+
+
+        }
+    );
+
+
+    return hasInput;
+
+}
+
+
+/* =========================================================
+   นับจำนวนช่องที่กรอกแล้ว
+   ========================================================= */
+
+function countFilledFields() {
+
+
+    let count = 0;
+
+
+    accountList.forEach(
+        function(account) {
+
+
+            columnNames.forEach(
+                function(column) {
+
+
+                    const value =
+                        worksheetData[account][column];
+
+
+                    if (
+                        value !== "" &&
+                        value !== null &&
+                        value !== undefined
+                    ) {
+
+                        count++;
+
+                    }
+
+
+                }
+            );
+
+
+        }
+    );
+
+
+    return count;
+
+}
+
+
+/* =========================================================
+   แสดงจำนวนช่องที่กรอกแล้ว
+   ========================================================= */
+
+function updateFilledStatus() {
+
+
+    const filled =
+        countFilledFields();
+
+
+    const total =
+        totalAnswerFields;
+
+
+    const status =
+        document.getElementById(
+            "filledStatus"
+        );
+
+
+    if (status) {
+
+
+        status.textContent =
+
+            "กรอกแล้ว " +
+            filled +
+            " / " +
+            total +
+            " ช่อง";
+
+
+    }
+
+}
+
+
+/* =========================================================
+   บันทึกอัตโนมัติเมื่อมีการเปลี่ยนข้อมูล
+   ========================================================= */
+
+function enableAutoSave() {
+
+
+    const inputs =
+        document.querySelectorAll(
+            ".amount-input"
+        );
+
+
+    inputs.forEach(
+        function(input) {
+
+
+            input.addEventListener(
+                "input",
+                function() {
+
+
+                    const account =
+                        this.dataset.account;
+
+
+                    const column =
+                        this.dataset.column;
+
+
+                    if (
+                        worksheetData[account]
+                    ) {
+
+
+                        worksheetData[account][column] =
+                            this.value;
+
+
+                    }
+
+
+                    saveWorksheetData();
+
+
+                    updateTotals();
+
+
+                    updateFilledStatus();
+
+
+                }
+            );
+
+
+        }
+    );
+
+}
+
+
+/* =========================================================
+   ป้องกันการกรอกค่าติดลบ
+   ========================================================= */
+
+function preventNegativeNumbers() {
+
+
+    const inputs =
+        document.querySelectorAll(
+            ".amount-input"
+        );
+
+
+    inputs.forEach(
+        function(input) {
+
+
+            input.addEventListener(
+                "change",
+                function() {
+
+
+                    if (
+                        this.value !== "" &&
+                        parseFloat(this.value) < 0
+                    ) {
+
+
+                        this.value =
+                            "";
+
+
+                        alert(
+                            "กรุณากรอกจำนวนเงินเป็น 0 หรือจำนวนที่มากกว่า 0"
+                        );
+
+
+                    }
+
+
+                }
+            );
+
+
+        }
+    );
+
+}
+
+
+/* =========================================================
+   เพิ่มตัวช่วยสำหรับการกด Enter
+   ========================================================= */
+
+function enableEnterNavigation() {
+
+
+    const inputs =
+        Array.from(
+            document.querySelectorAll(
+                ".amount-input"
+            )
+        );
+
+
+    inputs.forEach(
+        function(input, index) {
+
+
+            input.addEventListener(
+                "keydown",
+                function(event) {
+
+
+                    if (
+                        event.key === "Enter"
+                    ) {
+
+
+                        event.preventDefault();
+
+
+                        const nextInput =
+                            inputs[index + 1];
+
+
+                        if (nextInput) {
+
+                            nextInput.focus();
+
+                        }
+
+
+                    }
+
+
+                }
+            );
+
+
+        }
+    );
+
+}
+
+
+/* =========================================================
+   ตรวจสอบคะแนนเดิม
+   ========================================================= */
+
+function restorePreviousResult() {
+
+
+    const checked =
+        localStorage.getItem(
+            "worksheet10Checked"
+        );
+
+
+    const savedScore =
+        localStorage.getItem(
+            "worksheet10Score"
+        );
+
+
+    if (
+        checked === "true" &&
+        savedScore !== null
+    ) {
+
+
+        const score =
+            parseInt(
+                savedScore
+            );
+
+
+        document.getElementById(
+            "scoreDisplay"
+        ).textContent =
+
+            score +
+            " / 100 คะแนน";
+
+
+        const resultBox =
+            document.getElementById(
+                "resultBox"
+            );
+
+
+        if (score === 100) {
+
+
+            showResult(
+
+                "🎉 คุณเคยตรวจแล้ว ได้คะแนนเต็ม 100 / 100 คะแนน",
+
+                "success"
+
+            );
+
+
+        }
+
+        else if (score >= 50) {
+
+
+            showResult(
+
+                "📌 คะแนนครั้งล่าสุด " +
+                score +
+                " / 100 คะแนน",
+
+                "warning"
+
+            );
+
+
+        }
+
+        else {
+
+
+            showResult(
+
+                "📌 คะแนนครั้งล่าสุด " +
+                score +
+                " / 100 คะแนน",
+
+                "warning"
+
+            );
+
+        }
+
+
+    }
+
+}
+
+
+/* =========================================================
+   สร้างสถานะแสดงจำนวนช่องที่กรอก
+   ========================================================= */
+
+function createFilledStatus() {
+
+
+    const scoreBox =
+        document.querySelector(
+            ".score-box"
+        );
+
+
+    if (!scoreBox) {
+
+        return;
+
+    }
+
+
+    /*
+       ถ้ามีอยู่แล้วไม่ต้องสร้างซ้ำ
+    */
+
+    if (
+        document.getElementById(
+            "filledStatus"
+        )
+    ) {
+
+        return;
+
+    }
+
+
+    const status =
+        document.createElement(
+            "div"
+        );
+
+
+    status.id =
+        "filledStatus";
+
+
+    status.className =
+        "text-muted mt-2";
+
+
+    status.textContent =
+        "กรอกแล้ว 0 / " +
+        totalAnswerFields +
+        " ช่อง";
+
+
+    scoreBox.appendChild(
+        status
+    );
+
+}
+
+
+/* =========================================================
+   เตรียมระบบทั้งหมด
+   ========================================================= */
+
+function initializeWorksheet() {
+
+
+    /*
+       ตรวจสอบว่าตารางถูกสร้างแล้วหรือไม่
+    */
+
+    const tableBody =
+        document.getElementById(
+            "worksheetBody"
+        );
+
+
+    if (!tableBody) {
+
+        return;
+
+    }
+
+
+    /*
+       สร้างสถานะการกรอก
+    */
+
+    createFilledStatus();
+
+
+    /*
+       โหลดข้อมูลเดิม
+    */
+
+    restoreWorksheet();
+
+
+    /*
+       โหลดคะแนนเดิม
+    */
+
+    restorePreviousResult();
+
+
+    /*
+       เพิ่มระบบบันทึกอัตโนมัติ
+    */
+
+    enableAutoSave();
+
+
+    /*
+       ป้องกันตัวเลขติดลบ
+    */
+
+    preventNegativeNumbers();
+
+
+    /*
+       กด Enter เพื่อไปช่องถัดไป
+    */
+
+    enableEnterNavigation();
+
+
+    /*
+       อัปเดตสถานะ
+    */
+
+    updateFilledStatus();
+
+
+    /*
+       คำนวณยอดรวม
+    */
+
+    updateTotals();
+
+}
+
+
+/* =========================================================
+   เรียกใช้หลังหน้าเว็บโหลดเสร็จ
+   ========================================================= */
+
+window.addEventListener(
+    "load",
+    function() {
+
+
+        setTimeout(
+            function() {
+
+                initializeWorksheet();
+
+            },
+            200
+        );
+
+
+    }
+);
+
+
+/* =========================================================
+   ป้องกันการออกจากหน้าโดยไม่ได้ตั้งใจ
+   ---------------------------------------------------------
+   จะไม่บล็อกการกลับหน้าหลัก
+   ========================================================= */
+
+window.addEventListener(
+    "beforeunload",
+    function() {
+
+
+        if (
+            hasStudentInput()
+        ) {
+
+
+            saveWorksheetData();
+
+
+        }
+
+
+    }
+);
+
+
+/* =========================================================
+   อัปเดตสถานะเมื่อกรอกข้อมูล
+   ========================================================= */
+
+document.addEventListener(
+    "input",
+    function(event) {
+
+
+        if (
+            event.target.classList.contains(
+                "amount-input"
+            )
+        ) {
+
+
+            updateFilledStatus();
+
+
+        }
+
+
+    }
+);
+
+</script>
+
+
+<!-- =========================================================
+     ปิด BODY
+     ========================================================= -->
+
+</body>
+
+
+<!-- =========================================================
+     ปิด HTML
+     ========================================================= -->
+
+</html>

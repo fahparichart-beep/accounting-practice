@@ -1,0 +1,746 @@
+<!DOCTYPE html>
+<html lang="th">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>สมุดรายวันทั่วไป | Accounting Practice Lab</title>
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/css/bootstrap.min.css"
+          rel="stylesheet">
+
+    <link rel="stylesheet"
+          href="../css/style.css">
+
+</head>
+
+<body>
+
+<!-- เมนู -->
+
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+
+    <div class="container">
+
+        <a class="navbar-brand fw-bold"
+           href="../index.html">
+
+            Accounting Practice Lab
+
+        </a>
+
+        <button class="navbar-toggler"
+                type="button"
+                data-bs-toggle="collapse"
+                data-bs-target="#menu">
+
+            <span class="navbar-toggler-icon"></span>
+
+        </button>
+
+        <div class="collapse navbar-collapse"
+             id="menu">
+
+            <ul class="navbar-nav ms-auto">
+
+                <li class="nav-item">
+
+                    <a class="nav-link"
+                       href="../index.html">
+
+                        หน้าแรก
+
+                    </a>
+
+                </li>
+
+                <li class="nav-item">
+
+                    <a class="nav-link"
+                       href="lesson.html">
+
+                        ห้องฝึกปฏิบัติ
+
+                    </a>
+
+                </li>
+
+            </ul>
+
+        </div>
+
+    </div>
+
+</nav>
+
+
+<!-- หัวข้อ -->
+
+<header class="bg-primary text-white text-center py-5">
+
+    <div class="container">
+
+        <h1>📒 สมุดรายวันทั่วไป</h1>
+
+        <p class="lead">
+
+            ฝึกบันทึกรายการค้าในสมุดรายวันทั่วไป
+
+        </p>
+
+    </div>
+
+</header>
+
+
+<!-- เนื้อหา -->
+
+<main class="container my-5">
+
+
+    <!-- คะแนน -->
+
+    <div class="alert alert-warning text-center mb-4">
+
+        <h4>🏆 คะแนนของคุณ</h4>
+
+        <h2 id="score">0 / 10</h2>
+
+    </div>
+
+
+    <div class="card shadow">
+
+        <div class="card-body p-4">
+
+            <h2 class="text-primary mb-4">
+
+                📝 แบบฝึกปฏิบัติ 10 รายการค้า
+
+            </h2>
+
+
+            <div class="alert alert-info">
+
+                <strong>คำชี้แจง</strong>
+
+                <br>
+
+                ให้นักศึกษาบันทึกรายการค้า
+                ลงในสมุดรายวันทั่วไป
+
+                <br><br>
+
+                ให้ระบุ
+
+                <strong>บัญชีเดบิต</strong>,
+
+                <strong>บัญชีเครดิต</strong>
+
+                และ
+
+                <strong>จำนวนเงิน</strong>
+
+            </div>
+
+
+            <!-- รายการที่ 1 -->
+
+            <div class="border rounded p-4 mb-4">
+
+                <h4>📌 รายการที่ 1</h4>
+
+                <p class="fs-5">
+
+                    เจ้าของกิจการนำเงินสดมาลงทุนในกิจการ
+                    จำนวน 50,000 บาท
+
+                </p>
+
+                <input type="text"
+                       id="debit1"
+                       class="form-control mb-2"
+                       placeholder="บัญชีเดบิต">
+
+                <input type="text"
+                       id="credit1"
+                       class="form-control mb-2"
+                       placeholder="บัญชีเครดิต">
+
+                <input type="number"
+                       id="amount1"
+                       class="form-control"
+                       placeholder="จำนวนเงิน">
+
+            </div>
+
+
+            <!-- รายการที่ 2 -->
+
+            <div class="border rounded p-4 mb-4">
+
+                <h4>📌 รายการที่ 2</h4>
+
+                <p class="fs-5">
+
+                    กิจการซื้ออุปกรณ์สำนักงานเป็นเงินสด
+                    จำนวน 5,000 บาท
+
+                </p>
+
+                <input type="text"
+                       id="debit2"
+                       class="form-control mb-2"
+                       placeholder="บัญชีเดบิต">
+
+                <input type="text"
+                       id="credit2"
+                       class="form-control mb-2"
+                       placeholder="บัญชีเครดิต">
+
+                <input type="number"
+                       id="amount2"
+                       class="form-control"
+                       placeholder="จำนวนเงิน">
+
+            </div>
+
+
+            <!-- รายการที่ 3 -->
+
+            <div class="border rounded p-4 mb-4">
+
+                <h4>📌 รายการที่ 3</h4>
+
+                <p class="fs-5">
+
+                    กิจการซื้อสินค้าเป็นเงินเชื่อ
+                    จำนวน 10,000 บาท
+
+                </p>
+
+                <input type="text"
+                       id="debit3"
+                       class="form-control mb-2"
+                       placeholder="บัญชีเดบิต">
+
+                <input type="text"
+                       id="credit3"
+                       class="form-control mb-2"
+                       placeholder="บัญชีเครดิต">
+
+                <input type="number"
+                       id="amount3"
+                       class="form-control"
+                       placeholder="จำนวนเงิน">
+
+            </div>
+
+
+            <!-- รายการที่ 4 -->
+
+            <div class="border rounded p-4 mb-4">
+
+                <h4>📌 รายการที่ 4</h4>
+
+                <p class="fs-5">
+
+                    กิจการให้บริการและได้รับเงินสด
+                    จำนวน 8,000 บาท
+
+                </p>
+
+                <input type="text"
+                       id="debit4"
+                       class="form-control mb-2"
+                       placeholder="บัญชีเดบิต">
+
+                <input type="text"
+                       id="credit4"
+                       class="form-control mb-2"
+                       placeholder="บัญชีเครดิต">
+
+                <input type="number"
+                       id="amount4"
+                       class="form-control"
+                       placeholder="จำนวนเงิน">
+
+            </div>
+
+
+            <!-- รายการที่ 5 -->
+
+            <div class="border rounded p-4 mb-4">
+
+                <h4>📌 รายการที่ 5</h4>
+
+                <p class="fs-5">
+
+                    กิจการจ่ายค่าเช่าเป็นเงินสด
+                    จำนวน 3,000 บาท
+
+                </p>
+
+                <input type="text"
+                       id="debit5"
+                       class="form-control mb-2"
+                       placeholder="บัญชีเดบิต">
+
+                <input type="text"
+                       id="credit5"
+                       class="form-control mb-2"
+                       placeholder="บัญชีเครดิต">
+
+                <input type="number"
+                       id="amount5"
+                       class="form-control"
+                       placeholder="จำนวนเงิน">
+
+            </div>
+
+
+            <!-- รายการที่ 6 -->
+
+            <div class="border rounded p-4 mb-4">
+
+                <h4>📌 รายการที่ 6</h4>
+
+                <p class="fs-5">
+
+                    กิจการกู้เงินจากธนาคาร
+                    จำนวน 100,000 บาท
+
+                </p>
+
+                <input type="text"
+                       id="debit6"
+                       class="form-control mb-2"
+                       placeholder="บัญชีเดบิต">
+
+                <input type="text"
+                       id="credit6"
+                       class="form-control mb-2"
+                       placeholder="บัญชีเครดิต">
+
+                <input type="number"
+                       id="amount6"
+                       class="form-control"
+                       placeholder="จำนวนเงิน">
+
+            </div>
+
+
+            <!-- รายการที่ 7 -->
+
+            <div class="border rounded p-4 mb-4">
+
+                <h4>📌 รายการที่ 7</h4>
+
+                <p class="fs-5">
+
+                    กิจการชำระหนี้ให้เจ้าหนี้
+                    จำนวน 7,000 บาท
+
+                </p>
+
+                <input type="text"
+                       id="debit7"
+                       class="form-control mb-2"
+                       placeholder="บัญชีเดบิต">
+
+                <input type="text"
+                       id="credit7"
+                       class="form-control mb-2"
+                       placeholder="บัญชีเครดิต">
+
+                <input type="number"
+                       id="amount7"
+                       class="form-control"
+                       placeholder="จำนวนเงิน">
+
+            </div>
+
+
+            <!-- รายการที่ 8 -->
+
+            <div class="border rounded p-4 mb-4">
+
+                <h4>📌 รายการที่ 8</h4>
+
+                <p class="fs-5">
+
+                    เจ้าของกิจการถอนเงินสดไปใช้ส่วนตัว
+                    จำนวน 2,000 บาท
+
+                </p>
+
+                <input type="text"
+                       id="debit8"
+                       class="form-control mb-2"
+                       placeholder="บัญชีเดบิต">
+
+                <input type="text"
+                       id="credit8"
+                       class="form-control mb-2"
+                       placeholder="บัญชีเครดิต">
+
+                <input type="number"
+                       id="amount8"
+                       class="form-control"
+                       placeholder="จำนวนเงิน">
+
+            </div>
+
+
+            <!-- รายการที่ 9 -->
+
+            <div class="border rounded p-4 mb-4">
+
+                <h4>📌 รายการที่ 9</h4>
+
+                <p class="fs-5">
+
+                    กิจการได้รับเงินสดจากลูกหนี้
+                    จำนวน 6,000 บาท
+
+                </p>
+
+                <input type="text"
+                       id="debit9"
+                       class="form-control mb-2"
+                       placeholder="บัญชีเดบิต">
+
+                <input type="text"
+                       id="credit9"
+                       class="form-control mb-2"
+                       placeholder="บัญชีเครดิต">
+
+                <input type="number"
+                       id="amount9"
+                       class="form-control"
+                       placeholder="จำนวนเงิน">
+
+            </div>
+
+
+            <!-- รายการที่ 10 -->
+
+            <div class="border rounded p-4 mb-4">
+
+                <h4>📌 รายการที่ 10</h4>
+
+                <p class="fs-5">
+
+                    กิจการจ่ายเงินเดือนพนักงาน
+                    จำนวน 12,000 บาท
+
+                </p>
+
+                <input type="text"
+                       id="debit10"
+                       class="form-control mb-2"
+                       placeholder="บัญชีเดบิต">
+
+                <input type="text"
+                       id="credit10"
+                       class="form-control mb-2"
+                       placeholder="บัญชีเครดิต">
+
+                <input type="number"
+                       id="amount10"
+                       class="form-control"
+                       placeholder="จำนวนเงิน">
+
+            </div>
+
+
+            <!-- ปุ่มตรวจคำตอบ -->
+
+            <div class="text-center mt-4">
+
+                <button class="btn btn-primary btn-lg"
+                        onclick="checkAnswers()">
+
+                    ตรวจคำตอบ
+
+                </button>
+
+            </div>
+
+
+            <!-- ผลการตรวจ -->
+
+            <div id="result"
+                 class="mt-4">
+
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <!-- กลับหน้าหลัก -->
+
+    <div class="text-center mt-4">
+
+        <a href="../index.html"
+           class="btn btn-secondary">
+
+            ← กลับหน้าหลัก
+
+        </a>
+
+    </div>
+
+</main>
+
+
+<!-- Footer -->
+
+<footer class="bg-dark text-white text-center py-4">
+
+    <p class="mb-1">
+
+        Accounting Practice Lab
+
+    </p>
+
+    <small>
+
+        ระบบฝึกปฏิบัติการบัญชีเบื้องต้น
+
+    </small>
+
+</footer>
+
+
+<!-- ระบบตรวจคำตอบและนับคะแนน -->
+
+<script>
+
+function checkAnswers() {
+
+    let score = 0;
+
+
+    // รายการที่ 1
+
+    if (
+
+        document.getElementById("debit1").value.includes("เงินสด") &&
+
+        document.getElementById("credit1").value.includes("ทุน") &&
+
+        document.getElementById("amount1").value == "50000"
+
+    ) {
+
+        score++;
+
+    }
+
+
+    // รายการที่ 2
+
+    if (
+
+        document.getElementById("debit2").value.includes("อุปกรณ์สำนักงาน") &&
+
+        document.getElementById("credit2").value.includes("เงินสด") &&
+
+        document.getElementById("amount2").value == "5000"
+
+    ) {
+
+        score++;
+
+    }
+
+
+    // รายการที่ 3
+
+    if (
+
+        document.getElementById("debit3").value.includes("สินค้า") &&
+
+        document.getElementById("credit3").value.includes("เจ้าหนี้") &&
+
+        document.getElementById("amount3").value == "10000"
+
+    ) {
+
+        score++;
+
+    }
+
+
+    // รายการที่ 4
+
+    if (
+
+        document.getElementById("debit4").value.includes("เงินสด") &&
+
+        document.getElementById("credit4").value.includes("รายได้") &&
+
+        document.getElementById("amount4").value == "8000"
+
+    ) {
+
+        score++;
+
+    }
+
+
+    // รายการที่ 5
+
+    if (
+
+        document.getElementById("debit5").value.includes("ค่าเช่า") &&
+
+        document.getElementById("credit5").value.includes("เงินสด") &&
+
+        document.getElementById("amount5").value == "3000"
+
+    ) {
+
+        score++;
+
+    }
+
+
+    // รายการที่ 6
+
+    if (
+
+        document.getElementById("debit6").value.includes("เงินสด") &&
+
+        document.getElementById("credit6").value.includes("เงินกู้") &&
+
+        document.getElementById("amount6").value == "100000"
+
+    ) {
+
+        score++;
+
+    }
+
+
+    // รายการที่ 7
+
+    if (
+
+        document.getElementById("debit7").value.includes("เจ้าหนี้") &&
+
+        document.getElementById("credit7").value.includes("เงินสด") &&
+
+        document.getElementById("amount7").value == "7000"
+
+    ) {
+
+        score++;
+
+    }
+
+
+    // รายการที่ 8
+
+    if (
+
+        document.getElementById("debit8").value.includes("ถอนใช้ส่วนตัว") &&
+
+        document.getElementById("credit8").value.includes("เงินสด") &&
+
+        document.getElementById("amount8").value == "2000"
+
+    ) {
+
+        score++;
+
+    }
+
+
+    // รายการที่ 9
+
+    if (
+
+        document.getElementById("debit9").value.includes("เงินสด") &&
+
+        document.getElementById("credit9").value.includes("ลูกหนี้") &&
+
+        document.getElementById("amount9").value == "6000"
+
+    ) {
+
+        score++;
+
+    }
+
+
+    // รายการที่ 10
+
+    if (
+
+        document.getElementById("debit10").value.includes("เงินเดือน") &&
+
+        document.getElementById("credit10").value.includes("เงินสด") &&
+
+        document.getElementById("amount10").value == "12000"
+
+    ) {
+
+        score++;
+
+    }
+
+
+    // แสดงคะแนน
+
+    document.getElementById("score").innerHTML =
+
+        score + " / 10";
+
+
+    // แสดงผลการตรวจ
+
+    document.getElementById("result").innerHTML =
+
+        "<div class='alert alert-success text-center'>" +
+
+        "<h4>🎉 ตรวจคำตอบเสร็จแล้ว</h4>" +
+
+        "<p class='fs-4'>คุณได้คะแนน " +
+
+        score +
+
+        " / 10 คะแนน</p>" +
+
+        "</div>";
+
+
+    // เลื่อนกลับไปด้านบน
+
+    window.scrollTo({
+
+        top: 0,
+
+        behavior: "smooth"
+
+    });
+
+}
+
+</script>
+
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/js/bootstrap.bundle.min.js">
+
+</script>
+
+</body>
+
+</html>

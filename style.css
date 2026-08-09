@@ -1,0 +1,581 @@
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+body{
+    font-family:Tahoma,sans-serif;
+    background:#f5f7fb;
+    color:#333;
+}
+
+header{
+    background:#0d47a1;
+    color:white;
+    text-align:center;
+    padding:40px;
+}
+
+nav{
+    margin-top:20px;
+}/* ===== Lesson Page ===== */
+
+.lesson-container {
+    width: 90%;
+    max-width: 1100px;
+    margin: 40px auto;
+    text-align: center;
+}
+
+.lesson-container h2 {
+    font-size: 32px;
+    color: #0d47a1;
+    margin-bottom: 30px;
+}
+
+
+.lesson-card {
+    background: white;
+    border-radius: 18px;
+    padding: 25px;
+    margin-bottom: 25px;
+
+    box-shadow: 0 5px 15px rgba(0,0,0,0.12);
+
+    text-align: left;
+
+    transition: 0.3s;
+}
+
+
+.lesson-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 20px rgba(0,0,0,0.18);
+}
+
+
+.lesson-card h3 {
+
+    color: #1565c0;
+    font-size: 22px;
+    margin-bottom: 10px;
+
+}
+
+
+.lesson-card p {
+
+    color: #555;
+    font-size: 16px;
+    line-height: 1.7;
+
+}
+
+
+.btn {
+
+    display: inline-block;
+
+    margin-top: 15px;
+
+    padding: 10px 25px;
+
+    background: #1565c0;
+
+    color:white;
+
+    text-decoration:none;
+
+    border-radius:30px;
+
+    transition:0.3s;
+
+}
+
+
+.btn:hover {
+
+    background:#0d47a1;
+
+}
+
+
+/* Mobile */
+
+@media(max-width:768px){
+
+.lesson-container{
+
+    width:90%;
+
+}
+
+
+.lesson-card h3{
+
+    font-size:20px;
+
+}
+
+}
+
+nav a{
+    color:white;
+    text-decoration:none;
+    margin:15px;
+    font-weight:bold;
+}
+
+main{
+    width:90%;
+    max-width:1000px;
+    margin:40px auto;
+}
+
+section{
+    background:white;
+    padding:40px;
+    border-radius:15px;
+    box-shadow:0 5px 15px rgba(0,0,0,.1);
+}
+
+h2{
+    color:#0d47a1;
+    margin-bottom:20px;
+}
+
+p{
+    line-height:2;
+}*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+body{
+    font-family:Tahoma,sans-serif;
+    background:#eef4ff;
+    color:#333;
+}
+
+header{
+    background:#0d47a1;
+    color:white;
+    text-align:center;
+    padding:30px;
+}
+
+header h1{
+    font-size:42px;
+    margin-bottom:10px;
+}
+
+header p{
+    font-size:20px;
+}
+
+nav{
+    margin-top:25px;
+}
+
+nav a{
+    color:white;
+    text-decoration:none;
+    margin:0 15px;
+    font-weight:bold;
+}
+
+nav a:hover{
+    color:yellow;
+}
+
+main{
+    width:90%;
+    max-width:1000px;
+    margin:40px auto;
+}
+
+section{
+    background:white;
+    padding:40px;
+    border-radius:20px;
+    box-shadow:0 5px 15px rgba(0,0,0,0.15);
+}
+
+section h2{
+    color:#0d47a1;
+    margin-bottom:20px;
+}
+
+section p{
+    line-height:2;
+    font-size:18px;
+}.hero{
+    text-align:center;
+}
+
+.hero ul{
+    list-style:none;
+    margin-top:25px;
+}
+
+.hero li{
+    font-size:20px;
+    margin:12px 0;
+}
+
+button{
+    margin-top:30px;
+    background:#1565c0;
+    color:white;
+    border:none;
+    padding:15px 40px;
+    font-size:18px;
+    border-radius:10px;
+    cursor:pointer;
+}
+
+button:hover{
+    background:#0d47a1;
+}.menu{
+    margin-top:50px;
+}
+
+.menu h2{
+    text-align:center;
+    margin-bottom:30px;
+}
+
+.cards{
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:20px;
+}
+
+.card{
+    background:white;
+    padding:25px;
+    border-radius:15px;
+    box-shadow:0 5px 15px rgba(0,0,0,.1);
+    transition:.3s;
+}
+
+.card:hover{
+    transform:translateY(-8px);
+}
+
+.card h3{
+    color:#1565c0;
+    margin-bottom:15px;
+}
+
+.card p{
+    line-height:1.8;
+}.btn{
+    display:inline-block;
+    margin-top:30px;
+    padding:15px 35px;
+    background:#1e88e5;
+    color:white;
+    text-decoration:none;
+    border-radius:8px;
+    font-size:18px;
+    font-weight:bold;
+    transition:.3s;
+}
+
+.btn:hover{
+    background:#1565c0;
+}.hero{
+    background: linear-gradient(135deg,#0d6efd,#3b82f6);
+    color:white;
+    padding:120px 0;
+}
+
+.hero h1{
+    font-size:60px;
+    font-weight:bold;
+}
+
+.hero p{
+    margin:25px 0;
+    font-size:24px;
+}
+
+.btn-warning{
+    padding:15px 40px;
+    font-size:22px;
+    border-radius:50px;
+}body{
+    background:#f4f6f9;
+    font-family:'Segoe UI',Tahoma,sans-serif;
+}
+
+/* Navbar */
+.navbar{
+    box-shadow:0 3px 10px rgba(0,0,0,.15);
+}
+
+.navbar-brand{
+    font-size:1.5rem;
+}
+
+.nav-link{
+    margin-left:15px;
+}
+
+/* Hero */
+header{
+    background:linear-gradient(135deg,#0d6efd,#4facfe);
+    padding:100px 0;
+}
+
+header h1{
+    font-size:3rem;
+    font-weight:bold;
+}
+
+header p{
+    font-size:1.3rem;
+    margin:20px 0;
+}
+
+/* Button */
+.btn-warning{
+    padding:12px 35px;
+    border-radius:50px;
+    font-weight:bold;
+}
+
+/* Card */
+.card{
+    border:none;
+    border-radius:15px;
+    transition:.3s;
+}
+
+.card:hover{
+    transform:translateY(-10px);
+    box-shadow:0 15px 30px rgba(0,0,0,.2);
+}
+
+.card h4{
+    font-size:50px;
+}
+
+.card h5{
+    margin-top:15px;
+}/* ===== Lesson Page ===== */
+
+.lesson-container {
+    width: 90%;
+    max-width: 1100px;
+    margin: 40px auto;
+    text-align: center;
+}
+
+.lesson-container h2 {
+    font-size: 32px;
+    color: #0d47a1;
+    margin-bottom: 30px;
+}
+
+
+.lesson-card {
+    background: white;
+    border-radius: 18px;
+    padding: 25px;
+    margin-bottom: 25px;
+
+    box-shadow: 0 5px 15px rgba(0,0,0,0.12);
+
+    text-align: left;
+
+    transition: 0.3s;
+}
+
+
+.lesson-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 20px rgba(0,0,0,0.18);
+}
+
+
+.lesson-card h3 {
+
+    color: #1565c0;
+    font-size: 22px;
+    margin-bottom: 10px;
+
+}
+
+
+.lesson-card p {
+
+    color: #555;
+    font-size: 16px;
+    line-height: 1.7;
+
+}
+
+
+.btn {
+
+    display: inline-block;
+
+    margin-top: 15px;
+
+    padding: 10px 25px;
+
+    background: #1565c0;
+
+    color:white;
+
+    text-decoration:none;
+
+    border-radius:30px;
+
+    transition:0.3s;
+
+}
+
+
+.btn:hover {
+
+    background:#0d47a1;
+
+}
+
+
+/* Mobile */
+
+@media(max-width:768px){
+
+.lesson-container{
+
+    width:90%;
+
+}
+
+
+.lesson-card h3{
+
+    font-size:20px;
+
+}
+
+}เอาโค้ดนี้ไปวาง บรรทัดสุดท้ายของไฟล์
+
+body {
+    background: pink !important;
+}/* =====================================================
+   การ์ดงานปฏิบัติขั้นสุดท้าย
+===================================================== */
+
+.practice-card {
+
+    border: none;
+
+    border-radius: 20px;
+
+    background: #ffffff;
+
+    padding: 30px 20px;
+
+    text-align: center;
+
+    min-height: 260px;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    transition:
+        transform 0.25s ease,
+        box-shadow 0.25s ease;
+
+    box-shadow:
+        0 8px 25px rgba(0, 0, 0, 0.10);
+
+}
+
+
+/* เมื่อเอาเมาส์วาง */
+
+.practice-card:hover {
+
+    transform:
+        translateY(-8px);
+
+    box-shadow:
+        0 15px 35px rgba(0, 0, 0, 0.16);
+
+}
+
+
+/* ไอคอน */
+
+.practice-icon {
+
+    font-size: 55px;
+
+    margin-bottom: 15px;
+
+}
+
+
+/* ชื่อ */
+
+.practice-title {
+
+    font-size: 21px;
+
+    font-weight: 700;
+
+    margin-bottom: 10px;
+
+}
+
+
+/* คำอธิบาย */
+
+.practice-text {
+
+    color: #6c757d;
+
+    font-size: 16px;
+
+    line-height: 1.6;
+
+    margin-bottom: 15px;
+
+}
+
+
+/* ลูกศร */
+
+.practice-arrow {
+
+    font-size: 15px;
+
+    font-weight: 600;
+
+    color: #198754;
+
+}
+
+
+/* มือถือ */
+
+@media (max-width: 767px) {
+
+    .practice-card {
+
+        min-height: 230px;
+
+    }
+
+}

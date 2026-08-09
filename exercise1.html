@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>แบบฝึกปฏิบัติ บทที่ 1</title>
+
+<link rel="stylesheet" href="../css/style.css">
+
+</head>
+
+<body>
+
+<div class="container">
+
+<h1>แบบฝึกปฏิบัติ บทที่ 1</h1>
+
+<div class="card">
+
+<h2 id="number">ข้อที่ 1 / 10</h2>
+
+<p id="question"></p>
+
+<label>เดบิต</label>
+
+<input
+type="text"
+id="debit">
+
+<label>เครดิต</label>
+
+<input
+type="text"
+id="credit">
+
+<label>จำนวนเงิน</label>
+
+<input
+type="number"
+id="money">
+
+<br><br>
+
+<button onclick="checkAnswer()">
+
+ตรวจคำตอบ
+
+</button>
+
+<button onclick="nextQuestion()">
+
+ข้อถัดไป
+
+</button>
+
+<h3 id="result"></h3>
+
+<h3>
+
+คะแนน :
+
+<span id="score">
+
+0
+
+</span>
+
+/10
+
+</h3>
+
+</div>
+
+</div>
+
+<script src="../js/script.js"></script>
+
+</body>
+
+</html>

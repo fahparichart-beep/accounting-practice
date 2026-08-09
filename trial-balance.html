@@ -1,0 +1,884 @@
+<!DOCTYPE html>
+<html lang="th">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>งบทดลอง | Accounting Practice Lab</title>
+
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/css/bootstrap.min.css"
+          rel="stylesheet">
+
+
+    <link rel="stylesheet"
+          href="../css/style.css">
+
+
+    <style>
+
+        body {
+            background-color: #f4f7fb;
+        }
+
+
+        .page-header {
+            background: linear-gradient(135deg, #0d6efd, #084298);
+            color: white;
+            padding: 60px 20px;
+            text-align: center;
+        }
+
+
+        .content-card {
+            background: white;
+            border-radius: 20px;
+            padding: 35px;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.08);
+        }
+
+
+        .table th {
+            background-color: #0d6efd;
+            color: white;
+            text-align: center;
+            vertical-align: middle;
+        }
+
+
+        .table td {
+            vertical-align: middle;
+        }
+
+
+        .amount {
+            text-align: right;
+            font-weight: bold;
+        }
+
+
+        .total-row th {
+            background-color: #212529;
+            color: white;
+        }
+
+
+        .balance-card {
+            border-left: 5px solid #0d6efd;
+        }
+
+
+        .btn {
+            border-radius: 10px;
+            padding: 10px 25px;
+            margin: 5px;
+        }
+
+    </style>
+
+</head>
+
+
+<body>
+
+
+<!-- =========================
+     NAVBAR
+========================= -->
+
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+
+    <div class="container">
+
+
+        <a class="navbar-brand fw-bold"
+           href="../index.html">
+
+            📘 Accounting Practice Lab
+
+        </a>
+
+
+        <button class="navbar-toggler"
+                type="button"
+                data-bs-toggle="collapse"
+                data-bs-target="#menu">
+
+            <span class="navbar-toggler-icon"></span>
+
+        </button>
+
+
+        <div class="collapse navbar-collapse"
+             id="menu">
+
+
+            <ul class="navbar-nav ms-auto">
+
+
+                <li class="nav-item">
+
+                    <a class="nav-link"
+                       href="../index.html">
+
+                        หน้าแรก
+
+                    </a>
+
+                </li>
+
+
+                <li class="nav-item">
+
+                    <a class="nav-link"
+                       href="lesson.html">
+
+                        ห้องฝึกปฏิบัติ
+
+                    </a>
+
+                </li>
+
+
+                <li class="nav-item">
+
+                    <a class="nav-link"
+                       href="ledger.html">
+
+                        บัญชีแยกประเภท
+
+                    </a>
+
+                </li>
+
+
+                <li class="nav-item">
+
+                    <a class="nav-link active"
+                       href="trial-balance.html">
+
+                        งบทดลอง
+
+                    </a>
+
+                </li>
+
+
+            </ul>
+
+        </div>
+
+    </div>
+
+</nav>
+
+
+
+<!-- =========================
+     HEADER
+========================= -->
+
+<header class="page-header">
+
+    <div class="container">
+
+        <h1>
+
+            📊 งบทดลอง
+
+        </h1>
+
+
+        <p class="lead">
+
+            นำยอดคงเหลือจากบัญชีแยกประเภทมาจัดทำงบทดลอง
+
+        </p>
+
+    </div>
+
+</header>
+
+
+
+<!-- =========================
+     MAIN
+========================= -->
+
+<main class="container my-5">
+
+
+    <!-- คะแนน -->
+
+    <div class="alert alert-warning text-center">
+
+        <h4>
+
+            🏆 คะแนนแบบฝึกบัญชีแยกประเภท
+
+        </h4>
+
+
+        <h2 id="score">
+
+            0 / 10
+
+        </h2>
+
+    </div>
+
+
+
+    <div class="content-card">
+
+
+        <h2 class="text-center text-primary mb-4">
+
+            📋 งบทดลอง
+
+        </h2>
+
+
+        <p class="text-center text-muted">
+
+            ยอดเงินด้านล่างถูกดึงมาจากข้อมูลบัญชีแยกประเภท
+
+        </p>
+
+
+
+        <!-- ตารางงบทดลอง -->
+
+        <div class="table-responsive mt-4">
+
+
+            <table class="table table-bordered">
+
+
+                <thead>
+
+                    <tr>
+
+                        <th style="width: 10%;">
+
+                            ลำดับ
+
+                        </th>
+
+
+                        <th>
+
+                            ชื่อบัญชี
+
+                        </th>
+
+
+                        <th style="width: 25%;">
+
+                            เดบิต
+
+                        </th>
+
+
+                        <th style="width: 25%;">
+
+                            เครดิต
+
+                        </th>
+
+                    </tr>
+
+                </thead>
+
+
+                <tbody id="trialBalanceBody">
+
+
+                </tbody>
+
+
+                <tfoot>
+
+
+                    <tr class="total-row">
+
+
+                        <th colspan="2"
+                            class="text-end">
+
+                            รวม
+
+                        </th>
+
+
+                        <th id="totalDebit"
+                            class="text-end">
+
+                            0.00
+
+                        </th>
+
+
+                        <th id="totalCredit"
+                            class="text-end">
+
+                            0.00
+
+                        </th>
+
+
+                    </tr>
+
+
+                </tfoot>
+
+
+            </table>
+
+        </div>
+
+
+
+        <!-- ผลการตรวจสอบ -->
+
+        <div id="result"
+             class="mt-4">
+
+        </div>
+
+
+
+        <!-- ปุ่ม -->
+
+        <div class="text-center mt-4">
+
+
+            <button class="btn btn-primary btn-lg"
+                    onclick="checkTrialBalance()">
+
+                ✅ ตรวจสอบงบทดลอง
+
+            </button>
+
+
+            <button class="btn btn-danger btn-lg"
+                    onclick="clearLedgerData()">
+
+                🗑️ ล้างข้อมูล
+
+            </button>
+
+        </div>
+
+
+    </div>
+
+
+
+    <!-- กล่องสรุป -->
+
+    <div class="card shadow mt-4 balance-card">
+
+
+        <div class="card-body">
+
+
+            <h4 class="text-primary">
+
+                📌 หลักการจัดทำงบทดลอง
+
+            </h4>
+
+
+            <p>
+
+                ระบบจะนำยอดเดบิตและเครดิตของแต่ละบัญชี
+                จากบัญชีแยกประเภทมาหักลบกัน
+                แล้วนำยอดคงเหลือไปแสดงในงบทดลอง
+
+            </p>
+
+
+            <p class="mb-0">
+
+                ถ้ายอดรวมเดบิตเท่ากับยอดรวมเครดิต
+                แสดงว่างบทดลองสมดุล
+
+            </p>
+
+        </div>
+
+    </div>
+
+
+
+    <!-- ปุ่มกลับ -->
+
+    <div class="text-center mt-4">
+
+
+        <a href="ledger.html"
+           class="btn btn-outline-primary">
+
+            ← กลับไปบัญชีแยกประเภท
+
+        </a>
+
+
+        <a href="../index.html"
+           class="btn btn-outline-dark">
+
+            🏠 กลับหน้าหลัก
+
+        </a>
+
+    </div>
+
+
+</main>
+
+
+
+<!-- =========================
+     FOOTER
+========================= -->
+
+<footer class="bg-dark text-white text-center py-4">
+
+
+    <p class="mb-1">
+
+        Accounting Practice Lab
+
+    </p>
+
+
+    <small>
+
+        ระบบฝึกปฏิบัติการบัญชีเบื้องต้น
+
+    </small>
+
+
+</footer>
+
+
+
+<!-- =========================
+     JAVASCRIPT
+========================= -->
+
+<script>
+
+
+// เมื่อเปิดหน้างบทดลอง
+
+window.onload = function() {
+
+
+    loadTrialBalance();
+
+
+    loadScore();
+
+};
+
+
+
+// โหลดคะแนน
+
+function loadScore() {
+
+
+    let score =
+
+        localStorage.getItem("ledgerScore");
+
+
+    if (score !== null) {
+
+
+        document.getElementById("score").innerHTML =
+
+            score + " / 10";
+
+    }
+
+}
+
+
+
+// โหลดข้อมูลบัญชีแยกประเภท
+
+function loadTrialBalance() {
+
+
+    let data =
+
+        localStorage.getItem("ledgerData");
+
+
+    let tableBody =
+
+        document.getElementById("trialBalanceBody");
+
+
+    tableBody.innerHTML = "";
+
+
+
+    if (!data) {
+
+
+        tableBody.innerHTML = `
+
+            <tr>
+
+                <td colspan="4"
+                    class="text-center text-muted py-4">
+
+                    ⚠️ ยังไม่มีข้อมูลบัญชีแยกประเภท
+
+                    <br><br>
+
+                    กรุณาไปทำแบบฝึกบัญชีแยกประเภทก่อน
+
+                </td>
+
+            </tr>
+
+        `;
+
+
+        return;
+
+    }
+
+
+
+    let ledgerData =
+
+        JSON.parse(data);
+
+
+
+    let number = 1;
+
+
+    let totalDebit = 0;
+
+
+    let totalCredit = 0;
+
+
+
+    Object.keys(ledgerData).forEach(function(account) {
+
+
+        let balance =
+
+            ledgerData[account].balance;
+
+
+        let balanceType =
+
+            ledgerData[account].balanceType;
+
+
+
+        if (balance === 0) {
+
+
+            return;
+
+        }
+
+
+
+        let debitAmount = "";
+
+
+        let creditAmount = "";
+
+
+
+        if (balanceType === "เดบิต") {
+
+
+            debitAmount =
+
+                Number(balance).toLocaleString(
+
+                    "th-TH",
+
+                    {
+
+                        minimumFractionDigits: 2
+
+                    }
+
+                );
+
+
+            totalDebit +=
+
+                Number(balance);
+
+        }
+
+
+        else if (balanceType === "เครดิต") {
+
+
+            creditAmount =
+
+                Number(balance).toLocaleString(
+
+                    "th-TH",
+
+                    {
+
+                        minimumFractionDigits: 2
+
+                    }
+
+                );
+
+
+            totalCredit +=
+
+                Number(balance);
+
+        }
+
+
+
+        let row = `
+
+            <tr>
+
+
+                <td class="text-center">
+
+                    ${number}
+
+                </td>
+
+
+                <td>
+
+                    ${account}
+
+                </td>
+
+
+                <td class="text-end fw-bold text-primary">
+
+                    ${debitAmount}
+
+                </td>
+
+
+                <td class="text-end fw-bold text-success">
+
+                    ${creditAmount}
+
+                </td>
+
+
+            </tr>
+
+        `;
+
+
+
+        tableBody.innerHTML += row;
+
+
+        number++;
+
+
+    });
+
+
+
+    document.getElementById("totalDebit").innerHTML =
+
+        totalDebit.toLocaleString(
+
+            "th-TH",
+
+            {
+
+                minimumFractionDigits: 2
+
+            }
+
+        );
+
+
+
+    document.getElementById("totalCredit").innerHTML =
+
+        totalCredit.toLocaleString(
+
+            "th-TH",
+
+            {
+
+                minimumFractionDigits: 2
+
+            }
+
+        );
+
+}
+
+
+
+// ตรวจสอบว่างบทดลองสมดุลหรือไม่
+
+function checkTrialBalance() {
+
+
+    let debitText =
+
+        document.getElementById("totalDebit").innerText;
+
+
+    let creditText =
+
+        document.getElementById("totalCredit").innerText;
+
+
+
+    let debit =
+
+        Number(
+
+            debitText.replace(/,/g, "")
+
+        );
+
+
+
+    let credit =
+
+        Number(
+
+            creditText.replace(/,/g, "")
+
+        );
+
+
+
+    let result =
+
+        document.getElementById("result");
+
+
+
+    if (debit === credit && debit > 0) {
+
+
+        result.innerHTML = `
+
+            <div class="alert alert-success text-center">
+
+                <h4>
+
+                    🎉 งบทดลองสมดุล
+
+                </h4>
+
+
+                <p class="mb-0">
+
+                    ยอดรวมเดบิตเท่ากับยอดรวมเครดิต
+
+                </p>
+
+            </div>
+
+        `;
+
+    }
+
+
+    else {
+
+
+        result.innerHTML = `
+
+            <div class="alert alert-danger text-center">
+
+                <h4>
+
+                    ⚠️ งบทดลองยังไม่สมดุล
+
+                </h4>
+
+
+                <p class="mb-0">
+
+                    กรุณาตรวจสอบรายการบัญชีแยกประเภทอีกครั้ง
+
+                </p>
+
+            </div>
+
+        `;
+
+    }
+
+}
+
+
+
+// ล้างข้อมูล
+
+function clearLedgerData() {
+
+
+    let confirmClear =
+
+        confirm(
+
+            "ต้องการล้างข้อมูลบัญชีแยกประเภทหรือไม่?"
+
+        );
+
+
+
+    if (confirmClear) {
+
+
+        localStorage.removeItem("ledgerData");
+
+
+        localStorage.removeItem("ledgerScore");
+
+
+        location.reload();
+
+    }
+
+}
+
+
+</script>
+
+
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/js/bootstrap.bundle.min.js">
+
+</script>
+
+
+</body>
+
+</html>

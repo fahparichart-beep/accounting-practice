@@ -1,0 +1,3308 @@
+<!DOCTYPE html>
+
+<html lang="th">
+
+<head>
+
+<meta charset="UTF-8">
+
+<meta name="viewport"
+      content="width=device-width, initial-scale=1.0">
+
+<title>บัญชีแยกประเภท | Accounting Practice Lab</title>
+
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/css/bootstrap.min.css"
+      rel="stylesheet">
+
+
+<style>
+
+    body {
+
+        font-family: Tahoma, sans-serif;
+
+        background: #f5f7fb;
+
+        padding: 20px;
+
+    }
+
+
+    h1 {
+
+        text-align: center;
+
+        color: #0d47a1;
+
+        margin-bottom: 25px;
+
+    }
+
+
+    .ledger-box {
+
+        background: white;
+
+        border: 2px solid #555;
+
+        border-radius: 10px;
+
+        margin-bottom: 30px;
+
+        overflow: hidden;
+
+    }
+
+
+    .account-title {
+
+        text-align: center;
+
+        font-size: 26px;
+
+        font-weight: bold;
+
+        background: #eef1f5;
+
+        padding: 18px;
+
+        border-bottom: 2px solid #555;
+
+    }
+
+
+    .side-container {
+
+        display: grid;
+
+        grid-template-columns: 1fr 1fr;
+
+    }
+
+
+    .side {
+
+        padding: 25px;
+
+    }
+
+
+    .side:first-child {
+
+        border-right: 2px solid #555;
+
+    }
+
+
+    .side-title {
+
+        text-align: center;
+
+        font-size: 22px;
+
+        font-weight: bold;
+
+        margin-bottom: 20px;
+
+    }
+
+
+    table {
+
+        width: 100%;
+
+        border-collapse: collapse;
+
+    }
+
+
+    th {
+
+        background: #eef1f5;
+
+        padding: 14px;
+
+        border: 1px solid #aaa;
+
+        text-align: center;
+
+        font-size: 18px;
+
+    }
+
+
+    td {
+
+        border: 1px solid #aaa;
+
+        padding: 10px;
+
+    }
+
+
+    input {
+
+        width: 100%;
+
+        padding: 12px;
+
+        border: 1px solid #ccd3dd;
+
+        border-radius: 7px;
+
+        font-size: 16px;
+
+    }
+
+
+    .button-area {
+
+        text-align: center;
+
+        margin: 30px 0;
+
+    }
+
+
+    button {
+
+        padding: 12px 35px;
+
+        font-size: 18px;
+
+        border: none;
+
+        border-radius: 8px;
+
+        cursor: pointer;
+
+        margin: 5px;
+
+    }
+
+
+    .check-btn {
+
+        background: #198754;
+
+        color: white;
+
+    }
+
+
+    .next-btn {
+
+        background: #0d6efd;
+
+        color: white;
+
+    }
+
+
+    .previous-btn {
+
+        background: #6c757d;
+
+        color: white;
+
+    }
+
+
+    #result {
+
+        text-align: center;
+
+        font-size: 24px;
+
+        font-weight: bold;
+
+        margin: 20px;
+
+    }
+
+
+    .question {
+
+        display: none;
+
+    }
+
+
+    .question.active {
+
+        display: block;
+
+    }
+
+
+    .home-button {
+
+        text-align: center;
+
+        margin: 35px 0 20px 0;
+
+    }
+
+
+    @media (max-width: 768px) {
+
+        .side-container {
+
+            grid-template-columns: 1fr;
+
+        }
+
+
+        .side:first-child {
+
+            border-right: none;
+
+            border-bottom: 2px solid #555;
+
+        }
+
+    }
+
+</style>
+```
+
+</head>
+
+<body>
+
+<h1>
+
+📖 ฝึกปฏิบัติการบัญชีแยกประเภท
+
+
+</h1>
+
+<!-- ================================================= -->
+
+<!-- รายการที่ 1 -->
+
+<!-- ================================================= -->
+
+<div class="question active"
+     id="question1">
+
+
+<div class="alert alert-info text-center">
+
+    <h4>รายการค้าที่ 1</h4>
+
+    <p class="mb-0">
+
+        วันที่ 1 มกราคม 2569
+
+        เจ้าของกิจการนำเงินสดมาลงทุน
+
+        จำนวนเงิน 50,000 บาท
+
+    </p>
+
+</div>
+
+
+<!-- บัญชีเงินสด -->
+
+<div class="ledger-box">
+
+    <div class="account-title">
+
+        บัญชีเงินสด
+
+    </div>
+
+
+    <div class="side-container">
+
+
+        <!-- เดบิต -->
+
+        <div class="side">
+
+            <div class="side-title">
+
+                เดบิต
+
+            </div>
+
+
+            <table>
+
+                <tr>
+
+                    <th>วันที่</th>
+
+                    <th>รายการ</th>
+
+                    <th>จำนวนเงิน</th>
+
+                </tr>
+
+
+                <tr>
+
+                    <td>
+
+                        <input type="text"
+                               id="q1_cash_debit_date"
+                               placeholder="กรอกวันที่">
+
+                    </td>
+
+
+                    <td>
+
+                        <input type="text"
+                               id="q1_cash_debit_account"
+                               placeholder="กรอกบัญชีคู่ตรงข้าม">
+
+                    </td>
+
+
+                    <td>
+
+                        <input type="number"
+                               id="q1_cash_debit_amount"
+                               placeholder="กรอกจำนวนเงิน">
+
+                    </td>
+
+                </tr>
+
+            </table>
+
+        </div>
+
+
+        <!-- เครดิต -->
+
+        <div class="side">
+
+            <div class="side-title">
+
+                เครดิต
+
+            </div>
+
+
+            <table>
+
+                <tr>
+
+                    <th>วันที่</th>
+
+                    <th>รายการ</th>
+
+                    <th>จำนวนเงิน</th>
+
+                </tr>
+
+
+                <tr>
+
+                    <td><input type="text"></td>
+
+                    <td><input type="text"></td>
+
+                    <td><input type="number"></td>
+
+                </tr>
+
+            </table>
+
+        </div>
+
+    </div>
+
+</div>
+
+
+<!-- บัญชีทุน -->
+
+<div class="ledger-box">
+
+    <div class="account-title">
+
+        บัญชีทุน
+
+    </div>
+
+
+    <div class="side-container">
+
+
+        <!-- เดบิต -->
+
+        <div class="side">
+
+            <div class="side-title">
+
+                เดบิต
+
+            </div>
+
+
+            <table>
+
+                <tr>
+
+                    <th>วันที่</th>
+
+                    <th>รายการ</th>
+
+                    <th>จำนวนเงิน</th>
+
+                </tr>
+
+
+                <tr>
+
+                    <td><input type="text"></td>
+
+                    <td><input type="text"></td>
+
+                    <td><input type="number"></td>
+
+                </tr>
+
+            </table>
+
+        </div>
+
+
+        <!-- เครดิต -->
+
+        <div class="side">
+
+            <div class="side-title">
+
+                เครดิต
+
+            </div>
+
+
+            <table>
+
+                <tr>
+
+                    <th>วันที่</th>
+
+                    <th>รายการ</th>
+
+                    <th>จำนวนเงิน</th>
+
+                </tr>
+
+
+                <tr>
+
+                    <td>
+
+                        <input type="text"
+                               id="q1_capital_credit_date"
+                               placeholder="กรอกวันที่">
+
+                    </td>
+
+
+                    <td>
+
+                        <input type="text"
+                               id="q1_capital_credit_account"
+                               placeholder="กรอกบัญชีคู่ตรงข้าม">
+
+                    </td>
+
+
+                    <td>
+
+                        <input type="number"
+                               id="q1_capital_credit_amount"
+                               placeholder="กรอกจำนวนเงิน">
+
+                    </td>
+
+                </tr>
+
+            </table>
+
+        </div>
+
+    </div>
+
+</div>
+
+
+</div>
+
+<!-- ================================================= -->
+
+<!-- รายการที่ 2 -->
+
+<!-- ================================================= -->
+
+<div class="question"
+     id="question2">
+
+
+<div class="alert alert-info text-center">
+
+    <h4>รายการค้าที่ 2</h4>
+
+    <p class="mb-0">
+
+        วันที่ 2 มกราคม 2569
+
+        กิจการซื้ออุปกรณ์สำนักงานเป็นเงินสด
+
+        จำนวนเงิน 5,000 บาท
+
+    </p>
+
+</div>
+
+
+<div class="ledger-box">
+
+    <div class="account-title">
+
+        บัญชีอุปกรณ์สำนักงาน
+
+    </div>
+
+
+    <div class="side-container">
+
+
+        <div class="side">
+
+            <div class="side-title">
+
+                เดบิต
+
+            </div>
+
+
+            <table>
+
+                <tr>
+
+                    <th>วันที่</th>
+
+                    <th>รายการ</th>
+
+                    <th>จำนวนเงิน</th>
+
+                </tr>
+
+
+                <tr>
+
+                    <td>
+
+                        <input type="text"
+                               id="q2_equipment_debit_date">
+
+                    </td>
+
+
+                    <td>
+
+                        <input type="text"
+                               id="q2_equipment_debit_account">
+
+                    </td>
+
+
+                    <td>
+
+                        <input type="number"
+                               id="q2_equipment_debit_amount">
+
+                    </td>
+
+                </tr>
+
+            </table>
+
+        </div>
+
+
+        <div class="side">
+
+            <div class="side-title">
+
+                เครดิต
+
+            </div>
+
+
+            <table>
+
+                <tr>
+
+                    <th>วันที่</th>
+
+                    <th>รายการ</th>
+
+                    <th>จำนวนเงิน</th>
+
+                </tr>
+
+
+                <tr>
+
+                    <td><input type="text"></td>
+
+                    <td><input type="text"></td>
+
+                    <td><input type="number"></td>
+
+                </tr>
+
+            </table>
+
+        </div>
+
+    </div>
+
+</div>
+
+
+<div class="ledger-box">
+
+    <div class="account-title">
+
+        บัญชีเงินสด
+
+    </div>
+
+
+    <div class="side-container">
+
+
+        <div class="side">
+
+            <div class="side-title">
+
+                เดบิต
+
+            </div>
+
+
+            <table>
+
+                <tr>
+
+                    <th>วันที่</th>
+
+                    <th>รายการ</th>
+
+                    <th>จำนวนเงิน</th>
+
+                </tr>
+
+
+                <tr>
+
+                    <td><input type="text"></td>
+
+                    <td><input type="text"></td>
+
+                    <td><input type="number"></td>
+
+                </tr>
+
+            </table>
+
+        </div>
+
+
+        <div class="side">
+
+            <div class="side-title">
+
+                เครดิต
+
+            </div>
+
+
+            <table>
+
+                <tr>
+
+                    <th>วันที่</th>
+
+                    <th>รายการ</th>
+
+                    <th>จำนวนเงิน</th>
+
+                </tr>
+
+
+                <tr>
+
+                    <td>
+
+                        <input type="text"
+                               id="q2_cash_credit_date">
+
+                    </td>
+
+
+                    <td>
+
+                        <input type="text"
+                               id="q2_cash_credit_account">
+
+                    </td>
+
+
+                    <td>
+
+                        <input type="number"
+                               id="q2_cash_credit_amount">
+
+                    </td>
+
+                </tr>
+
+            </table>
+
+        </div>
+
+    </div>
+
+</div>
+
+
+</div>
+
+<!-- ================================================= -->
+
+<!-- รายการที่ 3 -->
+
+<!-- ================================================= -->
+
+<div class="question"
+     id="question3">
+
+
+<div class="alert alert-info text-center">
+
+    <h4>รายการค้าที่ 3</h4>
+
+    <p class="mb-0">
+
+        วันที่ 3 มกราคม 2569
+
+        กิจการซื้อสินค้าเป็นเงินเชื่อ
+
+        จำนวนเงิน 10,000 บาท
+
+    </p>
+
+</div>
+
+
+<div class="ledger-box">
+
+    <div class="account-title">
+
+        บัญชีสินค้า
+
+    </div>
+
+
+    <div class="side-container">
+
+
+        <div class="side">
+
+            <div class="side-title">
+
+                เดบิต
+
+            </div>
+
+
+            <table>
+
+                <tr>
+
+                    <th>วันที่</th>
+
+                    <th>รายการ</th>
+
+                    <th>จำนวนเงิน</th>
+
+                </tr>
+
+
+                <tr>
+
+                    <td>
+
+                        <input type="text"
+                               id="q3_goods_debit_date">
+
+                    </td>
+
+
+                    <td>
+
+                        <input type="text"
+                               id="q3_goods_debit_account">
+
+                    </td>
+
+
+                    <td>
+
+                        <input type="number"
+                               id="q3_goods_debit_amount">
+
+                    </td>
+
+                </tr>
+
+            </table>
+
+        </div>
+
+
+        <div class="side">
+
+            <div class="side-title">
+
+                เครดิต
+
+            </div>
+
+
+            <table>
+
+                <tr>
+
+                    <th>วันที่</th>
+
+                    <th>รายการ</th>
+
+                    <th>จำนวนเงิน</th>
+
+                </tr>
+
+
+                <tr>
+
+                    <td><input type="text"></td>
+
+                    <td><input type="text"></td>
+
+                    <td><input type="number"></td>
+
+                </tr>
+
+            </table>
+
+        </div>
+
+    </div>
+
+</div>
+
+
+<div class="ledger-box">
+
+    <div class="account-title">
+
+        บัญชีเจ้าหนี้
+
+    </div>
+
+
+    <div class="side-container">
+
+
+        <div class="side">
+
+            <div class="side-title">
+
+                เดบิต
+
+            </div>
+
+
+            <table>
+
+                <tr>
+
+                    <th>วันที่</th>
+
+                    <th>รายการ</th>
+
+                    <th>จำนวนเงิน</th>
+
+                </tr>
+
+
+                <tr>
+
+                    <td><input type="text"></td>
+
+                    <td><input type="text"></td>
+
+                    <td><input type="number"></td>
+
+                </tr>
+
+            </table>
+
+        </div>
+
+
+        <div class="side">
+
+            <div class="side-title">
+
+                เครดิต
+
+            </div>
+
+
+            <table>
+
+                <tr>
+
+                    <th>วันที่</th>
+
+                    <th>รายการ</th>
+
+                    <th>จำนวนเงิน</th>
+
+                </tr>
+
+
+                <tr>
+
+                    <td>
+
+                        <input type="text"
+                               id="q3_payable_credit_date">
+
+                    </td>
+
+
+                    <td>
+
+                        <input type="text"
+                               id="q3_payable_credit_account">
+
+                    </td>
+
+
+                    <td>
+
+                        <input type="number"
+                               id="q3_payable_credit_amount">
+
+                    </td>
+
+                </tr>
+
+            </table>
+
+        </div>
+
+    </div>
+
+</div>
+
+
+</div>
+
+<!-- ================================================= -->
+
+<!-- รายการที่ 4 -->
+
+<!-- ================================================= -->
+
+<div class="question"
+     id="question4">
+
+
+<div class="alert alert-info text-center">
+
+    <h4>รายการค้าที่ 4</h4>
+
+    <p class="mb-0">
+
+        วันที่ 4 มกราคม 2569
+
+        กิจการให้บริการและได้รับเงินสด
+
+        จำนวนเงิน 8,000 บาท
+
+    </p>
+
+</div>
+
+
+<div class="ledger-box">
+
+    <div class="account-title">
+
+        บัญชีเงินสด
+
+    </div>
+
+
+    <div class="side-container">
+
+
+        <div class="side">
+
+            <div class="side-title">
+
+                เดบิต
+
+            </div>
+
+
+            <table>
+
+                <tr>
+
+                    <th>วันที่</th>
+
+                    <th>รายการ</th>
+
+                    <th>จำนวนเงิน</th>
+
+                </tr>
+
+
+                <tr>
+
+                    <td>
+
+                        <input type="text"
+                               id="q4_cash_debit_date">
+
+                    </td>
+
+
+                    <td>
+
+                        <input type="text"
+                               id="q4_cash_debit_account">
+
+                    </td>
+
+
+                    <td>
+
+                        <input type="number"
+                               id="q4_cash_debit_amount">
+
+                    </td>
+
+                </tr>
+
+            </table>
+
+        </div>
+
+
+        <div class="side">
+
+            <div class="side-title">
+
+                เครดิต
+
+            </div>
+
+
+            <table>
+
+                <tr>
+
+                    <th>วันที่</th>
+
+                    <th>รายการ</th>
+
+                    <th>จำนวนเงิน</th>
+
+                </tr>
+
+
+                <tr>
+
+                    <td><input type="text"></td>
+
+                    <td><input type="text"></td>
+
+                    <td><input type="number"></td>
+
+                </tr>
+
+            </table>
+
+        </div>
+
+    </div>
+
+</div>
+
+
+<div class="ledger-box">
+
+    <div class="account-title">
+
+        บัญชีรายได้
+
+    </div>
+
+
+    <div class="side-container">
+
+
+        <div class="side">
+
+            <div class="side-title">
+
+                เดบิต
+
+            </div>
+
+
+            <table>
+
+                <tr>
+
+                    <th>วันที่</th>
+
+                    <th>รายการ</th>
+
+                    <th>จำนวนเงิน</th>
+
+                </tr>
+
+
+                <tr>
+
+                    <td><input type="text"></td>
+
+                    <td><input type="text"></td>
+
+                    <td><input type="number"></td>
+
+                </tr>
+
+            </table>
+
+        </div>
+
+
+        <div class="side">
+
+            <div class="side-title">
+
+                เครดิต
+
+            </div>
+
+
+            <table>
+
+                <tr>
+
+                    <th>วันที่</th>
+
+                    <th>รายการ</th>
+
+                    <th>จำนวนเงิน</th>
+
+                </tr>
+
+
+                <tr>
+
+                    <td>
+
+                        <input type="text"
+                               id="q4_income_credit_date">
+
+                    </td>
+
+
+                    <td>
+
+                        <input type="text"
+                               id="q4_income_credit_account">
+
+                    </td>
+
+
+                    <td>
+
+                        <input type="number"
+                               id="q4_income_credit_amount">
+
+                    </td>
+
+                </tr>
+
+            </table>
+
+        </div>
+
+    </div>
+
+</div>
+
+
+</div>
+
+<!-- ================================================= -->
+
+<!-- รายการที่ 5 -->
+
+<!-- ================================================= -->
+
+<div class="question"
+     id="question5">
+
+
+<div class="alert alert-info text-center">
+
+    <h4>รายการค้าที่ 5</h4>
+
+    <p class="mb-0">
+
+        วันที่ 5 มกราคม 2569
+
+        กิจการจ่ายค่าเช่าเป็นเงินสด
+
+        จำนวนเงิน 3,000 บาท
+
+    </p>
+
+</div>
+
+
+<div class="ledger-box">
+
+    <div class="account-title">
+
+        บัญชีค่าเช่า
+
+    </div>
+
+
+    <div class="side-container">
+
+
+        <div class="side">
+
+            <div class="side-title">
+
+                เดบิต
+
+            </div>
+
+
+            <table>
+
+                <tr>
+
+                    <th>วันที่</th>
+
+                    <th>รายการ</th>
+
+                    <th>จำนวนเงิน</th>
+
+                </tr>
+
+
+                <tr>
+
+                    <td>
+
+                        <input type="text"
+                               id="q5_rent_debit_date">
+
+                    </td>
+
+
+                    <td>
+
+                        <input type="text"
+                               id="q5_rent_debit_account">
+
+                    </td>
+
+
+                    <td>
+
+                        <input type="number"
+                               id="q5_rent_debit_amount">
+
+                    </td>
+
+                </tr>
+
+            </table>
+
+        </div>
+
+
+        <div class="side">
+
+            <div class="side-title">
+
+                เครดิต
+
+            </div>
+
+
+            <table>
+
+                <tr>
+
+                    <th>วันที่</th>
+
+                    <th>รายการ</th>
+
+                    <th>จำนวนเงิน</th>
+
+                </tr>
+
+
+                <tr>
+
+                    <td><input type="text"></td>
+
+                    <td><input type="text"></td>
+
+                    <td><input type="number"></td>
+
+                </tr>
+
+            </table>
+
+        </div>
+
+    </div>
+
+</div>
+
+
+<div class="ledger-box">
+
+    <div class="account-title">
+
+        บัญชีเงินสด
+
+    </div>
+
+
+    <div class="side-container">
+
+
+        <div class="side">
+
+            <div class="side-title">
+
+                เดบิต
+
+            </div>
+
+
+            <table>
+
+                <tr>
+
+                    <th>วันที่</th>
+
+                    <th>รายการ</th>
+
+                    <th>จำนวนเงิน</th>
+
+                </tr>
+
+
+                <tr>
+
+                    <td><input type="text"></td>
+
+                    <td><input type="text"></td>
+
+                    <td><input type="number"></td>
+
+                </tr>
+
+            </table>
+
+        </div>
+
+
+        <div class="side">
+
+            <div class="side-title">
+
+                เครดิต
+
+            </div>
+
+
+            <table>
+
+                <tr>
+
+                    <th>วันที่</th>
+
+                    <th>รายการ</th>
+
+                    <th>จำนวนเงิน</th>
+
+                </tr>
+
+
+                <tr>
+
+                    <td>
+
+                        <input type="text"
+                               id="q5_cash_credit_date">
+
+                    </td>
+
+
+                    <td>
+
+                        <input type="text"
+                               id="q5_cash_credit_account">
+
+                    </td>
+
+
+                    <td>
+
+                        <input type="number"
+                               id="q5_cash_credit_amount">
+
+                    </td>
+
+                </tr>
+
+            </table>
+
+        </div>
+
+    </div>
+
+</div>
+
+
+</div>
+
+<!-- ================================================= -->
+
+<!-- รายการที่ 6 -->
+
+<!-- ================================================= -->
+
+<div class="question"
+     id="question6">
+
+
+<div class="alert alert-info text-center">
+
+    <h4>รายการค้าที่ 6</h4>
+
+    <p class="mb-0">
+
+        วันที่ 6 มกราคม 2569
+
+        กิจการกู้เงินจากธนาคาร
+
+        จำนวนเงิน 100,000 บาท
+
+    </p>
+
+</div>
+
+
+<div class="ledger-box">
+
+    <div class="account-title">
+
+        บัญชีเงินสด
+
+    </div>
+
+
+    <div class="side-container">
+
+
+        <div class="side">
+
+            <div class="side-title">
+
+                เดบิต
+
+            </div>
+
+
+            <table>
+
+                <tr>
+
+                    <th>วันที่</th>
+
+                    <th>รายการ</th>
+
+                    <th>จำนวนเงิน</th>
+
+                </tr>
+
+
+                <tr>
+
+                    <td>
+
+                        <input type="text"
+                               id="q6_cash_debit_date">
+
+                    </td>
+
+
+                    <td>
+
+                        <input type="text"
+                               id="q6_cash_debit_account">
+
+                    </td>
+
+
+                    <td>
+
+                        <input type="number"
+                               id="q6_cash_debit_amount">
+
+                    </td>
+
+                </tr>
+
+            </table>
+
+        </div>
+
+
+        <div class="side">
+
+            <div class="side-title">
+
+                เครดิต
+
+            </div>
+
+
+            <table>
+
+                <tr>
+
+                    <th>วันที่</th>
+
+                    <th>รายการ</th>
+
+                    <th>จำนวนเงิน</th>
+
+                </tr>
+
+
+                <tr>
+
+                    <td><input type="text"></td>
+
+                    <td><input type="text"></td>
+
+                    <td><input type="number"></td>
+
+                </tr>
+
+            </table>
+
+        </div>
+
+    </div>
+
+</div>
+
+
+<div class="ledger-box">
+
+    <div class="account-title">
+
+        บัญชีเงินกู้
+
+    </div>
+
+
+    <div class="side-container">
+
+
+        <div class="side">
+
+            <div class="side-title">
+
+                เดบิต
+
+            </div>
+
+
+            <table>
+
+                <tr>
+
+                    <th>วันที่</th>
+
+                    <th>รายการ</th>
+
+                    <th>จำนวนเงิน</th>
+
+                </tr>
+
+
+                <tr>
+
+                    <td><input type="text"></td>
+
+                    <td><input type="text"></td>
+
+                    <td><input type="number"></td>
+
+                </tr>
+
+            </table>
+
+        </div>
+
+
+        <div class="side">
+
+            <div class="side-title">
+
+                เครดิต
+
+            </div>
+
+
+            <table>
+
+                <tr>
+
+                    <th>วันที่</th>
+
+                    <th>รายการ</th>
+
+                    <th>จำนวนเงิน</th>
+
+                </tr>
+
+
+                <tr>
+
+                    <td>
+
+                        <input type="text"
+                               id="q6_loan_credit_date">
+
+                    </td>
+
+
+                    <td>
+
+                        <input type="text"
+                               id="q6_loan_credit_account">
+
+                    </td>
+
+
+                    <td>
+
+                        <input type="number"
+                               id="q6_loan_credit_amount">
+
+                    </td>
+
+                </tr>
+
+            </table>
+
+        </div>
+
+    </div>
+
+</div>
+
+
+</div>
+
+<!-- ================================================= -->
+
+<!-- รายการที่ 7 -->
+
+<!-- ================================================= -->
+
+<div class="question"
+     id="question7">
+
+```
+<div class="alert alert-info text-center">
+
+    <h4>รายการค้าที่ 7</h4>
+
+    <p class="mb-0">
+
+        วันที่ 7 มกราคม 2569
+
+        กิจการชำระหนี้ให้เจ้าหนี้
+
+        จำนวนเงิน 7,000 บาท
+
+    </p>
+
+</div>
+
+
+<div class="ledger-box">
+
+    <div class="account-title">
+
+        บัญชีเจ้าหนี้
+
+    </div>
+
+
+    <div class="side-container">
+
+
+        <div class="side">
+
+            <div class="side-title">
+
+                เดบิต
+
+            </div>
+
+
+            <table>
+
+                <tr>
+
+                    <th>วันที่</th>
+
+                    <th>รายการ</th>
+
+                    <th>จำนวนเงิน</th>
+
+                </tr>
+
+
+                <tr>
+
+                    <td>
+
+                        <input type="text"
+                               id="q7_payable_debit_date">
+
+                    </td>
+
+
+                    <td>
+
+                        <input type="text"
+                               id="q7_payable_debit_account">
+
+                    </td>
+
+
+                    <td>
+
+                        <input type="number"
+                               id="q7_payable_debit_amount">
+
+                    </td>
+
+                </tr>
+
+            </table>
+
+        </div>
+
+
+        <div class="side">
+
+            <div class="side-title">
+
+                เครดิต
+
+            </div>
+
+
+            <table>
+
+                <tr>
+
+                    <th>วันที่</th>
+
+                    <th>รายการ</th>
+
+                    <th>จำนวนเงิน</th>
+
+                </tr>
+
+
+                <tr>
+
+                    <td><input type="text"></td>
+
+                    <td><input type="text"></td>
+
+                    <td><input type="number"></td>
+
+                </tr>
+
+            </table>
+
+        </div>
+
+    </div>
+
+</div>
+
+
+<div class="ledger-box">
+
+    <div class="account-title">
+
+        บัญชีเงินสด
+
+    </div>
+
+
+    <div class="side-container">
+
+
+        <div class="side">
+
+            <div class="side-title">
+
+                เดบิต
+
+            </div>
+
+
+            <table>
+
+                <tr>
+
+                    <th>วันที่</th>
+
+                    <th>รายการ</th>
+
+                    <th>จำนวนเงิน</th>
+
+                </tr>
+
+
+                <tr>
+
+                    <td><input type="text"></td>
+
+                    <td><input type="text"></td>
+
+                    <td><input type="number"></td>
+
+                </tr>
+
+            </table>
+
+        </div>
+
+
+        <div class="side">
+
+            <div class="side-title">
+
+                เครดิต
+
+            </div>
+
+
+            <table>
+
+                <tr>
+
+                    <th>วันที่</th>
+
+                    <th>รายการ</th>
+
+                    <th>จำนวนเงิน</th>
+
+                </tr>
+
+
+                <tr>
+
+                    <td>
+
+                        <input type="text"
+                               id="q7_cash_credit_date">
+
+                    </td>
+
+
+                    <td>
+
+                        <input type="text"
+                               id="q7_cash_credit_account">
+
+                    </td>
+
+
+                    <td>
+
+                        <input type="number"
+                               id="q7_cash_credit_amount">
+
+                    </td>
+
+                </tr>
+
+            </table>
+
+        </div>
+
+    </div>
+
+</div>
+
+
+</div>
+
+<!-- ================================================= -->
+
+<!-- รายการที่ 8 -->
+
+<!-- ================================================= -->
+
+<div class="question"
+     id="question8">
+
+
+<div class="alert alert-info text-center">
+
+    <h4>รายการค้าที่ 8</h4>
+
+    <p class="mb-0">
+
+        วันที่ 8 มกราคม 2569
+
+        เจ้าของกิจการถอนเงินสดไปใช้ส่วนตัว
+
+        จำนวนเงิน 2,000 บาท
+
+    </p>
+
+</div>
+
+
+<div class="ledger-box">
+
+    <div class="account-title">
+
+        บัญชีถอนใช้ส่วนตัว
+
+    </div>
+
+
+    <div class="side-container">
+
+
+        <div class="side">
+
+            <div class="side-title">
+
+                เดบิต
+
+            </div>
+
+
+            <table>
+
+                <tr>
+
+                    <th>วันที่</th>
+
+                    <th>รายการ</th>
+
+                    <th>จำนวนเงิน</th>
+
+                </tr>
+
+
+                <tr>
+
+                    <td>
+
+                        <input type="text"
+                               id="q8_drawing_debit_date">
+
+                    </td>
+
+
+                    <td>
+
+                        <input type="text"
+                               id="q8_drawing_debit_account">
+
+                    </td>
+
+
+                    <td>
+
+                        <input type="number"
+                               id="q8_drawing_debit_amount">
+
+                    </td>
+
+                </tr>
+
+            </table>
+
+        </div>
+
+
+        <div class="side">
+
+            <div class="side-title">
+
+                เครดิต
+
+            </div>
+
+
+            <table>
+
+                <tr>
+
+                    <th>วันที่</th>
+
+                    <th>รายการ</th>
+
+                    <th>จำนวนเงิน</th>
+
+                </tr>
+
+
+                <tr>
+
+                    <td><input type="text"></td>
+
+                    <td><input type="text"></td>
+
+                    <td><input type="number"></td>
+
+                </tr>
+
+            </table>
+
+        </div>
+
+    </div>
+
+</div>
+
+
+<div class="ledger-box">
+
+    <div class="account-title">
+
+        บัญชีเงินสด
+
+    </div>
+
+
+    <div class="side-container">
+
+
+        <div class="side">
+
+            <div class="side-title">
+
+                เดบิต
+
+            </div>
+
+
+            <table>
+
+                <tr>
+
+                    <th>วันที่</th>
+
+                    <th>รายการ</th>
+
+                    <th>จำนวนเงิน</th>
+
+                </tr>
+
+
+                <tr>
+
+                    <td><input type="text"></td>
+
+                    <td><input type="text"></td>
+
+                    <td><input type="number"></td>
+
+                </tr>
+
+            </table>
+
+        </div>
+
+
+        <div class="side">
+
+            <div class="side-title">
+
+                เครดิต
+
+            </div>
+
+
+            <table>
+
+                <tr>
+
+                    <th>วันที่</th>
+
+                    <th>รายการ</th>
+
+                    <th>จำนวนเงิน</th>
+
+                </tr>
+
+
+                <tr>
+
+                    <td>
+
+                        <input type="text"
+                               id="q8_cash_credit_date">
+
+                    </td>
+
+
+                    <td>
+
+                        <input type="text"
+                               id="q8_cash_credit_account">
+
+                    </td>
+
+
+                    <td>
+
+                        <input type="number"
+                               id="q8_cash_credit_amount">
+
+                    </td>
+
+                </tr>
+
+            </table>
+
+        </div>
+
+    </div>
+
+</div>
+
+
+</div>
+
+<!-- ================================================= -->
+
+<!-- รายการที่ 9 -->
+
+<!-- ================================================= -->
+
+<div class="question"
+     id="question9">
+
+
+<div class="alert alert-info text-center">
+
+    <h4>รายการค้าที่ 9</h4>
+
+    <p class="mb-0">
+
+        วันที่ 9 มกราคม 2569
+
+        กิจการได้รับเงินสดจากลูกหนี้
+
+        จำนวนเงิน 6,000 บาท
+
+    </p>
+
+</div>
+
+
+<div class="ledger-box">
+
+    <div class="account-title">
+
+        บัญชีเงินสด
+
+    </div>
+
+
+    <div class="side-container">
+
+
+        <div class="side">
+
+            <div class="side-title">
+
+                เดบิต
+
+            </div>
+
+
+            <table>
+
+                <tr>
+
+                    <th>วันที่</th>
+
+                    <th>รายการ</th>
+
+                    <th>จำนวนเงิน</th>
+
+                </tr>
+
+
+                <tr>
+
+                    <td>
+
+                        <input type="text"
+                               id="q9_cash_debit_date">
+
+                    </td>
+
+
+                    <td>
+
+                        <input type="text"
+                               id="q9_cash_debit_account">
+
+                    </td>
+
+
+                    <td>
+
+                        <input type="number"
+                               id="q9_cash_debit_amount">
+
+                    </td>
+
+                </tr>
+
+            </table>
+
+        </div>
+
+
+        <div class="side">
+
+            <div class="side-title">
+
+                เครดิต
+
+            </div>
+
+
+            <table>
+
+                <tr>
+
+                    <th>วันที่</th>
+
+                    <th>รายการ</th>
+
+                    <th>จำนวนเงิน</th>
+
+                </tr>
+
+
+                <tr>
+
+                    <td><input type="text"></td>
+
+                    <td><input type="text"></td>
+
+                    <td><input type="number"></td>
+
+                </tr>
+
+            </table>
+
+        </div>
+
+    </div>
+
+</div>
+
+
+<div class="ledger-box">
+
+    <div class="account-title">
+
+        บัญชีลูกหนี้
+
+    </div>
+
+
+    <div class="side-container">
+
+
+        <div class="side">
+
+            <div class="side-title">
+
+                เดบิต
+
+            </div>
+
+
+            <table>
+
+                <tr>
+
+                    <th>วันที่</th>
+
+                    <th>รายการ</th>
+
+                    <th>จำนวนเงิน</th>
+
+                </tr>
+
+
+                <tr>
+
+                    <td><input type="text"></td>
+
+                    <td><input type="text"></td>
+
+                    <td><input type="number"></td>
+
+                </tr>
+
+            </table>
+
+        </div>
+
+
+        <div class="side">
+
+            <div class="side-title">
+
+                เครดิต
+
+            </div>
+
+
+            <table>
+
+                <tr>
+
+                    <th>วันที่</th>
+
+                    <th>รายการ</th>
+
+                    <th>จำนวนเงิน</th>
+
+                </tr>
+
+
+                <tr>
+
+                    <td>
+
+                        <input type="text"
+                               id="q9_debtor_credit_date">
+
+                    </td>
+
+
+                    <td>
+
+                        <input type="text"
+                               id="q9_debtor_credit_account">
+
+                    </td>
+
+
+                    <td>
+
+                        <input type="number"
+                               id="q9_debtor_credit_amount">
+
+                    </td>
+
+                </tr>
+
+            </table>
+
+        </div>
+
+    </div>
+
+</div>
+
+
+</div>
+
+<!-- ================================================= -->
+
+<!-- รายการที่ 10 -->
+
+<!-- ================================================= -->
+
+<div class="question"
+     id="question10">
+
+
+<div class="alert alert-info text-center">
+
+    <h4>รายการค้าที่ 10</h4>
+
+    <p class="mb-0">
+
+        วันที่ 10 มกราคม 2569
+
+        กิจการจ่ายเงินเดือนพนักงาน
+
+        จำนวนเงิน 12,000 บาท
+
+    </p>
+
+</div>
+
+
+<div class="ledger-box">
+
+    <div class="account-title">
+
+        บัญชีเงินเดือน
+
+    </div>
+
+
+    <div class="side-container">
+
+
+        <div class="side">
+
+            <div class="side-title">
+
+                เดบิต
+
+            </div>
+
+
+            <table>
+
+                <tr>
+
+                    <th>วันที่</th>
+
+                    <th>รายการ</th>
+
+                    <th>จำนวนเงิน</th>
+
+                </tr>
+
+
+                <tr>
+
+                    <td>
+
+                        <input type="text"
+                               id="q10_salary_debit_date">
+
+                    </td>
+
+
+                    <td>
+
+                        <input type="text"
+                               id="q10_salary_debit_account">
+
+                    </td>
+
+
+                    <td>
+
+                        <input type="number"
+                               id="q10_salary_debit_amount">
+
+                    </td>
+
+                </tr>
+
+            </table>
+
+        </div>
+
+
+        <div class="side">
+
+            <div class="side-title">
+
+                เครดิต
+
+            </div>
+
+
+            <table>
+
+                <tr>
+
+                    <th>วันที่</th>
+
+                    <th>รายการ</th>
+
+                    <th>จำนวนเงิน</th>
+
+                </tr>
+
+
+                <tr>
+
+                    <td><input type="text"></td>
+
+                    <td><input type="text"></td>
+
+                    <td><input type="number"></td>
+
+                </tr>
+
+            </table>
+
+        </div>
+
+    </div>
+
+</div>
+
+
+<div class="ledger-box">
+
+    <div class="account-title">
+
+        บัญชีเงินสด
+
+    </div>
+
+
+    <div class="side-container">
+
+
+        <div class="side">
+
+            <div class="side-title">
+
+                เดบิต
+
+            </div>
+
+
+            <table>
+
+                <tr>
+
+                    <th>วันที่</th>
+
+                    <th>รายการ</th>
+
+                    <th>จำนวนเงิน</th>
+
+                </tr>
+
+
+                <tr>
+
+                    <td><input type="text"></td>
+
+                    <td><input type="text"></td>
+
+                    <td><input type="number"></td>
+
+                </tr>
+
+            </table>
+
+        </div>
+
+
+        <div class="side">
+
+            <div class="side-title">
+
+                เครดิต
+
+            </div>
+
+
+            <table>
+
+                <tr>
+
+                    <th>วันที่</th>
+
+                    <th>รายการ</th>
+
+                    <th>จำนวนเงิน</th>
+
+                </tr>
+
+
+                <tr>
+
+                    <td>
+
+                        <input type="text"
+                               id="q10_cash_credit_date">
+
+                    </td>
+
+
+                    <td>
+
+                        <input type="text"
+                               id="q10_cash_credit_account">
+
+                    </td>
+
+
+                    <td>
+
+                        <input type="number"
+                               id="q10_cash_credit_amount">
+
+                    </td>
+
+                </tr>
+
+            </table>
+
+        </div>
+
+    </div>
+
+</div>
+
+
+</div>
+
+<!-- ================================================= -->
+
+<!-- ปุ่มควบคุม -->
+
+<!-- ================================================= -->
+
+<div class="button-area">
+
+<button class="check-btn"
+        onclick="checkAnswer()">
+
+    ✔ ตรวจคำตอบ
+
+</button>
+
+
+<button class="previous-btn"
+        onclick="previousQuestion()">
+
+    ⬅ รายการก่อนหน้า
+
+</button>
+
+
+<button class="next-btn"
+        onclick="nextQuestion()">
+
+    ➡ รายการถัดไป
+
+</button>
+
+
+</div>
+
+<div id="result"></div>
+
+<!-- ================================================= -->
+
+<!-- ปุ่มกลับหน้าหลัก -->
+
+<!-- ================================================= -->
+
+<div class="home-button">
+
+
+<a href="../index.html"
+   class="btn btn-secondary btn-lg">
+
+    🏠 กลับหน้าหลัก
+
+</a>
+
+
+</div>
+
+<script>
+
+
+let currentQuestion = 1;
+
+
+const answers = {
+
+
+    1: {
+
+        date: "1 มกราคม 2569",
+
+        debitAccount: "ทุน",
+
+        debitAmount: "50000",
+
+        creditAccount: "เงินสด",
+
+        creditAmount: "50000"
+
+    },
+
+
+    2: {
+
+        date: "2 มกราคม 2569",
+
+        debitAccount: "อุปกรณ์สำนักงาน",
+
+        debitAmount: "5000",
+
+        creditAccount: "เงินสด",
+
+        creditAmount: "5000"
+
+    },
+
+
+    3: {
+
+        date: "3 มกราคม 2569",
+
+        debitAccount: "สินค้า",
+
+        debitAmount: "10000",
+
+        creditAccount: "เจ้าหนี้",
+
+        creditAmount: "10000"
+
+    },
+
+
+    4: {
+
+        date: "4 มกราคม 2569",
+
+        debitAccount: "เงินสด",
+
+        debitAmount: "8000",
+
+        creditAccount: "รายได้",
+
+        creditAmount: "8000"
+
+    },
+
+
+    5: {
+
+        date: "5 มกราคม 2569",
+
+        debitAccount: "ค่าเช่า",
+
+        debitAmount: "3000",
+
+        creditAccount: "เงินสด",
+
+        creditAmount: "3000"
+
+    },
+
+
+    6: {
+
+        date: "6 มกราคม 2569",
+
+        debitAccount: "เงินสด",
+
+        debitAmount: "100000",
+
+        creditAccount: "เงินกู้",
+
+        creditAmount: "100000"
+
+    },
+
+
+    7: {
+
+        date: "7 มกราคม 2569",
+
+        debitAccount: "เจ้าหนี้",
+
+        debitAmount: "7000",
+
+        creditAccount: "เงินสด",
+
+        creditAmount: "7000"
+
+    },
+
+
+    8: {
+
+        date: "8 มกราคม 2569",
+
+        debitAccount: "ถอนใช้ส่วนตัว",
+
+        debitAmount: "2000",
+
+        creditAccount: "เงินสด",
+
+        creditAmount: "2000"
+
+    },
+
+
+    9: {
+
+        date: "9 มกราคม 2569",
+
+        debitAccount: "เงินสด",
+
+        debitAmount: "6000",
+
+        creditAccount: "ลูกหนี้",
+
+        creditAmount: "6000"
+
+    },
+
+
+    10: {
+
+        date: "10 มกราคม 2569",
+
+        debitAccount: "เงินเดือน",
+
+        debitAmount: "12000",
+
+        creditAccount: "เงินสด",
+
+        creditAmount: "12000"
+
+    }
+
+};
+
+
+function cleanText(text) {
+
+    return text
+
+        .trim()
+
+        .replace(/\s+/g, " ")
+
+        .toLowerCase();
+
+}
+
+
+function checkAnswer() {
+
+
+    let answer = answers[currentQuestion];
+
+
+    let dateInputs =
+
+        document.querySelectorAll(
+
+            "#question" +
+
+            currentQuestion +
+
+            " input[type='text']"
+
+        );
+
+
+    let numberInputs =
+
+        document.querySelectorAll(
+
+            "#question" +
+
+            currentQuestion +
+
+            " input[type='number']"
+
+        );
+
+
+    let filledTextInputs = [];
+
+
+    dateInputs.forEach(function(input) {
+
+        if (input.value.trim() !== "") {
+
+            filledTextInputs.push(
+
+                cleanText(input.value)
+
+            );
+
+        }
+
+    });
+
+
+    let amounts = [];
+
+
+    numberInputs.forEach(function(input) {
+
+        if (input.value !== "") {
+
+            amounts.push(input.value);
+
+        }
+
+    });
+
+
+    let correct = false;
+
+
+    if (currentQuestion === 1) {
+
+        correct =
+
+            filledTextInputs.includes(
+
+                cleanText(answer.date)
+
+            ) &&
+
+            filledTextInputs.includes(
+
+                cleanText(answer.debitAccount)
+
+            ) &&
+
+            filledTextInputs.includes(
+
+                cleanText(answer.creditAccount)
+
+            ) &&
+
+            amounts.includes(
+
+                answer.debitAmount
+
+            ) &&
+
+            amounts.includes(
+
+                answer.creditAmount
+
+            );
+
+    }
+
+
+    else {
+
+
+        let requiredAccounts = [
+
+            answer.debitAccount,
+
+            answer.creditAccount
+
+        ];
+
+
+        let accountsCorrect =
+
+            requiredAccounts.every(function(account) {
+
+                return filledTextInputs.includes(
+
+                    cleanText(account)
+
+                );
+
+            });
+
+
+        let dateCorrect =
+
+            filledTextInputs.includes(
+
+                cleanText(answer.date)
+
+            );
+
+
+        let amountsCorrect =
+
+            amounts.includes(
+
+                answer.debitAmount
+
+            ) &&
+
+            amounts.includes(
+
+                answer.creditAmount
+
+            );
+
+
+        correct =
+
+            accountsCorrect &&
+
+            dateCorrect &&
+
+            amountsCorrect;
+
+    }
+
+
+    let result =
+
+        document.getElementById("result");
+
+
+    if (correct) {
+
+        result.innerHTML =
+
+            "🎉 ถูกต้องทั้งหมด! " +
+
+            "รายการที่ " +
+
+            currentQuestion +
+
+            " ได้คะแนน 10 / 10 คะแนน";
+
+
+        result.style.color = "green";
+
+    }
+
+
+    else {
+
+        result.innerHTML =
+
+            "❌ ยังไม่ถูกต้อง " +
+
+            "กรุณาตรวจสอบวันที่ บัญชีคู่ตรงข้าม " +
+
+            "และจำนวนเงินอีกครั้ง";
+
+
+        result.style.color = "red";
+
+    }
+
+}
+
+
+function nextQuestion() {
+
+
+    if (currentQuestion < 10) {
+
+
+        document
+
+            .getElementById(
+
+                "question" +
+
+                currentQuestion
+
+            )
+
+            .classList.remove("active");
+
+
+        currentQuestion++;
+
+
+        document
+
+            .getElementById(
+
+                "question" +
+
+                currentQuestion
+
+            )
+
+            .classList.add("active");
+
+
+        document
+
+            .getElementById(
+
+                "result"
+
+            )
+
+            .innerHTML = "";
+
+
+        window.scrollTo({
+
+            top: 0,
+
+            behavior: "smooth"
+
+        });
+
+    }
+
+
+    else {
+
+
+        alert(
+
+            "🎉 คุณทำครบทั้ง 10 รายการแล้วค่ะ"
+
+        );
+
+    }
+
+}
+
+
+function previousQuestion() {
+
+
+    if (currentQuestion > 1) {
+
+
+        document
+
+            .getElementById(
+
+                "question" +
+
+                currentQuestion
+
+            )
+
+            .classList.remove("active");
+
+
+        currentQuestion--;
+
+
+        document
+
+            .getElementById(
+
+                "question" +
+
+                currentQuestion
+
+            )
+
+            .classList.add("active");
+
+
+        document
+
+            .getElementById(
+
+                "result"
+
+            )
+
+            .innerHTML = "";
+
+
+        window.scrollTo({
+
+            top: 0,
+
+            behavior: "smooth"
+
+        });
+
+    }
+
+
+    else {
+
+
+        alert(
+
+            "นี่คือรายการค้าที่ 1 ค่ะ"
+
+        );
+
+    }
+
+}
+
+
+</script>
+
+</body>
+
+</html>

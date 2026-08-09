@@ -1,0 +1,1127 @@
+<!DOCTYPE html>
+<html lang="th">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>กระดาษทำการ | Accounting Practice Lab</title>
+
+
+    <!-- Bootstrap -->
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/css/bootstrap.min.css"
+          rel="stylesheet">
+
+
+    <!-- CSS หลัก -->
+
+    <link rel="stylesheet"
+          href="../css/style.css">
+
+
+    <style>
+
+        body {
+            background-color: #f4f7fb;
+        }
+
+
+        .page-header {
+
+            background: linear-gradient(
+                135deg,
+                #0d6efd,
+                #084298
+            );
+
+            color: white;
+
+            padding: 60px 20px;
+
+            text-align: center;
+
+        }
+
+
+        .content-card {
+
+            background: white;
+
+            border-radius: 20px;
+
+            padding: 35px;
+
+            box-shadow: 0 5px 20px rgba(
+                0,
+                0,
+                0,
+                0.08
+            );
+
+        }
+
+
+        .table {
+
+            min-width: 1100px;
+
+        }
+
+
+        .table th {
+
+            background-color: #0d6efd;
+
+            color: white;
+
+            text-align: center;
+
+            vertical-align: middle;
+
+            white-space: nowrap;
+
+        }
+
+
+        .table td {
+
+            vertical-align: middle;
+
+        }
+
+
+        .account-name {
+
+            font-weight: bold;
+
+        }
+
+
+        .account-type {
+
+            font-size: 0.85rem;
+
+            color: #6c757d;
+
+        }
+
+
+        .amount {
+
+            text-align: right;
+
+            font-weight: bold;
+
+        }
+
+
+        .total-row th {
+
+            background-color: #212529;
+
+            color: white;
+
+        }
+
+
+        .btn {
+
+            border-radius: 10px;
+
+            padding: 10px 25px;
+
+            margin: 5px;
+
+        }
+
+    </style>
+
+</head>
+
+
+<body>
+
+
+<!-- =========================
+     NAVBAR
+========================= -->
+
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+
+    <div class="container">
+
+
+        <a class="navbar-brand fw-bold"
+           href="../index.html">
+
+            📘 Accounting Practice Lab
+
+        </a>
+
+
+        <button class="navbar-toggler"
+                type="button"
+
+                data-bs-toggle="collapse"
+
+                data-bs-target="#menu">
+
+            <span class="navbar-toggler-icon"></span>
+
+        </button>
+
+
+        <div class="collapse navbar-collapse"
+             id="menu">
+
+
+            <ul class="navbar-nav ms-auto">
+
+
+                <li class="nav-item">
+
+                    <a class="nav-link"
+                       href="../index.html">
+
+                        หน้าแรก
+
+                    </a>
+
+                </li>
+
+
+                <li class="nav-item">
+
+                    <a class="nav-link"
+                       href="lesson.html">
+
+                        ห้องฝึกปฏิบัติ
+
+                    </a>
+
+                </li>
+
+
+                <li class="nav-item">
+
+                    <a class="nav-link"
+                       href="ledger.html">
+
+                        บัญชีแยกประเภท
+
+                    </a>
+
+                </li>
+
+
+                <li class="nav-item">
+
+                    <a class="nav-link"
+                       href="trial-balance.html">
+
+                        งบทดลอง
+
+                    </a>
+
+                </li>
+
+
+                <li class="nav-item">
+
+                    <a class="nav-link active"
+                       href="worksheet.html">
+
+                        กระดาษทำการ
+
+                    </a>
+
+                </li>
+
+
+            </ul>
+
+        </div>
+
+    </div>
+
+</nav>
+
+
+
+<!-- =========================
+     HEADER
+========================= -->
+
+<header class="page-header">
+
+    <div class="container">
+
+        <h1>
+
+            📄 กระดาษทำการ
+
+        </h1>
+
+
+        <p class="lead">
+
+            กระดาษทำการ 6 ช่องก่อนรายการปรับปรุง
+
+        </p>
+
+    </div>
+
+</header>
+
+
+
+<!-- =========================
+     MAIN
+========================= -->
+
+<main class="container my-5">
+
+
+    <div class="content-card">
+
+
+        <h2 class="text-center text-primary mb-3">
+
+            📋 กระดาษทำการ 6 ช่อง
+
+        </h2>
+
+
+        <p class="text-center text-muted mb-4">
+
+            ระบบนำยอดจากงบทดลองมาจัดประเภทบัญชีทั้ง 11 บัญชีโดยอัตโนมัติ
+
+        </p>
+
+
+
+        <!-- ตาราง -->
+
+        <div class="table-responsive">
+
+
+            <table class="table table-bordered">
+
+
+                <thead>
+
+
+                    <tr>
+
+                        <th rowspan="2">
+
+                            ลำดับ
+
+                        </th>
+
+
+                        <th rowspan="2">
+
+                            ชื่อบัญชี
+
+                        </th>
+
+
+                        <th colspan="2">
+
+                            งบทดลอง
+
+                        </th>
+
+
+                        <th colspan="2">
+
+                            งบกำไรขาดทุน
+
+                        </th>
+
+
+                        <th colspan="2">
+
+                            งบแสดงฐานะการเงิน
+
+                        </th>
+
+                    </tr>
+
+
+                    <tr>
+
+
+                        <th>
+
+                            เดบิต
+
+                        </th>
+
+
+                        <th>
+
+                            เครดิต
+
+                        </th>
+
+
+                        <th>
+
+                            เดบิต
+
+                        </th>
+
+
+                        <th>
+
+                            เครดิต
+
+                        </th>
+
+
+                        <th>
+
+                            เดบิต
+
+                        </th>
+
+
+                        <th>
+
+                            เครดิต
+
+                        </th>
+
+                    </tr>
+
+                </thead>
+
+
+                <tbody id="worksheetBody">
+
+                </tbody>
+
+
+                <tfoot>
+
+
+                    <tr class="total-row">
+
+
+                        <th colspan="2"
+                            class="text-end">
+
+                            รวม
+
+                        </th>
+
+
+                        <th id="totalTrialDebit">
+
+                            0.00
+
+                        </th>
+
+
+                        <th id="totalTrialCredit">
+
+                            0.00
+
+                        </th>
+
+
+                        <th id="totalProfitDebit">
+
+                            0.00
+
+                        </th>
+
+
+                        <th id="totalProfitCredit">
+
+                            0.00
+
+                        </th>
+
+
+                        <th id="totalBalanceDebit">
+
+                            0.00
+
+                        </th>
+
+
+                        <th id="totalBalanceCredit">
+
+                            0.00
+
+                        </th>
+
+                    </tr>
+
+                </tfoot>
+
+
+            </table>
+
+        </div>
+
+
+
+        <!-- คำอธิบาย -->
+
+        <div class="alert alert-info mt-4">
+
+
+            <h5>
+
+                📌 การจัดประเภทบัญชีอัตโนมัติ
+
+            </h5>
+
+
+            <p class="mb-0">
+
+                ระบบจะตรวจสอบชื่อบัญชี
+                และจัดประเภทบัญชีตามประเภทที่กำหนดไว้
+                จากนั้นนำยอดไปแสดงในงบกำไรขาดทุน
+                หรืองบแสดงฐานะการเงินโดยอัตโนมัติ
+
+            </p>
+
+        </div>
+
+
+    </div>
+
+
+
+    <!-- ปุ่มกลับ -->
+
+    <div class="text-center mt-4">
+
+
+        <a href="trial-balance.html"
+           class="btn btn-outline-primary">
+
+            ← กลับไปงบทดลอง
+
+        </a>
+
+
+        <a href="adjustment.html"
+           class="btn btn-outline-warning">
+
+            🛠️ รายการปรับปรุง
+
+        </a>
+
+
+        <a href="../index.html"
+           class="btn btn-outline-dark">
+
+            🏠 กลับหน้าหลัก
+
+        </a>
+
+    </div>
+
+</main>
+
+
+
+<!-- =========================
+     FOOTER
+========================= -->
+
+<footer class="bg-dark text-white text-center py-4">
+
+
+    <p class="mb-1">
+
+        📘 Accounting Practice Lab
+
+    </p>
+
+
+    <small>
+
+        ระบบฝึกปฏิบัติการบัญชีเบื้องต้น
+
+    </small>
+
+</footer>
+
+
+
+<!-- =========================
+     JAVASCRIPT
+========================= -->
+
+<script>
+
+
+// =====================================
+// เมื่อเปิดหน้าเว็บ
+// =====================================
+
+window.onload = function() {
+
+    loadWorksheet();
+
+};
+
+
+
+// =====================================
+// กำหนดประเภทบัญชีทั้ง 11 บัญชี
+// =====================================
+
+// งบกำไรขาดทุน
+const incomeStatementAccounts = [
+
+    "รายได้ค่าบริการ",
+
+    "รายได้",
+
+    "ค่าเช่า",
+
+    "ค่าเงินเดือน",
+
+    "ค่าไฟฟ้า"
+
+];
+
+
+// งบแสดงฐานะการเงิน
+const balanceSheetAccounts = [
+
+    "เงินสด",
+
+    "ลูกหนี้",
+
+    "วัสดุสำนักงาน",
+
+    "อุปกรณ์สำนักงาน",
+
+    "เจ้าหนี้",
+
+    "ทุน",
+
+    "ถอนใช้ส่วนตัว"
+
+];
+
+
+
+// =====================================
+// ตรวจสอบประเภทบัญชี
+// =====================================
+
+function getAccountType(account) {
+
+
+    const accountName = account.trim();
+
+
+
+    // ตรวจสอบบัญชีงบกำไรขาดทุน
+
+    if (
+
+        incomeStatementAccounts.includes(
+
+            accountName
+
+        )
+
+    ) {
+
+        return "งบกำไรขาดทุน";
+
+    }
+
+
+
+    // ตรวจสอบบัญชีงบแสดงฐานะการเงิน
+
+    if (
+
+        balanceSheetAccounts.includes(
+
+            accountName
+
+        )
+
+    ) {
+
+        return "งบแสดงฐานะการเงิน";
+
+    }
+
+
+
+    // กรณีไม่พบชื่อบัญชี
+
+    return "งบแสดงฐานะการเงิน";
+
+}
+
+
+
+// =====================================
+// รูปแบบตัวเลข
+// =====================================
+
+function formatMoney(number) {
+
+    return Number(number).toLocaleString(
+
+        "th-TH",
+
+        {
+
+            minimumFractionDigits: 2,
+
+            maximumFractionDigits: 2
+
+        }
+
+    );
+
+}
+
+
+
+// =====================================
+// โหลดข้อมูล
+// =====================================
+
+function loadWorksheet() {
+
+
+    const data = localStorage.getItem(
+
+        "ledgerData"
+
+    );
+
+
+    const tableBody = document.getElementById(
+
+        "worksheetBody"
+
+    );
+
+
+    tableBody.innerHTML = "";
+
+
+
+    if (!data) {
+
+
+        tableBody.innerHTML = `
+
+            <tr>
+
+                <td colspan="8"
+
+                    class="text-center text-muted py-4">
+
+
+                    ⚠️ ยังไม่มีข้อมูลบัญชีแยกประเภท
+
+
+                    <br><br>
+
+
+                    กรุณาไปจัดทำบัญชีแยกประเภทก่อน
+
+
+                </td>
+
+            </tr>
+
+        `;
+
+
+        return;
+
+    }
+
+
+
+    const ledgerData = JSON.parse(data);
+
+
+
+    let number = 1;
+
+
+
+    let totalTrialDebit = 0;
+
+    let totalTrialCredit = 0;
+
+
+    let totalProfitDebit = 0;
+
+    let totalProfitCredit = 0;
+
+
+    let totalBalanceDebit = 0;
+
+    let totalBalanceCredit = 0;
+
+
+
+    Object.keys(ledgerData).forEach(function(account) {
+
+
+        const balance = Number(
+
+            ledgerData[account].balance
+
+        );
+
+
+        const balanceType =
+
+            ledgerData[account].balanceType;
+
+
+
+        if (balance === 0) {
+
+            return;
+
+        }
+
+
+
+        let trialDebit = "";
+
+        let trialCredit = "";
+
+
+        let profitDebit = "";
+
+        let profitCredit = "";
+
+
+        let balanceDebit = "";
+
+        let balanceCredit = "";
+
+
+
+        // =========================
+        // งบทดลอง
+        // =========================
+
+        if (balanceType === "เดบิต") {
+
+
+            trialDebit = formatMoney(balance);
+
+
+            totalTrialDebit += balance;
+
+        }
+
+
+        else if (balanceType === "เครดิต") {
+
+
+            trialCredit = formatMoney(balance);
+
+
+            totalTrialCredit += balance;
+
+        }
+
+
+
+        // =========================
+        // ตรวจประเภทบัญชี
+        // =========================
+
+        const accountType = getAccountType(
+
+            account
+
+        );
+
+
+
+        // =========================
+        // งบกำไรขาดทุน
+        // =========================
+
+        if (
+
+            accountType ===
+
+            "งบกำไรขาดทุน"
+
+        ) {
+
+
+            if (
+
+                balanceType ===
+
+                "เดบิต"
+
+            ) {
+
+
+                profitDebit =
+
+                    formatMoney(balance);
+
+
+                totalProfitDebit += balance;
+
+            }
+
+
+            else {
+
+
+                profitCredit =
+
+                    formatMoney(balance);
+
+
+                totalProfitCredit += balance;
+
+            }
+
+        }
+
+
+
+        // =========================
+        // งบแสดงฐานะการเงิน
+        // =========================
+
+        else {
+
+
+            if (
+
+                balanceType ===
+
+                "เดบิต"
+
+            ) {
+
+
+                balanceDebit =
+
+                    formatMoney(balance);
+
+
+                totalBalanceDebit += balance;
+
+            }
+
+
+            else {
+
+
+                balanceCredit =
+
+                    formatMoney(balance);
+
+
+                totalBalanceCredit += balance;
+
+            }
+
+        }
+
+
+
+        // =========================
+        // แสดงแถว
+        // =========================
+
+        tableBody.innerHTML += `
+
+            <tr>
+
+
+                <td class="text-center">
+
+                    ${number}
+
+                </td>
+
+
+                <td>
+
+
+                    <div class="account-name">
+
+                        ${account}
+
+                    </div>
+
+
+                    <div class="account-type">
+
+                        ${accountType}
+
+                    </div>
+
+                </td>
+
+
+                <td class="text-end fw-bold text-primary">
+
+                    ${trialDebit}
+
+                </td>
+
+
+                <td class="text-end fw-bold text-success">
+
+                    ${trialCredit}
+
+                </td>
+
+
+                <td class="text-end fw-bold">
+
+                    ${profitDebit}
+
+                </td>
+
+
+                <td class="text-end fw-bold">
+
+                    ${profitCredit}
+
+                </td>
+
+
+                <td class="text-end fw-bold">
+
+                    ${balanceDebit}
+
+                </td>
+
+
+                <td class="text-end fw-bold">
+
+                    ${balanceCredit}
+
+                </td>
+
+            </tr>
+
+        `;
+
+
+        number++;
+
+
+    });
+
+
+
+    // =====================================
+    // แสดงยอดรวม
+    // =====================================
+
+    document.getElementById(
+
+        "totalTrialDebit"
+
+    ).innerHTML = formatMoney(
+
+        totalTrialDebit
+
+    );
+
+
+    document.getElementById(
+
+        "totalTrialCredit"
+
+    ).innerHTML = formatMoney(
+
+        totalTrialCredit
+
+    );
+
+
+    document.getElementById(
+
+        "totalProfitDebit"
+
+    ).innerHTML = formatMoney(
+
+        totalProfitDebit
+
+    );
+
+
+    document.getElementById(
+
+        "totalProfitCredit"
+
+    ).innerHTML = formatMoney(
+
+        totalProfitCredit
+
+    );
+
+
+    document.getElementById(
+
+        "totalBalanceDebit"
+
+    ).innerHTML = formatMoney(
+
+        totalBalanceDebit
+
+    );
+
+
+    document.getElementById(
+
+        "totalBalanceCredit"
+
+    ).innerHTML = formatMoney(
+
+        totalBalanceCredit
+
+    );
+
+}
+
+
+</script>
+
+
+
+<!-- Bootstrap JavaScript -->
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/js/bootstrap.bundle.min.js">
+
+</script>
+
+
+</body>
+
+</html>

@@ -1,0 +1,1337 @@
+<!DOCTYPE html>
+<html lang="th">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>รายการปรับปรุงบัญชี | Accounting Practice Lab</title>
+
+
+    <!-- Bootstrap -->
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/css/bootstrap.min.css"
+          rel="stylesheet">
+
+
+    <!-- CSS หลัก -->
+
+    <link rel="stylesheet"
+          href="../css/style.css">
+
+
+    <style>
+
+        body {
+            background-color: #f4f7fb;
+        }
+
+
+        .page-header {
+            background: linear-gradient(
+                135deg,
+                #6f42c1,
+                #432874
+            );
+
+            color: white;
+
+            padding: 60px 20px;
+
+            text-align: center;
+        }
+
+
+        .content-card {
+            background: white;
+
+            border-radius: 20px;
+
+            padding: 35px;
+
+            box-shadow: 0 5px 20px rgba(
+                0,
+                0,
+                0,
+                0.08
+            );
+        }
+
+
+        .question-card {
+            border: 1px solid #dee2e6;
+
+            border-radius: 15px;
+
+            padding: 25px;
+
+            margin-bottom: 25px;
+
+            background-color: #ffffff;
+        }
+
+
+        .question-card:hover {
+            box-shadow: 0 5px 15px rgba(
+                0,
+                0,
+                0,
+                0.08
+            );
+        }
+
+
+        .btn {
+            border-radius: 10px;
+
+            padding: 10px 25px;
+
+            margin: 5px;
+        }
+
+
+        .score-box {
+            border-left: 5px solid #6f42c1;
+        }
+
+
+        .correct {
+            border: 2px solid #198754;
+            background-color: #f0fff5;
+        }
+
+
+        .incorrect {
+            border: 2px solid #dc3545;
+            background-color: #fff5f5;
+        }
+
+
+        .answer-box {
+            display: none;
+        }
+
+    </style>
+
+</head>
+
+
+<body>
+
+
+<!-- =========================
+     NAVBAR
+========================= -->
+
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+
+    <div class="container">
+
+
+        <a class="navbar-brand fw-bold"
+           href="../index.html">
+
+            📘 Accounting Practice Lab
+
+        </a>
+
+
+        <button class="navbar-toggler"
+                type="button"
+
+                data-bs-toggle="collapse"
+
+                data-bs-target="#menu">
+
+            <span class="navbar-toggler-icon"></span>
+
+        </button>
+
+
+        <div class="collapse navbar-collapse"
+             id="menu">
+
+
+            <ul class="navbar-nav ms-auto">
+
+
+                <li class="nav-item">
+
+                    <a class="nav-link"
+                       href="../index.html">
+
+                        หน้าแรก
+
+                    </a>
+
+                </li>
+
+
+                <li class="nav-item">
+
+                    <a class="nav-link"
+                       href="lesson.html">
+
+                        ห้องฝึกปฏิบัติ
+
+                    </a>
+
+                </li>
+
+
+                <li class="nav-item">
+
+                    <a class="nav-link"
+                       href="ledger.html">
+
+                        บัญชีแยกประเภท
+
+                    </a>
+
+                </li>
+
+
+                <li class="nav-item">
+
+                    <a class="nav-link"
+                       href="trial-balance.html">
+
+                        งบทดลอง
+
+                    </a>
+
+                </li>
+
+
+                <li class="nav-item">
+
+                    <a class="nav-link"
+                       href="worksheet.html">
+
+                        กระดาษทำการ 6 ช่อง
+
+                    </a>
+
+                </li>
+
+
+                <li class="nav-item">
+
+                    <a class="nav-link active"
+                       href="adjustment.html">
+
+                        รายการปรับปรุง
+
+                    </a>
+
+                </li>
+
+
+                <li class="nav-item">
+
+                    <a class="nav-link"
+                       href="worksheet-10.html">
+
+                        กระดาษทำการ 10 ช่อง
+
+                    </a>
+
+                </li>
+
+
+            </ul>
+
+        </div>
+
+    </div>
+
+</nav>
+
+
+
+<!-- =========================
+     HEADER
+========================= -->
+
+<header class="page-header">
+
+    <div class="container">
+
+
+        <h1>
+
+            🛠️ รายการปรับปรุงบัญชี
+
+        </h1>
+
+
+        <p class="lead">
+
+            ฝึกบันทึกรายการปรับปรุงก่อนจัดทำกระดาษทำการ 10 ช่อง
+
+        </p>
+
+    </div>
+
+</header>
+
+
+
+<!-- =========================
+     MAIN
+========================= -->
+
+<main class="container my-5">
+
+
+    <!-- คะแนน -->
+
+    <div class="card shadow score-box mb-4">
+
+
+        <div class="card-body text-center">
+
+
+            <h4 class="text-primary">
+
+                🏆 คะแนนของคุณ
+
+            </h4>
+
+
+            <h2 id="score">
+
+                0 / 6
+
+            </h2>
+
+        </div>
+
+    </div>
+
+
+
+    <!-- เนื้อหา -->
+
+    <div class="content-card">
+
+
+        <h2 class="text-center text-primary mb-4">
+
+            📋 แบบฝึกรายการปรับปรุงบัญชี
+
+        </h2>
+
+
+        <div class="alert alert-info">
+
+
+            <strong>คำชี้แจง</strong>
+
+
+            <br>
+
+
+            ให้นักศึกษาวิเคราะห์รายการปรับปรุง
+            แล้วระบุบัญชีเดบิต บัญชีเครดิต
+            และจำนวนเงินให้ถูกต้อง
+
+        </div>
+
+
+
+        <!-- รายการที่ 1 -->
+
+        <div class="question-card"
+             id="question1">
+
+
+            <h4>
+
+                📌 รายการที่ 1 ค่าใช้จ่ายค้างจ่าย
+
+            </h4>
+
+
+            <p class="fs-5">
+
+                กิจการมีค่าใช้จ่ายค้างจ่าย
+                จำนวน 2,000 บาท
+
+            </p>
+
+
+            <label class="form-label fw-bold">
+
+                บัญชีเดบิต
+
+            </label>
+
+
+            <input type="text"
+                   id="debitAccount1"
+                   class="form-control mb-2"
+                   placeholder="เช่น ค่าใช้จ่าย">
+
+
+            <label class="form-label fw-bold">
+
+                จำนวนเงินเดบิต
+
+            </label>
+
+
+            <input type="number"
+                   id="debitAmount1"
+                   class="form-control mb-2">
+
+
+            <label class="form-label fw-bold">
+
+                บัญชีเครดิต
+
+            </label>
+
+
+            <input type="text"
+                   id="creditAccount1"
+                   class="form-control mb-2"
+                   placeholder="เช่น ค่าใช้จ่ายค้างจ่าย">
+
+
+            <label class="form-label fw-bold">
+
+                จำนวนเงินเครดิต
+
+            </label>
+
+
+            <input type="number"
+                   id="creditAmount1"
+                   class="form-control">
+
+        </div>
+
+
+
+        <!-- รายการที่ 2 -->
+
+        <div class="question-card"
+             id="question2">
+
+
+            <h4>
+
+                📌 รายการที่ 2 รายได้ค้างรับ
+
+            </h4>
+
+
+            <p class="fs-5">
+
+                กิจการมีรายได้ค้างรับ
+                จำนวน 3,000 บาท
+
+            </p>
+
+
+            <label class="form-label fw-bold">
+
+                บัญชีเดบิต
+
+            </label>
+
+
+            <input type="text"
+                   id="debitAccount2"
+                   class="form-control mb-2"
+                   placeholder="เช่น รายได้ค้างรับ">
+
+
+            <label class="form-label fw-bold">
+
+                จำนวนเงินเดบิต
+
+            </label>
+
+
+            <input type="number"
+                   id="debitAmount2"
+                   class="form-control mb-2">
+
+
+            <label class="form-label fw-bold">
+
+                บัญชีเครดิต
+
+            </label>
+
+
+            <input type="text"
+                   id="creditAccount2"
+                   class="form-control mb-2"
+                   placeholder="เช่น รายได้">
+
+
+            <label class="form-label fw-bold">
+
+                จำนวนเงินเครดิต
+
+            </label>
+
+
+            <input type="number"
+                   id="creditAmount2"
+                   class="form-control">
+
+        </div>
+
+
+
+        <!-- รายการที่ 3 -->
+
+        <div class="question-card"
+             id="question3">
+
+
+            <h4>
+
+                📌 รายการที่ 3 ค่าใช้จ่ายจ่ายล่วงหน้า
+
+            </h4>
+
+
+            <p class="fs-5">
+
+                ค่าใช้จ่ายจ่ายล่วงหน้าจำนวน 4,000 บาท
+                ได้ถึงกำหนดเป็นค่าใช้จ่ายของงวดนี้
+
+            </p>
+
+
+            <label class="form-label fw-bold">
+
+                บัญชีเดบิต
+
+            </label>
+
+
+            <input type="text"
+                   id="debitAccount3"
+                   class="form-control mb-2"
+                   placeholder="เช่น ค่าใช้จ่าย">
+
+
+            <label class="form-label fw-bold">
+
+                จำนวนเงินเดบิต
+
+            </label>
+
+
+            <input type="number"
+                   id="debitAmount3"
+                   class="form-control mb-2">
+
+
+            <label class="form-label fw-bold">
+
+                บัญชีเครดิต
+
+            </label>
+
+
+            <input type="text"
+                   id="creditAccount3"
+                   class="form-control mb-2"
+                   placeholder="เช่น ค่าใช้จ่ายจ่ายล่วงหน้า">
+
+
+            <label class="form-label fw-bold">
+
+                จำนวนเงินเครดิต
+
+            </label>
+
+
+            <input type="number"
+                   id="creditAmount3"
+                   class="form-control">
+
+        </div>
+
+
+
+        <!-- รายการที่ 4 -->
+
+        <div class="question-card"
+             id="question4">
+
+
+            <h4>
+
+                📌 รายการที่ 4 รายได้รับล่วงหน้า
+
+            </h4>
+
+
+            <p class="fs-5">
+
+                รายได้รับล่วงหน้าจำนวน 5,000 บาท
+                ได้เกิดเป็นรายได้ของกิจการแล้ว
+
+            </p>
+
+
+            <label class="form-label fw-bold">
+
+                บัญชีเดบิต
+
+            </label>
+
+
+            <input type="text"
+                   id="debitAccount4"
+                   class="form-control mb-2"
+                   placeholder="เช่น รายได้รับล่วงหน้า">
+
+
+            <label class="form-label fw-bold">
+
+                จำนวนเงินเดบิต
+
+            </label>
+
+
+            <input type="number"
+                   id="debitAmount4"
+                   class="form-control mb-2">
+
+
+            <label class="form-label fw-bold">
+
+                บัญชีเครดิต
+
+            </label>
+
+
+            <input type="text"
+                   id="creditAccount4"
+                   class="form-control mb-2"
+                   placeholder="เช่น รายได้">
+
+
+            <label class="form-label fw-bold">
+
+                จำนวนเงินเครดิต
+
+            </label>
+
+
+            <input type="number"
+                   id="creditAmount4"
+                   class="form-control">
+
+        </div>
+
+
+
+        <!-- รายการที่ 5 -->
+
+        <div class="question-card"
+             id="question5">
+
+
+            <h4>
+
+                📌 รายการที่ 5 ค่าเสื่อมราคา
+
+            </h4>
+
+
+            <p class="fs-5">
+
+                กิจการบันทึกค่าเสื่อมราคาอุปกรณ์
+                จำนวน 6,000 บาท
+
+            </p>
+
+
+            <label class="form-label fw-bold">
+
+                บัญชีเดบิต
+
+            </label>
+
+
+            <input type="text"
+                   id="debitAccount5"
+                   class="form-control mb-2"
+                   placeholder="เช่น ค่าเสื่อมราคา">
+
+
+            <label class="form-label fw-bold">
+
+                จำนวนเงินเดบิต
+
+            </label>
+
+
+            <input type="number"
+                   id="debitAmount5"
+                   class="form-control mb-2">
+
+
+            <label class="form-label fw-bold">
+
+                บัญชีเครดิต
+
+            </label>
+
+
+            <input type="text"
+                   id="creditAccount5"
+                   class="form-control mb-2"
+                   placeholder="เช่น ค่าเสื่อมราคาสะสม">
+
+
+            <label class="form-label fw-bold">
+
+                จำนวนเงินเครดิต
+
+            </label>
+
+
+            <input type="number"
+                   id="creditAmount5"
+                   class="form-control">
+
+        </div>
+
+
+
+        <!-- รายการที่ 6 -->
+
+        <div class="question-card"
+             id="question6">
+
+
+            <h4>
+
+                📌 รายการที่ 6 วัสดุสำนักงานใช้ไป
+
+            </h4>
+
+
+            <p class="fs-5">
+
+                วัสดุสำนักงานใช้ไป
+                จำนวน 1,500 บาท
+
+            </p>
+
+
+            <label class="form-label fw-bold">
+
+                บัญชีเดบิต
+
+            </label>
+
+
+            <input type="text"
+                   id="debitAccount6"
+                   class="form-control mb-2"
+                   placeholder="เช่น วัสดุสำนักงานใช้ไป">
+
+
+            <label class="form-label fw-bold">
+
+                จำนวนเงินเดบิต
+
+            </label>
+
+
+            <input type="number"
+                   id="debitAmount6"
+                   class="form-control mb-2">
+
+
+            <label class="form-label fw-bold">
+
+                บัญชีเครดิต
+
+            </label>
+
+
+            <input type="text"
+                   id="creditAccount6"
+                   class="form-control mb-2"
+                   placeholder="เช่น วัสดุสำนักงาน">
+
+
+            <label class="form-label fw-bold">
+
+                จำนวนเงินเครดิต
+
+            </label>
+
+
+            <input type="number"
+                   id="creditAmount6"
+                   class="form-control">
+
+        </div>
+
+
+
+        <!-- ปุ่ม -->
+
+        <div class="text-center mt-4">
+
+
+            <button class="btn btn-primary btn-lg"
+                    onclick="checkAnswers()">
+
+                ✅ ตรวจคำตอบ
+
+            </button>
+
+
+            <button class="btn btn-danger btn-lg"
+                    onclick="clearAnswers()">
+
+                🗑️ ล้างคำตอบ
+
+            </button>
+
+        </div>
+
+
+
+        <div id="result"
+             class="mt-4">
+
+        </div>
+
+    </div>
+
+
+
+    <!-- ปุ่มกลับ -->
+
+    <div class="text-center mt-4">
+
+
+        <a href="worksheet.html"
+           class="btn btn-outline-primary">
+
+            ← กลับไปกระดาษทำการ 6 ช่อง
+
+        </a>
+
+
+        <a href="worksheet-10.html"
+           class="btn btn-outline-success">
+
+            📄 ไปกระดาษทำการ 10 ช่อง
+
+        </a>
+
+
+        <a href="../index.html"
+           class="btn btn-outline-dark">
+
+            🏠 กลับหน้าหลัก
+
+        </a>
+
+    </div>
+
+</main>
+
+
+
+<!-- =========================
+     FOOTER
+========================= -->
+
+<footer class="bg-dark text-white text-center py-4">
+
+
+    <p class="mb-1">
+
+        📘 Accounting Practice Lab
+
+    </p>
+
+
+    <small>
+
+        ระบบฝึกปฏิบัติการบัญชีเบื้องต้น
+
+    </small>
+
+</footer>
+
+
+
+<!-- =========================
+     JAVASCRIPT
+========================= -->
+
+<script>
+
+
+// ===============================
+// คำตอบที่ถูกต้อง
+// ===============================
+
+const answers = [
+
+
+    [
+
+        "ค่าใช้จ่าย",
+
+        "2000",
+
+        "ค่าใช้จ่ายค้างจ่าย",
+
+        "2000"
+
+    ],
+
+
+    [
+
+        "รายได้ค้างรับ",
+
+        "3000",
+
+        "รายได้",
+
+        "3000"
+
+    ],
+
+
+    [
+
+        "ค่าใช้จ่าย",
+
+        "4000",
+
+        "ค่าใช้จ่ายจ่ายล่วงหน้า",
+
+        "4000"
+
+    ],
+
+
+    [
+
+        "รายได้รับล่วงหน้า",
+
+        "5000",
+
+        "รายได้",
+
+        "5000"
+
+    ],
+
+
+    [
+
+        "ค่าเสื่อมราคา",
+
+        "6000",
+
+        "ค่าเสื่อมราคาสะสม",
+
+        "6000"
+
+    ],
+
+
+    [
+
+        "วัสดุสำนักงานใช้ไป",
+
+        "1500",
+
+        "วัสดุสำนักงาน",
+
+        "1500"
+
+    ]
+
+];
+
+
+
+// ===============================
+// เมื่อเปิดหน้า
+// ===============================
+
+window.onload = function() {
+
+    loadScore();
+
+};
+
+
+
+// ===============================
+// โหลดคะแนน
+// ===============================
+
+function loadScore() {
+
+
+    const savedScore =
+
+        localStorage.getItem(
+
+            "adjustmentScore"
+
+        );
+
+
+    if (savedScore !== null) {
+
+
+        document.getElementById(
+
+            "score"
+
+        ).innerHTML =
+
+            savedScore + " / 6";
+
+    }
+
+}
+
+
+
+// ===============================
+// ตรวจคำตอบ
+// ===============================
+
+function checkAnswers() {
+
+
+    let score = 0;
+
+
+    for (
+
+        let i = 1;
+
+        i <= 6;
+
+        i++
+
+    ) {
+
+
+        const debitAccount =
+
+            document.getElementById(
+
+                "debitAccount" + i
+
+            ).value.trim();
+
+
+        const debitAmount =
+
+            document.getElementById(
+
+                "debitAmount" + i
+
+            ).value;
+
+
+        const creditAccount =
+
+            document.getElementById(
+
+                "creditAccount" + i
+
+            ).value.trim();
+
+
+        const creditAmount =
+
+            document.getElementById(
+
+                "creditAmount" + i
+
+            ).value;
+
+
+
+        const correct =
+
+            debitAccount.includes(
+
+                answers[i - 1][0]
+
+            )
+
+
+            &&
+
+
+            debitAmount ===
+
+                answers[i - 1][1]
+
+
+            &&
+
+
+            creditAccount.includes(
+
+                answers[i - 1][2]
+
+            )
+
+
+            &&
+
+
+            creditAmount ===
+
+                answers[i - 1][3];
+
+
+
+        const question =
+
+            document.getElementById(
+
+                "question" + i
+
+            );
+
+
+
+        if (correct) {
+
+
+            score++;
+
+
+            question.classList.add(
+
+                "correct"
+
+            );
+
+
+            question.classList.remove(
+
+                "incorrect"
+
+            );
+
+        }
+
+
+        else {
+
+
+            question.classList.add(
+
+                "incorrect"
+
+            );
+
+
+            question.classList.remove(
+
+                "correct"
+
+            );
+
+        }
+
+    }
+
+
+
+    localStorage.setItem(
+
+        "adjustmentScore",
+
+        score
+
+    );
+
+
+
+    document.getElementById(
+
+        "score"
+
+    ).innerHTML =
+
+        score + " / 6";
+
+
+
+    document.getElementById(
+
+        "result"
+
+    ).innerHTML = `
+
+        <div class="alert alert-success text-center">
+
+            <h4>
+
+                🎉 ตรวจคำตอบเรียบร้อยแล้ว
+
+            </h4>
+
+            <p class="fs-4 mb-0">
+
+                คุณได้คะแนน ${score} / 6 คะแนน
+
+            </p>
+
+        </div>
+
+    `;
+
+}
+
+
+
+// ===============================
+// ล้างคำตอบ
+// ===============================
+
+function clearAnswers() {
+
+
+    const confirmClear =
+
+        confirm(
+
+            "ต้องการล้างคำตอบทั้งหมดหรือไม่?"
+
+        );
+
+
+    if (!confirmClear) {
+
+        return;
+
+    }
+
+
+
+    for (
+
+        let i = 1;
+
+        i <= 6;
+
+        i++
+
+    ) {
+
+
+        document.getElementById(
+
+            "debitAccount" + i
+
+        ).value = "";
+
+
+        document.getElementById(
+
+            "debitAmount" + i
+
+        ).value = "";
+
+
+        document.getElementById(
+
+            "creditAccount" + i
+
+        ).value = "";
+
+
+        document.getElementById(
+
+            "creditAmount" + i
+
+        ).value = "";
+
+
+
+        document.getElementById(
+
+            "question" + i
+
+        ).classList.remove(
+
+            "correct",
+
+            "incorrect"
+
+        );
+
+    }
+
+
+
+    document.getElementById(
+
+        "score"
+
+    ).innerHTML =
+
+        "0 / 6";
+
+
+
+    document.getElementById(
+
+        "result"
+
+    ).innerHTML = "";
+
+
+
+    localStorage.removeItem(
+
+        "adjustmentScore"
+
+    );
+
+}
+
+
+</script>
+
+
+
+<!-- Bootstrap JavaScript -->
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/js/bootstrap.bundle.min.js">
+
+</script>
+
+
+</body>
+
+</html>
