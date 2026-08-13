@@ -6,562 +6,554 @@
 
     <title>Accounting Practice Lab</title>
 
-    <!-- Bootstrap -->
-    <link
-        href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/css/bootstrap.min.css"
-        rel="stylesheet"
-    >
-
     <style>
+
+        * {
+            box-sizing: border-box;
+        }
+
         body {
-            font-family: "Tahoma", sans-serif;
+            margin: 0;
+            font-family: "Noto Sans Thai", "Sarabun", Arial, sans-serif;
             background: #f5f7fb;
             color: #222;
         }
 
-        /* Navbar */
-        .navbar {
-            box-shadow: 0 2px 8px rgba(0,0,0,0.12);
-        }
+        /* =========================
+           ส่วนหัวเว็บไซต์
+        ========================= */
 
-        .navbar-brand {
-            font-weight: bold;
-            font-size: 1.2rem;
-        }
-
-        /* Hero */
         .hero {
-            background: linear-gradient(135deg, #e3f2fd, #ffffff);
-            padding: 55px 20px;
             text-align: center;
-            border-radius: 0 0 30px 30px;
+            padding: 55px 20px 45px;
+            background: linear-gradient(
+                135deg,
+                #e7f4ff,
+                #ffffff
+            );
         }
 
-        .hero h1 {
-            font-weight: bold;
-            color: #0d47a1;
-            margin-bottom: 15px;
-        }
-
-        .hero p {
-            color: #555;
-            font-size: 1.05rem;
-        }
-
-        /* Section */
-        .section-title {
-            text-align: center;
-            margin: 45px 0 25px;
-            font-weight: bold;
-            color: #333;
-        }
-
-        /* Cards */
-        .lesson-card {
-            background: white;
-            border-radius: 18px;
-            padding: 28px 20px;
-            height: 100%;
-            text-align: center;
-            box-shadow: 0 5px 18px rgba(0,0,0,0.08);
-            transition: all 0.25s ease;
-            border: 1px solid #eee;
-        }
-
-        .lesson-card:hover {
-            transform: translateY(-6px);
-            box-shadow: 0 10px 25px rgba(0,0,0,0.13);
-        }
-
-        .lesson-icon {
-            font-size: 3rem;
-            margin-bottom: 15px;
-        }
-
-        .lesson-card h5 {
-            font-weight: bold;
+        .hero-icon {
+            font-size: 60px;
             margin-bottom: 10px;
         }
 
-        .lesson-card p {
-            color: #666;
-            margin-bottom: 0;
+        .hero h1 {
+            margin: 0;
+            font-size: 40px;
+            font-weight: 800;
+            color: #17365d;
         }
 
-        /* Practice section */
-        .practice-card {
-            background: white;
-            border-radius: 18px;
-            padding: 30px 20px;
-            height: 100%;
-            box-shadow: 0 5px 18px rgba(0,0,0,0.08);
-            transition: 0.25s;
+        .hero p {
+            margin-top: 12px;
+            margin-bottom: 0;
+            font-size: 18px;
+            color: #68727d;
+        }
+
+
+        /* =========================
+           เนื้อหาหลัก
+        ========================= */
+
+        .container {
+            width: 92%;
+            max-width: 1250px;
+            margin: 0 auto;
+            padding: 55px 0 70px;
+        }
+
+
+        /* =========================
+           หัวข้อแบบฝึกปฏิบัติ
+        ========================= */
+
+        .section-title {
             text-align: center;
+            margin-bottom: 38px;
+        }
+
+        .section-title h2 {
+            margin: 0;
+            font-size: 36px;
+            font-weight: 800;
+            color: #17365d;
+        }
+
+        .section-title p {
+            margin-top: 10px;
+            font-size: 17px;
+            color: #6c757d;
+        }
+
+
+        /* =========================
+           Grid
+        ========================= */
+
+        .practice-grid {
+            display: grid;
+            grid-template-columns:
+                repeat(3, 1fr);
+
+            gap: 30px;
+        }
+
+
+        /* =========================
+           การ์ดแบบฝึกปฏิบัติ
+        ========================= */
+
+        .practice-card {
+            display: block;
+
+            min-height: 245px;
+
+            padding: 32px 25px;
+
+            background: #ffffff;
+
+            border-radius: 22px;
+
+            text-align: center;
+
+            text-decoration: none;
+
+            color: #222;
+
+            border: 1px solid #edf0f4;
+
+            box-shadow:
+                0 10px 25px
+                rgba(30, 60, 90, 0.10);
+
+            transition:
+                transform 0.25s ease,
+                box-shadow 0.25s ease;
         }
 
         .practice-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 10px 25px rgba(0,0,0,0.13);
+            transform: translateY(-7px);
+
+            box-shadow:
+                0 16px 35px
+                rgba(30, 60, 90, 0.16);
         }
+
+
+        /* =========================
+           ไอคอน
+        ========================= */
 
         .practice-icon {
-            font-size: 3rem;
-            margin-bottom: 15px;
+            font-size: 58px;
+            margin-bottom: 18px;
         }
 
-        .practice-card h5 {
-            font-weight: bold;
+
+        /* =========================
+           ชื่อการ์ด
+        ========================= */
+
+        .practice-card h3 {
+            margin: 0 0 12px;
+
+            font-size: 23px;
+
+            font-weight: 800;
+
+            color: #17365d;
         }
+
+
+        /* =========================
+           รายละเอียด
+        ========================= */
 
         .practice-card p {
-            color: #666;
+            margin: 0;
+
+            font-size: 16px;
+
+            line-height: 1.7;
+
+            color: #6c757d;
         }
 
-        /* Button */
-        .btn-start {
-            border-radius: 30px;
-            padding: 10px 25px;
-            font-weight: bold;
-        }
 
-        /* Footer */
+        /* =========================
+           Footer
+        ========================= */
+
         footer {
-            margin-top: 60px;
-            background: #212529;
-            color: white;
-            padding: 30px 15px;
+            padding: 25px 15px;
+
             text-align: center;
+
+            background: #17365d;
+
+            color: #ffffff;
         }
 
         footer p {
-            margin: 5px 0;
+            margin: 4px 0;
+
+            font-size: 15px;
         }
 
-        /* Mobile */
-        @media (max-width: 576px) {
+
+        /* =========================
+           Tablet
+        ========================= */
+
+        @media (max-width: 900px) {
+
+            .practice-grid {
+                grid-template-columns:
+                    repeat(2, 1fr);
+            }
+
+        }
+
+
+        /* =========================
+           Mobile
+        ========================= */
+
+        @media (max-width: 600px) {
 
             .hero {
-                padding: 40px 15px;
+                padding:
+                    40px 15px;
             }
 
             .hero h1 {
-                font-size: 1.8rem;
+                font-size: 30px;
             }
 
-            .lesson-card,
-            .practice-card {
-                padding: 22px 15px;
+            .hero p {
+                font-size: 16px;
             }
+
+            .section-title h2 {
+                font-size: 29px;
+            }
+
+            .section-title p {
+                font-size: 15px;
+            }
+
+            .practice-grid {
+                grid-template-columns: 1fr;
+
+                gap: 20px;
+            }
+
+            .practice-card {
+                min-height: 220px;
+            }
+
         }
+
     </style>
+
 </head>
+
 
 <body>
 
-<!-- =========================
-     NAVBAR
-========================= -->
 
-<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-
-    <div class="container">
-
-        <a class="navbar-brand" href="index.html">
-            📚 Accounting Practice Lab
-        </a>
-
-        <button
-            class="navbar-toggler"
-            type="button"
-            data-bs-toggle="collapse"
-            data-bs-target="#menu"
-            aria-controls="menu"
-            aria-expanded="false"
-            aria-label="Toggle navigation"
-        >
-            <span class="navbar-toggler-icon"></span>
-        </button>
-
-        <div class="collapse navbar-collapse" id="menu">
-
-            <ul class="navbar-nav ms-auto">
-
-                <li class="nav-item">
-                    <a class="nav-link" href="index.html">
-                        🏠 หน้าหลัก
-                    </a>
-                </li>
-
-                <li class="nav-item">
-                    <a class="nav-link" href="lesson.html">
-                        ✏️ แบบฝึกปฏิบัติ
-                    </a>
-                </li>
-             </ul>
-
-        </div>
-
-    </div>
-
-</nav>
-
-
-<!-- =========================
-     HERO
-========================= -->
+<!-- ==================================
+     ส่วนหัวเว็บไซต์
+================================== -->
 
 <section class="hero">
 
-    <div class="container">
-
-        <div class="mb-3" style="font-size: 4rem;">
-            📚
-        </div>
-
-        <h1>
-            Accounting Practice Lab
-        </h1>
-
-        <p>
-            เว็บไซต์ฝึกปฏิบัติการบัญชีเบื้องต้น
-        </p>
-
-        <p>
-            สำหรับนักเรียนระดับประกาศนียบัตรวิชาชีพ (ปวช.)
-        </p>
-
-        <a
-            href="lesson.html"
-            class="btn btn-primary btn-start mt-3"
-        >
-            🚀 เริ่มเรียน
-        </a>
-
+    <div class="hero-icon">
+        📚
     </div>
 
-</section>
-
-
-<!-- =========================
-     LESSONS
-========================= -->
-
-<div class="container">
-
-    <h2 class="section-title">
-        📖 บทเรียนการบัญชี
-    </h2>
-
-    <div class="row g-4">
-
-        <!-- Lesson 1 -->
-
-        <div class="col-md-6 col-lg-4">
-
-            <a
-                href="analyze.html"
-                class="text-decoration-none text-dark"
-            >
-
-                <div class="lesson-card">
-
-                    <div class="lesson-icon">
-                        🔍
-                    </div>
-
-                    <h5>
-                        วิเคราะห์รายการค้า
-                    </h5>
-
-                    <p>
-                        ฝึกวิเคราะห์รายการค้าและผลกระทบต่อสมการบัญชี
-                    </p>
-
-                </div>
-
-            </a>
-
-        </div>
-
-
-        <!-- Lesson 2 -->
-
-        <div class="col-md-6 col-lg-4">
-
-            <a
-                href="journal.html"
-                class="text-decoration-none text-dark"
-            >
-
-                <div class="lesson-card">
-
-                    <div class="lesson-icon">
-                        📖
-                    </div>
-
-                    <h5>
-                        สมุดรายวันทั่วไป
-                    </h5>
-
-                    <p>
-                        ฝึกบันทึกรายการค้าลงในสมุดรายวันทั่วไป
-                    </p>
-
-                </div>
-
-            </a>
-
-        </div>
-
-
-        <!-- Lesson 3 -->
-
-        <div class="col-md-6 col-lg-4">
-
-            <a
-                href="ledger.html"
-                class="text-decoration-none text-dark"
-            >
-
-                <div class="lesson-card">
-
-                    <div class="lesson-icon">
-                        📒
-                    </div>
-
-                    <h5>
-                        บัญชีแยกประเภท
-                    </h5>
-
-                    <p>
-                        ฝึกผ่านรายการจากสมุดรายวันไปยังบัญชีแยกประเภท
-                    </p>
-
-                </div>
-
-            </a>
-
-        </div>
-
-
-        <!-- Lesson 4 -->
-
-        <div class="col-md-6 col-lg-4">
-
-            <a
-                href="trial-balance.html"
-                class="text-decoration-none text-dark"
-            >
-
-                <div class="lesson-card">
-
-                    <div class="lesson-icon">
-                        ⚖️
-                    </div>
-
-                    <h5>
-                        งบทดลอง
-                    </h5>
-
-                    <p>
-                        ฝึกจัดทำงบทดลองและตรวจสอบความถูกต้อง
-                    </p>
-
-                </div>
-
-            </a>
-
-        </div>
-
-
-        <!-- Lesson 5 -->
-
-        <div class="col-md-6 col-lg-4">
-
-            <a
-                href="worksheet.html"
-                class="text-decoration-none text-dark"
-            >
-
-                <div class="lesson-card">
-
-                    <div class="lesson-icon">
-                        📄
-                    </div>
-
-                    <h5>
-                        กระดาษทำการ
-                    </h5>
-
-                    <p>
-                        ฝึกจัดทำกระดาษทำการเพื่อสรุปข้อมูลทางบัญชี
-                    </p>
-
-                </div>
-
-            </a>
-
-        </div>
-
-
-        <!-- Lesson 6 -->
-
-        <div class="col-md-6 col-lg-4">
-
-            <a
-                href="adjustment.html"
-                class="text-decoration-none text-dark"
-            >
-
-                <div class="lesson-card">
-
-                    <div class="lesson-icon">
-                        📝
-                    </div>
-
-                    <h5>
-                        รายการปรับปรุง
-                    </h5>
-
-                    <p>
-                        ฝึกบันทึกรายการปรับปรุงบัญชี
-                    </p>
-
-                </div>
-
-            </a>
-
-        </div>
-
-    </div>
-
-
-    <!-- =========================
-         PRACTICE
-    ========================= -->
-
-    <h2
-        class="section-title"
-        id="practice"
-    >
-        ✏️ แบบฝึกปฏิบัติ
-    </h2>
-
-
-    <div class="row g-4">
-
-
-        <!-- Worksheet 10 -->
-
-        <div class="col-md-6 col-lg-4">
-
-            <a
-                href="worksheet-10.html"
-                class="text-decoration-none text-dark"
-            >
-
-                <div class="practice-card">
-
-                    <div class="practice-icon">
-                        📄
-                    </div>
-
-                    <h5>
-                        กระดาษทำการ 10 ช่อง
-                    </h5>
-
-                    <p>
-                        จัดทำรายการปรับปรุงและงบการเงิน
-                    </p>
-
-                </div>
-
-            </a>
-
-        </div>
-
-
-        <!-- Closing -->
-
-        <div class="col-md-6 col-lg-4">
-
-            <a
-                href="closing.html"
-                class="text-decoration-none text-dark"
-            >
-
-                <div class="practice-card">
-
-                    <div class="practice-icon">
-                        ✅
-                    </div>
-
-                    <h5>
-                        ปิดบัญชี
-                    </h5>
-
-                    <p>
-                        ฝึกบันทึกรายการปิดบัญชีเมื่อสิ้นงวด
-                    </p>
-
-                </div>
-
-            </a>
-
-        </div>
-
-
-        <!-- Summary -->
-
-        <div class="col-md-6 col-lg-4">
-
-            <a
-                href="summary.html"
-                class="text-decoration-none text-dark"
-            >
-
-                <div class="practice-card">
-
-                    <div class="practice-icon">
-                        🎓
-                    </div>
-
-                    <h5>
-                        สรุปวงจรบัญชี
-                    </h5>
-
-                    <p>
-                        ทบทวนขั้นตอนของวงจรบัญชีทั้งหมด
-                    </p>
-
-                </div>
-
-            </a>
-
-        </div>
-
-<footer>
-
-    <p>
-        <strong>Accounting Practice Lab</strong>
-    </p>
+    <h1>
+        Accounting Practice Lab
+    </h1>
 
     <p>
         เว็บไซต์ฝึกปฏิบัติการบัญชีเบื้องต้น
     </p>
 
+</section>
+
+
+
+<!-- ==================================
+     เนื้อหา
+================================== -->
+
+<main class="container">
+
+
+    <!-- หัวข้อเดียวของหน้า -->
+
+    <div class="section-title">
+
+        <h2>
+            ✏️ แบบฝึกปฏิบัติ
+        </h2>
+
+        <p>
+            ฝึกปฏิบัติทักษะทางการบัญชีตามลำดับขั้นตอน
+        </p>
+
+    </div>
+
+
+
+    <!-- ==================================
+         การ์ดทั้งหมด
+    ================================== -->
+
+    <div class="practice-grid">
+
+
+        <!-- 1 วิเคราะห์รายการค้า -->
+
+        <a
+            href="analyze.html"
+            class="practice-card"
+        >
+
+            <div class="practice-icon">
+                🔍
+            </div>
+
+            <h3>
+                วิเคราะห์รายการค้า
+            </h3>
+
+            <p>
+                ฝึกวิเคราะห์รายการค้า
+                และผลกระทบต่อสมการบัญชี
+            </p>
+
+        </a>
+
+
+
+        <!-- 2 สมุดรายวันทั่วไป -->
+
+        <a
+            href="journal.html"
+            class="practice-card"
+        >
+
+            <div class="practice-icon">
+                📖
+            </div>
+
+            <h3>
+                สมุดรายวันทั่วไป
+            </h3>
+
+            <p>
+                ฝึกบันทึกรายการค้าลงใน
+                สมุดรายวันทั่วไป
+            </p>
+
+        </a>
+
+
+
+        <!-- 3 บัญชีแยกประเภท -->
+
+        <a
+            href="ledger.html"
+            class="practice-card"
+        >
+
+            <div class="practice-icon">
+                📒
+            </div>
+
+            <h3>
+                บัญชีแยกประเภท
+            </h3>
+
+            <p>
+                ฝึกผ่านรายการจากสมุดรายวันทั่วไป
+                ไปยังบัญชีแยกประเภท
+            </p>
+
+        </a>
+
+
+
+        <!-- 4 งบทดลอง -->
+
+        <a
+            href="trial-balance.html"
+            class="practice-card"
+        >
+
+            <div class="practice-icon">
+                ⚖️
+            </div>
+
+            <h3>
+                งบทดลอง
+            </h3>
+
+            <p>
+                ฝึกจัดทำงบทดลอง
+                และตรวจสอบความถูกต้อง
+            </p>
+
+        </a>
+
+
+
+        <!-- 5 กระดาษทำการ -->
+
+        <a
+            href="worksheet.html"
+            class="practice-card"
+        >
+
+            <div class="practice-icon">
+                📄
+            </div>
+
+            <h3>
+                กระดาษทำการ
+            </h3>
+
+            <p>
+                ฝึกจัดทำกระดาษทำการ
+                เพื่อสรุปข้อมูลทางบัญชี
+            </p>
+
+        </a>
+
+
+
+        <!-- 6 รายการปรับปรุง -->
+
+        <a
+            href="adjustment.html"
+            class="practice-card"
+        >
+
+            <div class="practice-icon">
+                📝
+            </div>
+
+            <h3>
+                รายการปรับปรุง
+            </h3>
+
+            <p>
+                ฝึกบันทึกรายการปรับปรุงบัญชี
+            </p>
+
+        </a>
+
+
+
+        <!-- 7 กระดาษทำการ 10 ช่อง -->
+
+        <a
+            href="worksheet-10.html"
+            class="practice-card"
+        >
+
+            <div class="practice-icon">
+                📑
+            </div>
+
+            <h3>
+                กระดาษทำการ 10 ช่อง
+            </h3>
+
+            <p>
+                ฝึกจัดทำกระดาษทำการ 10 ช่อง
+                และจัดทำงบการเงิน
+            </p>
+
+        </a>
+
+
+
+        <!-- 8 ปิดบัญชี -->
+
+        <a
+            href="closing.html"
+            class="practice-card"
+        >
+
+            <div class="practice-icon">
+                ✅
+            </div>
+
+            <h3>
+                ปิดบัญชี
+            </h3>
+
+            <p>
+                ฝึกบันทึกรายการปิดบัญชี
+                และปิดบัญชีชั่วคราว
+            </p>
+
+        </a>
+
+
+
+        <!-- 9 สรุปวงจรบัญชี -->
+
+        <a
+            href="summary.html"
+            class="practice-card"
+        >
+
+            <div class="practice-icon">
+                🎓
+            </div>
+
+            <h3>
+                สรุปวงจรบัญชี
+            </h3>
+
+            <p>
+                ทบทวนและสรุปขั้นตอน
+                ของวงจรบัญชีทั้งหมด
+            </p>
+
+        </a>
+
+
+    </div>
+
+</main>
+
+
+
+<!-- ==================================
+     Footer
+================================== -->
+
+<footer>
+
     <p>
-        สำหรับการเรียนรู้และฝึกทักษะทางการบัญชี
+        <strong>
+            Accounting Practice Lab
+        </strong>
+    </p>
+
+    <p>
+        เว็บไซต์สำหรับแบบฝึกปฏิบัติการบัญชีเบื้องต้น
     </p>
 
 </footer>
 
-
-<!-- Bootstrap JS -->
-
-<script
-    src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/js/bootstrap.bundle.min.js">
-</script>
 
 </body>
 </html>
